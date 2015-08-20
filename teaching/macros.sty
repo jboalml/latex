@@ -1,0 +1,193 @@
+% -----------------------------------------------------------------------------------
+% ------------------------------- USER DEFINED MACROS -------------------------------
+% -----------------------------------------------------------------------------------                                    
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{macros}[2015/08/20 v1.0.0 Macros to make formatting text easier]
+
+% -----------------------------------------------------------------------------------
+% -------------------------------------- ALIAS --------------------------------------
+% -----------------------------------------------------------------------------------
+
+\let\mc\multicolumn
+\let\mr\multirow
+\let\rl\raggedleft
+\let\rr\raggedright
+\let\subs\textsubscript
+\let\sups\textsuperscript
+
+% -----------------------------------------------------------------------------------
+% ------------------------------ FLOATING ENVIRONMENTS ------------------------------
+% -----------------------------------------------------------------------------------	
+	
+% \Figure[Position]{Format}{File.ext}{Caption}{fig:Label}
+\providecommand{\Figure}[5][]{
+  \begin{figure}[#1]
+	  \centering
+    \includegraphics[#2]{#3}
+    \caption{#4}
+    \label{#5}
+  \end{figure}
+}
+
+% ----------------------------------------------------------------------------------- 
+																															
+% \Table[Position]{Column format}{Font size}{Table}{Caption}{tab:Label}			
+\providecommand{\Table}[6][]{
+  \begin{table}[#1]
+    \centering #3
+    \caption{#5}
+    \label{#6}
+	  \begin{tabular}{#2}
+	    #4
+	  \end{tabular}
+  \end{table}
+}
+
+% ----------------------------------------------------------------------------------- 
+														
+% \Equation{Equation}{eq:Label}					
+\providecommand{\Equation}[2]{
+  \begin{equation}
+    #1
+    \label{#2}
+  \end{equation}
+}
+
+% ----------------------------------------------------------------------------------- 
+
+% \TextBox[Width]{Text}					
+\providecommand{\TextBox}[2][\linewidth]{
+  \setlength{\fboxrule}{1pt}
+  \setlength{\fboxsep}{2.5pt}
+
+  % Minipage width explanation: We want it to be the line width, minus the space
+  % required by the frame lines (4 times because there are 2 boxes), minus
+  % the separation between the frame and the text (4 for the same reason), minus 
+  % a constant 1.65mm (which I ignore where it comes from)
+  \makeatletter
+    \noindent
+    \textcolor[gray]{0.85}{
+      \noindent
+      \framebox[#1]{
+        \colorbox[gray]{0.9}{
+          \begin{minipage}{#1 - 1.65mm - 4\fboxsep - 4\fboxrule}
+            \vspace{3pt}
+            \normalcolor #2%
+            \vspace{3pt}
+          \end{minipage}
+        }
+      }
+    }
+  \makeatother
+}
+
+% -----------------------------------------------------------------------------------
+% -------------------------------------- CODE ---------------------------------------
+% -----------------------------------------------------------------------------------
+
+% \Typewriter{Text}
+\providecommand{\Typewriter}[1]{{\ttfamily\selectfont #1}}
+
+% -----------------------------------------------------------------------------------
+
+% \CodeBox[Width]{Code}	
+\providecommand{\CodeBox}[2][\linewidth]{
+  \setlength{\fboxrule}{1pt}
+  \setlength{\fboxsep}{2.5pt}
+
+  % Minipage width explanation: We want it to be the line width, minus the space
+  % required by the frame lines (4 times because there are 2 boxes), minus
+  % the separation between the frame and the text (4 for the same reason), minus 
+  % a constant 1.65mm (which I ignore where it comes from)
+  \makeatletter
+    \noindent
+    \textcolor[gray]{0.85}{
+      \noindent
+      \framebox[#1]{
+        \colorbox[gray]{0.9}{
+          \begin{minipage}{#1 - 1.65mm - 4\fboxsep - 4\fboxrule}
+            \vspace{-3pt}
+            \normalcolor #2
+            \vspace{-3pt}
+          \end{minipage}
+        }
+      }
+    }
+  \makeatother
+}
+
+% ----------------------------------------------------------------------------------- 
+ 									
+% \IncludeCode{Language}{Path}
+\providecommand{\IncludeCode}[2]{#1 \lstinputlisting{#2}}
+
+% ----------------------------------------------------------------------------------- 
+
+% \IncludeBoxedCode[Position]{Width}{Language}{Path}{Caption}{cod:Label}
+\providecommand{\IncludeBoxedCode}[6][h]{
+  \begin{code}[#1]
+    \centering
+    \CodeBox[#2]{\IncludeCode{#3}{#4}}
+    \caption{#5}
+    \label{#6}
+  \end{code}
+}
+
+% ----------------------------------------------------------------------------------- 
+
+% \Key[Trailing space]{Text}
+\providecommand{\Key}[2][0pt]{%
+  {\small \keys{ \ #2 \ }\hspace{#1}}%
+}
+
+% ----------------------------------------------------------------------------------- 
+
+% \Menu[Trailing space]{Text}
+\providecommand{\Menu}[2][0pt]{%
+  {\small \menu{ \ #2 \ }\hspace{#1}}%
+}
+				
+% -----------------------------------------------------------------------------------
+% -------------------------------- CROSS-REFERENCES ---------------------------------
+% -----------------------------------------------------------------------------------
+																	
+% \Reference{Label}				
+\providecommand{\Reference}[1]{\autoref{#1}. \nameref{#1}}
+
+% -----------------------------------------------------------------------------------
+% -------------------------------------- PAGES --------------------------------------
+% -----------------------------------------------------------------------------------
+
+\newcounter{iterator}
+
+% -----------------------------------------------------------------------------------
+
+% \Whitepage[# of pages]
+\providecommand{\Whitepage}[1][1]{%
+  \forloop{iterator}{0}{\value{iterator} < #1}{%
+    \newpage \thispagestyle{empty} \null%
+  }
+  
+  \newpage%
+}
+
+% -----------------------------------------------------------------------------------
+
+% \Blankpage[# of pages]
+\providecommand{\Blankpage}[1][1]{%
+  \forloop{iterator}{0}{\value{iterator} < #1}{%
+    \newpage \null%
+  }
+  
+  \newpage%
+}
+
+% -----------------------------------------------------------------------------------
+% ------------------------------------ REVISION -------------------------------------
+% -----------------------------------------------------------------------------------
+
+% \rev[color]{text}
+\providecommand{\rev}[2][blue]{%
+ {\color{#1} #2}%
+}
