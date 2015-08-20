@@ -8,7 +8,6 @@ Currently, the available templates are mostly of an academic nature (bachelor's,
 - [Getting started](#getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
-- [Documentation](#documentation)
 - [Developers](#developers)
 - [License](#license)
 
@@ -90,6 +89,6 @@ This repository is developed and maintained by [Jaime Boal](https://github.com/j
 I would like to thank Romano Giannetti for detecting quite a few bugs and providing feedback on how to improve the `teaching.cls` template.
 
 ## License
-This repository is licensed under the [GNU General Public License v2.0](LICENSE.md).
+This repository is licensed under the [GNU General Public License v2.0](LICENSE.txt).
 
 The Comillas logo is property of [Comillas Pontifical University](http://comillas.edu/). All rights reserved.
