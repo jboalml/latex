@@ -59,8 +59,6 @@ If none of the above options work for you (probably because you are using a diff
 - [How to register my own packages or classes in a separate drive to TeX Live installation?](http://tex.stackexchange.com/questions/20160/how-to-register-my-own-packages-or-classes-in-a-separate-drive-to-tex-live-insta)
 - [Create a local texmf tree in MiKTeX.](http://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex)
 
-Let me know your solution so I can incorporate it to the installation guide for others to use!
-
 #### Ubuntu font family
 Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on Mac OS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts).
 
@@ -81,10 +79,10 @@ where `classname` is the template name.
 | Font size               | **10pt**, 11pt, 12pt     |
 | Paper size              | **a4paper**, letterpaper |
 | Single- or double-sided | oneside, twoside         |
-| Language                | english, spanish         |
+| Language                | english, spanish...      |
 
-- Default values are highlighted in bold.
-- As the main font chosen in most templates is rather large, a **font size** of `11pt` is recommended over `12pt`.
+- Default values are highlighted in bold. The single- or double-sided option's default value depends on the template. Therefore, I would suggest that you always explicitly define it.
+- As the main font chosen in most templates is rather large, a **font size** of `11pt` is generally recommended over `12pt`.
 - **The language option is mandatory**; otherwise the document will not compile. If you need to use more than one language write them one after the other. Bear in mind that the last language you type will be the one selected at the beginning of the document.
 - **Some templates have additional options**. Check the [wiki](https://github.com/jboalml/latex/wiki) to learn how to further customize the different templates. For instance, in the case of `teaching.cls` you can define the purpose of the document (i.e., `notes`, `exercises`, `lab`, `quiz`, `exam`, or `solution`). Layout and appearance will be automatically set accordingly.
 
@@ -99,7 +97,7 @@ In order to use `teaching.cls` to write some class notes in Spanish you would ty
 In each template directory you will find a `samples` folder with skeleton documents to get you started.
 
 #### Troubleshooting
-Check the [issues](https://github.com/jboalml/latex/issues) section for common problems and solutions.
+Check the [issues](https://github.com/jboalml/latex/issues) section for common problems and solutions. Let me know the issues you face and your solutions (if you have them) so I can incorporate them to the repository!
 
 ## Developers
 This repository is developed and maintained by [Jaime Boal](https://github.com/jboalml).
