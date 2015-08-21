@@ -3,7 +3,7 @@
 % -----------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{teaching}[2015/08/20 v1.0.0 Class to produce teaching material]
+\ProvidesClass{teaching}[2015/08/21 v1.0.0 Class to produce teaching material]
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- LaTeX EXTENSIONS ---------------------------------
@@ -56,15 +56,22 @@
 
 \RequirePackage{microtype}  % Enhances presentation subtly (justification...), 
                             % especially in multicolumn environments. If it throws
-							              % an error try [protrusion=true, expansion=true]
+                            % an error try [protrusion=true, expansion=true]
 							                       
 % Fonts
 \RequirePackage{charter}                  % Serif: Bitstream Charter w/o math support
 \RequirePackage[defaultsans]{opensans}    % Sans:  Open Sans
 \RequirePackage[varqu,varl]{inconsolata}  % Monospaced: Inconsolata
 \RequirePackage{amsfonts}                 % American Mathematical Society fonts
-\RequirePackage{upgreek}                  % Upright greek letters	
-\RequirePackage[none]{ubuntu}             % Ubunty font. Used for titling
+\RequirePackage{upgreek}                  % Upright greek letters
+
+% Use Ubuntu font for titling if installed; otherwise use Open Sans
+\IfFileExists{ubuntu.sty}{
+  \RequirePackage[none]{ubuntu}
+  \providecommand{\titlingfont}{\fontUbuntuMedium}
+}{
+  \providecommand{\titlingfont}{\fontseries{sb}\fosfamily} 
+}
 
 % Other serif fonts
 %\RequirePackage{fourier}              % Utopia text with Fourier math
@@ -129,7 +136,7 @@
 \RequirePackage{csquotes}                 % Smart quotes. Required by babel. 
                                           % Must go after inputenc
 \RequirePackage{babel}                    % Language must be passed as a class option
-%\RequirePackage[english,spanish]{babel}  % The last language listed is the default
+%\RequirePackage[spanish,english]{babel}  % The last language listed is the default
   %\decimalpoint                          % Use decimal point in those languages in
                                           % which it is not the default symbol
   \hyphenation{mi-cro-con-tro-la-do-res}  % Correct hyphenation for selected words
@@ -208,7 +215,7 @@
                              
 % Paragraphs    
 \RequirePackage[parfill]{parskip}  % Space between paragraphs. Requires to manually
-		                               % correct all extra space introduced in headings
+                                   % correct all extra space introduced in headings
 \setlength{\parindent}{15pt}       % Indentation. Must go after parskip
 
 % Columns and rows (both in tables and text)
@@ -226,8 +233,8 @@
 	  
 % Ignore layout errors below these thresholds
 %\hbadness 1414  % Horizontal badness
-%\hfuzz 0.3pt	   % Horizontal overfull boxes
-%\vfuzz 0.3pt	   % Vertical overfull boxes
+%\hfuzz 0.3pt    % Horizontal overfull boxes
+%\vfuzz 0.3pt    % Vertical overfull boxes
 
 % ----------------------------------------------------------------------------------- 
 % ------------------------------------- COLORS --------------------------------------
@@ -258,25 +265,25 @@
 				
 % Format
 \RequirePackage{titlesec}
-  %\titleformat{\chapter}[block]{\centering\LARGE\fontUbuntuMedium\thispagestyle{fancy}}
+  %\titleformat{\chapter}[block]{\centering\LARGE\titlingfont\thispagestyle{fancy}}
   %                             {\chaptertitlename~\thechapter . }{0pt}{}
                              
   %\titlespacing*{\chapter}{0pt}{-20pt plus 5pt minus 5pt}{10pt plus 5pt minus 5pt}	
 																			
-  \titleformat{\section}{\LARGE\fontUbuntuMedium}
+  \titleformat{\section}{\LARGE\titlingfont}
                         {\ifdefempty{\sectionname}{}{\sectionname~}\thesection .}{0.35em}{}
   \titlespacing*{\section}{0pt}{1.75ex plus .5ex minus .5ex}{-0.25ex plus .5ex minus 1ex}
 				
-  \titleformat{\subsection}{\Large\fontUbuntuMedium}{\thesubsection .}{0.35em}{}
+  \titleformat{\subsection}{\Large\titlingfont}{\thesubsection .}{0.35em}{}
   \titlespacing*{\subsection}{0pt}{1.25ex plus .5ex minus .5ex}{-0.25ex plus .5ex minus 1ex}
 
-  \titleformat{\subsubsection}{\large\fontUbuntuMedium}{\thesubsubsection .}{0.35em}{}
+  \titleformat{\subsubsection}{\large\titlingfont}{\thesubsubsection .}{0.35em}{}
   \titlespacing*{\subsubsection}{0pt}{1ex plus .5ex minus .5ex}{0ex plus .25ex minus .25ex}
 				
-  \titleformat{\paragraph}{\normalsize\fontUbuntuMedium}{\theparagraph .}{0.35em}{}
+  \titleformat{\paragraph}{\normalsize\titlingfont}{\theparagraph .}{0.35em}{}
   \titlespacing*{\paragraph}{0pt}{.75ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
 																
-  \titleformat{\subparagraph}{\normalsize\fontUbuntuMedium}{\thesubparagraph .}{0.35em}{}
+  \titleformat{\subparagraph}{\normalsize\titlingfont}{\thesubparagraph .}{0.35em}{}
   \titlespacing*{\subparagraph}{0pt}{.5ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
 
 % -----------------------------------------------------------------------------------
@@ -449,10 +456,10 @@
 % -----------------------------------------------------------------------------------
 
 % Margins
-\setlength{\voffset}{5pt}			    % Space from the top of the page (1in + \voffset)
-\setlength{\headheight}{46pt}			% Header height
+\setlength{\voffset}{5pt}         % Space from the top of the page (1in + \voffset)
+\setlength{\headheight}{46pt}     % Header height
 \setlength{\headsep}{20pt}        % Separation between the header and the body
-\addtolength{\textheight}{-30pt}	% Footer height (space removed from the body)
+\addtolength{\textheight}{-30pt}  % Footer height (space removed from the body)
 \setlength{\footskip}{25pt}       % Footer height + Distance to the body.
                                   % The difference with the previous parameter should
                                   % be kept more or less constant (55pt) to preserve
@@ -470,32 +477,32 @@
     \fancyhf{}  % Clear current header and footer
     
     \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{
-	  	\fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-bw.pdf}}
-	  }{
-	  	\fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-color.pdf}}
-	  }
+      \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-bw.pdf}}
+    }{
+      \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-color.pdf}}
+    }
 	  
     \newcommand{\thesubheader}{}
-	  \newcommand{\subheader}[1]{\renewcommand{\thesubheader}{#1}}	  
+    \newcommand{\subheader}[1]{\renewcommand{\thesubheader}{#1}}	  
 	  
-	  \fancyhead[RO]{
-	    \raggedleft\fontUbuntuMedium
+    \fancyhead[RO]{
+      \raggedleft\titlingfont
       \Large\color{darkblue} \MakeUppercase{\theSubject}\linebreak
-	    \large\color[gray]{0.6} \MakeUppercase{\thesubheader}%
+      \large\color[gray]{0.6} \MakeUppercase{\thesubheader}%
     }
 
     \fancyhead[LE]{
-      \raggedright\fontUbuntuMedium
+      \raggedright\titlingfont
       \Large\color{darkblue} \MakeUppercase{\theSubject}\linebreak
       \large\color[gray]{0.6} \MakeUppercase{\thesubheader}%
     } 
 	  
     \providecommand{\thefooter}{}
-	  \providecommand{\footer}[1]{\renewcommand{\thefooter}{#1}}  
+    \providecommand{\footer}[1]{\renewcommand{\thefooter}{#1}}  
 	  
-	  \fancyfoot[LO,RE]{\small \textbf{\thefooter}\linebreak \theDate}
-	  \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{
-	    \RequirePackage{lastpage}
+    \fancyfoot[LO,RE]{\small \textbf{\thefooter}\linebreak \theDate}
+    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{
+      \RequirePackage{lastpage}
       \fancyfoot[RO,LE]{\thepage~\ofname~\pageref*{LastPage}} % With \pageref* LastPage
                                                               % will not be a link
     }{
@@ -566,7 +573,6 @@
     bookmarksopenlevel = 1
   }
   
-
 \RequirePackage[all]{hypcap}  % Correct hyperlink anchors position in floats.
                               % Must be loaded after hyperref
 
@@ -616,7 +622,7 @@
 % Title[Optional additional information]{Title}
 \providecommand{\Title}[2][]{
   {%
-    \noindent\fontUbuntuMedium\huge\centering #2\\%
+    \noindent\titlingfont\huge\centering #2\\%
     \ifblank{#1}{}{%
       \vspace{2pt}%
       \Large (#1)\\%
@@ -653,7 +659,7 @@
     \ifdefempty{\theInstructions}{}{
       \vspace{1cm}
     
-      {\noindent\centering\fontUbuntuMedium\LARGE \MakeUppercase{\instructionsname}\\}
+      {\noindent\centering\titlingfont\LARGE \MakeUppercase{\instructionsname}\\}
     
       \vspace{0.75cm}
     
