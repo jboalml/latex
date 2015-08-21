@@ -18,37 +18,53 @@ Currently, the available templates are mostly of an academic nature (bachelor's,
 ### Installation
 You can just drop the template you need in your project's folder and start using it straightaway. However, in order to keep everything tidy, you can also make templates accessible from your LaTeX distribution.
 
-First, type the following command on the command prompt or terminal to determine where to copy the templates.
+#### MiKTeX (Windows)
+1. Create a `ROOT` path (e.g., `C:\Libraries\LaTeX`).
 
-```
-kpsewhich -var-value=TEXMFHOME
-```
+2. Place the templates you want to use in a subdirectory of `ROOT\tex\latex` (e.g., `C:\Libraries\LaTeX\tex\latex\teaching`).
 
-In my case, using MacTeX on Mac OS X, the value of `TEXMFHOME` is:
+3. Register the `ROOT` directory in MiKTeX. To do so, open the `Settings (Admin)` utility, select the `Roots` tab, and add your `ROOT` path (e.g., `C:\Libraries\LaTeX`). Note that the trailing `\tex\latex` must not be included!
 
-```
-/Users/jboal/Library/texmf
-```
+4. Finally, switch to the `General` tab and press `Refresh FNDB` to update the file name database.
 
-You should place the templates you want to use in a subdirectory of `TEXMFHOME/tex/latex/` (e.g., `/Users/jboal/Library/texmf/tex/latex/teaching/`). You may need to create the folder path. This approach has the advantage that it is not necessary to update the package database as TeX searches your personal `texmf` tree directly.
+#### TeX Live (Windows, Mac OS, Linux)
+1. Type the following command on the command prompt or terminal to determine the root path for local files.
 
-You can verify that your distribution is able to find the template using the following command:
+  ```
+  kpsewhich -var-value=TEXMFHOME
+  ```
 
-```
-kpsewhich filename
-```
+  In my case, the value of `TEXMFHOME` in Mac OS X is:
 
-where `filename` stands for the template name (e.g., `teaching.cls`).
+  ```
+  /Users/jboal/Library/texmf
+  ```
 
-If this procedure does not work for you (probably because you are using a different OS or a different LaTeX distribution), check the following links for alternatives:
+2. You should place the templates you want to use in a subdirectory of `TEXMFHOME/tex/latex/` (e.g., `/Users/jboal/Library/texmf/tex/latex/teaching/`). You may need to create the folder path. This approach has the advantage that it is not necessary to update the package database as TeX searches your personal `texmf` tree directly.
+
+3. Optionally, you can verify that your distribution is able to find the template using the following command:
+
+  ```
+  kpsewhich filename
+  ```
+
+  where `filename` stands for the template name (e.g., `teaching.cls`).
+
+#### Troubleshooting
+If none of the above options work for you (probably because you are using a different combination of OS and LaTeX distribution), check the following links for alternatives:
 - [Where do I place my own .sty or .cls files, to make them available to all my .tex files?](http://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te)
 - [How do I add a .sty file to my MacTeX/TeXShop installation?](http://tex.stackexchange.com/questions/10252/how-do-i-add-a-sty-file-to-my-mactex-texshop-installation)
 - [Install custom .cls using TeX Live in local directory.](http://tex.stackexchange.com/questions/96976/install-custom-cls-using-tex-live-in-local-directory)
 - [How to make LaTeX see local texmf tree.](http://tex.stackexchange.com/questions/30494/how-to-make-latex-see-local-texmf-tree)
 - [How to register my own packages or classes in a separate drive to TeX Live installation?](http://tex.stackexchange.com/questions/20160/how-to-register-my-own-packages-or-classes-in-a-separate-drive-to-tex-live-insta)
+- [Create a local texmf tree in MiKTeX.](http://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex)
+
+Let me know your solution so I can incorporate it to the installation guide for others to use!
 
 #### Ubuntu font family
-Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions [here](https://github.com/tzwenn/ubuntu-latex-fonts).
+Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on Mac OS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts).
+
+Unfortunately, the author does not support installing these fonts in Windows and doing it manually can be quite tricky. For this reason, if Ubuntu fonts cannot be found in your system, the templates that use it will automatically replace it with Open Sans, which is a similar alternative.
 
 ### Usage
 After setting everything up, create a new `.tex` file and type the `\documentclass` command at the beginning. Its structure should be:
@@ -81,6 +97,9 @@ In order to use `teaching.cls` to write some class notes in Spanish you would ty
 
 #### Sample documents
 In each template directory you will find a `samples` folder with skeleton documents to get you started.
+
+#### Troubleshooting
+Check the [issues](https://github.com/jboalml/latex/issues) section for common problems and solutions.
 
 ## Developers
 This repository is developed and maintained by [Jaime Boal](https://github.com/jboalml).
