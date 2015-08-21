@@ -62,7 +62,7 @@ If none of the above options work for you (probably because you are using a diff
 #### Ubuntu font family
 Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on Mac OS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts).
 
-Unfortunately, the author does not support installing these fonts in Windows and doing it manually can be quite tricky. For this reason, if Ubuntu fonts cannot be found in your system, the templates that use it will automatically replace it with Open Sans, which is a similar alternative.
+Unfortunately, the author does not support installing these fonts in Windows and doing it manually can be quite tricky. For this reason, if Ubuntu fonts cannot be found in your system, the templates that use them will automatically switch to Open Sans, which is a similar alternative.
 
 ### Usage
 After setting everything up, create a new `.tex` file and type the `\documentclass` command at the beginning. Its structure should be:
