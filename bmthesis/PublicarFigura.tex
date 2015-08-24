@@ -1,0 +1,38 @@
+% ---------------------------------------------------------------------
+% ------- MACRO PARA CONVERTIR FIGURAS DE MATLAB EN .eps A .pdf -------
+% ---------------------------------------------------------------------
+%
+% Archivos: PublicarFigura.tex
+%
+% Descripción: Macro que a partir de sendos ficheros .tex y .eps
+%							 generados en Matlab a partir de matlabfrag crea un .pdf
+%							 de alta calidad con las etiquetas en formato LaTeX y la 
+%							 fuente adecuada para cada documento.
+%
+% Versión: 1.0.0
+%
+% Fecha: 31/03/2010
+%
+% Autor: Jaime Boal Martín-Larrauri
+%
+% ---------------------------------------------------------------------
+% ----------------------------- PREÁMBULO -----------------------------
+% ---------------------------------------------------------------------
+
+\documentclass{article}								% Clase de documento
+
+\usepackage{pstool}										% Paquete para convertir de .eps a .pdf pasando por .ps con pdflatex
+
+\usepackage[english, spanish]{babel}	% Idiomas cargados: inglés y español (por defecto)
+\usepackage[latin1]{inputenc} 				% Poner acentos directamente
+\usepackage[T1]{fontenc}      				% Separación por guiones correcta
+	\usepackage{times}	  							% Fuente predeterminada
+	\usepackage{mathptmx} 							%	Fuente del entorno matemático
+		
+% ---------------------------------------------------------------------
+% ----------------------------- DOCUMENTO -----------------------------
+% ---------------------------------------------------------------------
+
+\begin{document}
+	\psfragfig{MatlabFigure01}	% Nombre SIN extensión de la figura a convertir (admite una ruta)
+\end{document}

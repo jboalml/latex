@@ -1,0 +1,794 @@
+% ---------------------------------------------------------------------
+% ---------------------- PROYECTO FIN DE CARRERA ----------------------
+% ---------------------------------------------------------------------
+%
+% Archivos: ProyectoFinCarrera.tex
+%
+% Descripción: Plantilla para escribir el Proyecto Fin de Carrera.
+%
+% Versión: 1.0.0
+%
+% Fecha: 30/04/2010
+%
+% Autor: Jaime Boal Martín-Larrauri
+%
+% ---------------------------------------------------------------------
+% ----------------------------- PARÁMETROS ----------------------------
+% ---------------------------------------------------------------------
+
+	\newcommand{\Asunto}{Proyecto Fin de Carrera}
+	\newcommand{\Autor}{Nombre del Autor}
+	\newcommand{\Centro}{Escuela Técnica Superior de Ingeniería (ICAI)}
+	\newcommand{\Coordinador}{Nombre del Coordinador}
+	\newcommand{\Director}{Nombre del Director}
+	\newcommand{\Fecha}{Junio de 2010}
+	\newcommand{\Keywords}{}
+	\newcommand{\PalabrasClave}{}
+	\newcommand{\Universidad}{Universidad Pontificia Comillas}
+	\newcommand{\Title}{Final Project Title}
+	\newcommand{\Titulacion}{Ingeniero Industrial}
+	\newcommand{\Titulo}{Título oficial del Proyecto Fin de Carrera}
+
+% ---------------------------------------------------------------------
+% ----------------------------- PREÁMBULO -----------------------------
+% ---------------------------------------------------------------------
+
+% 1. PROPIEDADES DEL DOCUMENTO
+
+	% Clase de documento
+		\documentclass[12pt,a4paper,twoside]{book}
+		
+	% Determina si el documento se compila en .pdf	
+		\usepackage{ifpdf}
+		
+% ---------------------------------------------------------------------
+	
+% 2. IDIOMAS
+
+		\usepackage[english, spanish]{babel}	% Idiomas cargados: inglés y español (por defecto)
+		
+	% Encabezados en castellano
+		\addto\captionsspanish{
+			\def\contentsname{Índice general}
+			\def\listtablename{Índice de tablas}
+			\def\tablename{Tabla}
+		}
+
+% ---------------------------------------------------------------------
+
+% 3. FUENTES
+
+	% Codificación
+		\usepackage[latin1]{inputenc} % Poner acentos directamente
+		\usepackage[T1]{fontenc}      % Separación por guiones correcta
+		
+		\usepackage{microtype}				% Mejora sutilmente la presentación (justificación...) especialmente en entornos de varias columnas
+																	% Si diese algún problema, los parámetros mínimos recomendados son [protrusion=true,expansion=true]
+																	
+	% Separación correcta de palabras (sólo si es necesario) 	
+		%\hyphenation{hy-phen-a-tion}
+	
+	% Fuentes seleccionadas
+		\usepackage{times}	  % Fuente predeterminada
+		\usepackage{pifont}   % Incluye símbolos adicionales (iconos...)
+		\usepackage{amsfonts} % Fuente de la American Mathematical Society
+		\usepackage{courier}  % Fuente monoespaciada para código
+		\usepackage{alltt}    % Entorno de código sencillo que permite comandos de LaTeX
+		
+	% Otras fuentes
+		%\usepackage{lmodern}  % Fuente por defecto
+		%\usepackage{pslatex}  % Similar a la times
+		%\usepackage{pxfonts}  % Similar a la times, pero más antigua
+		%\usepackage{chancery} % Fuente cursiva de estilo antiguo
+		%\usepackage{mathptmx} % Fuente del entorno matemático
+		
+	% Títulos
+		\usepackage{sectsty}
+			\allsectionsfont{\fontfamily{lmss}\selectfont}
+	
+	% Letras capitales
+		\usepackage{lettrine}
+			\setlength{\DefaultFindent}{0.2em}	% Separación letra - 1ª línea del bloque de texto
+			\setlength{\DefaultNindent}{0em}		% Separación letra - bloque de texto
+			\setcounter{DefaultLines}{2}				% Número de líneas que ocupa la letra capital 
+				
+	% Parámetros posibles de \fontfamily: bch, futs, lmr, lmss, jkp, jkpss, pag, pbk, pcr, phv, pnc, ppl, ptm, pzc
+
+% ---------------------------------------------------------------------
+
+% 4. FORMATO
+
+	% Márgenes
+		\usepackage[left=3cm, right=2cm, top=2.5cm, bottom=2cm]{geometry}
+		%\usepackage {anysize} 								% Paquete alternativo
+			%\marginsize {2cm}{2cm}{1cm}{1.5cm}	% Izquierdo, derecho, superior, inferior
+		\usepackage{changepage}								% Permite cambiar de forma relativa los márgenes de páginas concretas
+		
+	% Penalizar la separación de palabras	(-10000 obligación, 10000 prohibición completa)
+		\hyphenpenalty = 5000
+	  \tolerance = 1000
+  
+  % Penalizar líneas viudas y huérfanas (-10000 obligación, 10000 prohibición completa)
+	  \widowpenalty = 10000
+	  \displaywidowpenalty = 10000
+	  \clubpenalty = 10000
+	  
+	% Ignorar parcialmente los errores de formato
+		\hbadness 1414	% No avisar de los errores de 'badness' inferiores a este valor
+		%\hfuzz 0.3 pt	% No avisar de 'overfull boxes' horizontales menores que esta cantidad
+		%\vfuzz 0.3 pt	% No avisar de 'overfull boxes' verticales menores que esta cantidad
+
+	% Interlineado
+		%\linespread{1.3}			% 1.3 - Interlineado de 1.5 / 1.6 - Interlineado doble
+		\usepackage{setspace}	% Mantiene interlineado sencillo en pies de página, pies de foto...
+			\singlespacing			% Otras opciones: \singlespacing y \doublespacing  \onehalfspacing
+			
+	% Subrayado
+		\usepackage{ulem}
+		
+	% Colores
+		\ifpdf
+			\usepackage[pdftex]{color}	% .pdf, .jpg, .png, .gif
+		\else
+			\usepackage{color}					% .pdf, .jpg, .png, .gif
+		\fi
+			\definecolor{azulmarino}{rgb}{0,0,0.6}
+			\definecolor{blanco}{rgb}{1,1,1}
+			\definecolor{crema}{rgb}{0.984,0.914,0.733}
+			\definecolor{gris10}{gray}{0.9}
+			\definecolor{gris05}{gray}{0.95}
+			\definecolor{gris20}{gray}{0.8}
+			\definecolor{gris50}{gray}{0.5}	
+			\definecolor{rojoC++}{rgb}{0.64,0.08,0.08}
+			\definecolor{verdeC++}{rgb}{0,0.5,0}
+			\definecolor{verdeMatlab}{rgb}{0.13,0.54,0.13}
+			\definecolor{violetaMatlab}{rgb}{0.75,0.12,0.95}
+				
+	% Combinar o dividir columnas y filas (tanto en tablas como en texto)
+		\usepackage{multicol}
+		\usepackage{multirow}
+		
+	% Marcas de agua	
+		\usepackage{watermark}			
+		
+	% Formato de las páginas de Parte
+		\usepackage[newparttoc]{titlesec}
+		\usepackage{titletoc}	
+			\titleformat{\part}[display]
+									{\vspace*{\fill}\fontsize{36}{40}\fontfamily{ppl}\bfseries\selectfont}
+									{\filcenter\fontsize{30}{32}\selectfont\MakeUppercase{\partname}\hspace{8pt}\thepart\\
+									\hspace{7pt}\rule{75pt}{2.5pt}\vspace{15pt}						% Reemplazar esta línea por la siguiente para sustituir
+									%\hspace{7pt}\fontsize{36}{40}\selectfont\ding{167}		% el icono del paquete pifonts por una línea y viceversa
+									\thiswatermark{\centering\put(268,-802){\includegraphics[scale=1.5]{ComillasWatermark.pdf}}}}
+									{0mm}
+									{\filcenter\MakeUppercase}
+									[\vspace*{\fill}\thispagestyle{empty}\setcounter{chapter}{0}]
+									
+	% Formato de otras divisiones: Párrafo y Subpárrafo								
+			\titleformat{\paragraph}
+									{\fontfamily{lmss}\selectfont\normalsize\bfseries}{\theparagraph .}{1em}{}
+			\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+															
+			\titleformat{\subparagraph}
+									{\fontfamily{lmss}\selectfont\normalsize\bfseries}{\thesubparagraph .}{1em}{}
+			\titlespacing*{\subparagraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+			
+	% Formato de capítulo: Extendido y Compacto	
+			\makeatletter
+				\newcommand{\CapituloExtendido}
+									 {\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+									 \thispagestyle{plain}
+									 \rightside{\thechapter . \leftmark}
+									 \global\@topnum\z@
+									 \@afterindentfalse
+									 \secdef\@chapter\@schapter}
+									 \titleformat{\chapter}[display]{\fontfamily{lmss}\huge\bfseries\selectfont}
+		 													 {\chaptertitlename\ \thechapter}{20pt}{\Huge} 
+		 							 \titlespacing*{\chapter}{0pt}{50pt}{40pt}}
+			\makeatother
+						
+			\makeatletter
+				\newcommand{\CapituloCompacto}	% NOTA: Hay que controlar los saltos de página de este tipo de capítulos manualmente
+									 {\renewcommand\chapter{\par
+									 \thispagestyle{fancy}
+									 \rightside{\thechapter . \leftmark}
+									 \global\@topnum\z@
+									 \@afterindentfalse
+									 \secdef\@chapter\@schapter}
+									 \titleformat{\chapter}{\fontfamily{lmss}\LARGE\bfseries\selectfont}{\thechapter .}{1em}{} 
+									 \titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}}
+			\makeatother
+																		 						
+	% Crear el tipo de división doc (para Documentos)					
+		\makeatletter														
+			\newcounter{documento}
+			\newcommand{\thedocument}{\Roman{documento}}
+		\makeatother					 
+		
+		\newcommand{\documentname}{Documento}														
+		\newcommand{\doc}[1]
+							 {\addtocounter{documento}{1}\clearpage\phantomsection\addcontentsline{toc}{part}
+							 {\texorpdfstring{\uppercase{\documentname \ \thedocument.\hspace{8pt}#1}}{\documentname \ \thedocument.\hspace{8pt}#1}}
+							 \thispagestyle{empty}\begin{center}
+							 {\vspace*{\fill}\fontsize{36}{32}\fontfamily{ppl}\bfseries\selectfont
+							 \MakeUppercase{\documentname}\hspace{10pt}\thedocument \\ 
+							 \rule{75pt}{2.5pt} \\											% Reemplazar esta línea por la siguiente para sustituir 
+							 %\fontsize{50}{54}\selectfont\ding{166} \\	% el icono del paquete pifonts por una línea y viceversa
+							 \fontsize{40}{44}\selectfont \linespread{1.4}\vspace{0.4cm} \MakeUppercase{#1}
+							 \thiswatermark{\centering\put(268,-802){\includegraphics[scale=1.5]{ComillasWatermark.pdf}}}\\
+							 \vspace*{\fill}}\end{center}\setcounter{part}{0}\setcounter{chapter}{0}\setcounter{page}{1}
+							 \setcounter{figure}{0}\setcounter{table}{0}\setcounter{code}{0}\setcounter{footnote}{0}\setcounter{equation}{0}}
+
+	% Crear el tipo de división hc (para insertar una página de encabezado en las Hojas de características)								 
+		\newcommand{\hc}[1]
+							 {\clearpage\phantomsection\addcontentsline{toc}{chapter}{#1}
+							 \thispagestyle{empty}\begin{center}						 
+							 {\vspace*{\fill}\begin{onehalfspace}\fontsize{26}{34}\fontfamily{ppl}\bfseries\selectfont 
+							 #1 \end{onehalfspace}
+							 \thiswatermark{\centering\put(195,-945){\includegraphics[scale=.25, angle = 25]{ICAIWatermark.pdf}}}
+							 \vspace*{\fill}}\end{center}}
+							 
+	% Sobrecarga de divisiones
+		\let\Documento\doc
+		\renewcommand{\doc}[1]{\clearpage\Documento{#1}\leftside{\documentname \ \thedocument. #1}}
+	
+		\let\Parte\part
+		\renewcommand{\part}[3]{\label{#2}\clearpage\label{#3}\Parte{#1}\leftside{\thepart. #1}}
+				
+		\let\Capitulo\chapter	
+		\renewcommand*{\chapter}{\secdef{\CapituloNumerado}{\CapituloNoNumerado}}
+			\newcommand\CapituloNumerado[2][]{\Capitulo[#1]{#2}\rightside{\thechapter. #2}} % Alternativa: \rightside{\thechapter . \leftmark}
+			\newcommand\CapituloNoNumerado[1]{\Capitulo*{#1}\rightside{#1}}
+								 
+	% Formato de los índices general, de figuras y de tablas
+		\usepackage{tocloft}
+		
+			% Numeración de secciones
+				\setcounter{secnumdepth}{5} % Último nivel numerado: subparagraph (máx. 5)
+				\setcounter{tocdepth}{5}		% Último nivel mostrado en los índices: subparagraph (máx. 5)
+	
+			% Márgenes
+				\setlength{\cftbeforetoctitleskip}{63.5pt}	% Espacio que precede al título del índice general
+				\setlength{\cftbeforeloftitleskip}{63.5pt}	% Espacio que precede al título del índice de figuras
+				\setlength{\cftbeforelottitleskip}{63.5pt}	% Espacio que precede al título del índice de tablas
+				\setlength{\cftbeforepartskip}{12pt}				% Espacio que precede a las partes
+				\setlength{\cftbeforechapskip}{6pt}					% Espacio que precede a los capítulos
+				%\cftsetpnumwidth{1.25em} 									% Espacio para el número de página
+				%\cftsetrmarg{1.4em}      									% Distancia del texto al margen derecho (mayor que la anterior)
+				\renewcommand{\cftpartnumwidth}{2.2em} 			% Espacio para el número de parte
+				\renewcommand{\cftchapnumwidth}{1.6em} 			% Espacio para el número de parte
+				\renewcommand{\cftfignumwidth}{1.6em} 			% Espacio para el número de figura
+				\renewcommand{\cfttabnumwidth}{1.6em} 			% Espacio para el número de tabla
+				%\renewcommand{\cftpartnumwidth}{2.3em}			% Espacio para el número de parte
+				%\setlength{\cftsecindent}{0pt}	      			% Sangría del número de sección
+				\setlength{\cftsubsecindent}{26.65pt}	      % Sangría del número de subsección
+				\setlength{\cftsubsubsecindent}{35.70pt}	  % Sangría del número de subsubsección
+				\setlength{\cftparaindent}{44.75pt}	      	% Sangría del número de párrafo
+				\setlength{\cftsubparaindent}{53.80pt}	    % Sangría del número de subpárrafo
+				\setlength{\cftfigindent}{0pt}        			% Sangría del número de figura
+				\setlength{\cfttabindent}{0pt}	      			% Sangría del número de tabla
+				
+			% Texto que precede al número de cada sección
+				%\renewcommand{\cftpartpresnum}{Parte }			% Interacciona con algo y sale duplicado
+				%\renewcommand{\cftfigfont}{Figura }
+				%\renewcommand{\cfttabfont}{Tabla }
+			
+			% Texto posterior al número de cada sección	
+				\renewcommand{\cftpartaftersnum}{.}
+				\renewcommand{\cftchapaftersnum}{.}
+				\renewcommand{\cftsecaftersnum}{.}
+				\renewcommand{\cftsubsecaftersnum}{.}
+				\renewcommand{\cftsubsubsecaftersnum}{.}
+				\renewcommand{\cftparaaftersnum}{.}
+				\renewcommand{\cftsubparaaftersnum}{.}
+				\renewcommand{\cftfigaftersnum}{.}
+				\renewcommand{\cfttabaftersnum}{.}
+								
+			% Separación de los puntos suspensivos
+				%\renewcommand{\cftpartdotsep}{3.5}
+				%\renewcommand{\cftchapdotsep}{3.5}
+				%\renewcommand{\cftsecdotsep}{0.5}
+				%\renewcommand{\cftfigdotsep}{0.5}
+				%\renewcommand{\cfttabdotsep}{0.5}
+				
+			% Fuente de los títulos, las secciones y los números de página
+				\renewcommand{\cfttoctitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
+				\renewcommand{\cftloftitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
+				\renewcommand{\cftlottitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
+				\renewcommand{\cftpartfont}{\fontfamily{ppl}\large\bfseries\selectfont}
+				\renewcommand{\cftpartpagefont}{\fontfamily{ppl}\large\bfseries\selectfont}
+				%\renewcommand{\cftchapfont}{\fontfamily{ppl}\bfseries\selectfont}
+				%\renewcommand{\cftchappagefont}{\fontfamily{ppl}\bfseries\selectfont}
+								
+% ---------------------------------------------------------------------
+
+% 5. ENCABEZADO Y PIE DE PÁGINA
+
+	% Estilo
+		\usepackage{fancyhdr}
+			\pagestyle{fancy}
+
+	% Centrar en la zona del margen
+		\setlength{\voffset}{-13pt}
+		\setlength{\headheight}{13pt}
+		\footskip = 36pt
+
+	% Formato de las líneas separadoras
+		\renewcommand{\headrulewidth}{0pt} 
+		\renewcommand{\footrulewidth}{0.4pt}
+		%\renewcommand{\footrule}{{\color{blue}
+		%							 \vskip-\footruleskip\vskip-\footrulewidth\hrule width\headwidth height\footrulewidth\vskip\footruleskip}}
+	
+	% Formato del texto
+		\fancyhf{} 
+		\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+		\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+		\newcommand{\theleftside}{}
+		\newcommand{\leftside}[1]{\renewcommand{\theleftside}{#1}}
+		\newcommand{\therightside}{}
+		\newcommand{\rightside}[1]{\renewcommand{\therightside}{#1}}
+		\newcommand{\EncabezadoCorto}{\fancyhead[C]{\footnotesize{\textsc{\theleftside}}}}
+		\newcommand{\EncabezadoLargo}{\fancyhead[C]{\footnotesize{\textsc{\theleftside \ \ \ding{167} \ \therightside}}}}
+		\fancyfoot[R]{\thepage}
+		\fancyfoot[L]{\footnotesize{\textit{\Titulo}\\ \textbf{\Autor}}}
+		
+	% Personalizar las páginas de capítulo, índice...	
+		\fancypagestyle{plain}{
+			\fancyhf{}
+			\fancyfoot[R]{\thepage}
+			\fancyfoot[L]{\footnotesize{\textit{\Titulo}\\ \textbf{\Autor}}}
+			%\renewcommand{\footrule}{{\color{blue}
+			%							 \vskip-\footruleskip\vskip-\footrulewidth\hrule width\headwidth height\footrulewidth\vskip\footruleskip}}
+			\renewcommand{\headrulewidth}{0pt}
+			\renewcommand{\footrulewidth}{0.4pt}
+		}
+
+% ---------------------------------------------------------------------
+
+% 6. NOTAS AL PIE
+
+	% Formato
+		\usepackage[bottom]{footmisc}
+		\renewcommand{\footnoterule}{\noindent\rule{2in}{0.4pt}\vspace{5pt}}
+	
+	% Penalizar las notas al pie repartidas en varias páginas (-10000 obligación, 10000 prohibición completa)
+		\interfootnotelinepenalty = 10000
+		
+	% Numerar correlativamente las notas al pie a lo largo de todo el documento  	
+		\usepackage{remreset} 
+			\makeatletter
+				\@removefromreset{footnote}{chapter}
+			\makeatother
+
+% ---------------------------------------------------------------------
+
+% 7. FIGURAS, TABLAS, ECUACIONES, LISTAS Y CUADROS DE TEXTO 
+	
+	% Insertar figuras
+		\ifpdf
+			\usepackage[pdftex]{graphicx}	% .pdf, .jpg, .png, .gif
+		\else
+			\usepackage{graphicx}					% .pdf, .jpg, .png, .gif
+		\fi
+		\usepackage[pdftex]{graphicx} 	
+		\usepackage{epstopdf}		% Convierte en tiempo de compilación las imágenes de .eps a .pdf
+		%\usepackage{epsfig}   	% .eps (requiere compilar en .dvi o .ps)
+		\usepackage{subfig}			% Permite colocar subfiguras
+		\usepackage{wrapfig}		% Colocar figuras entre el texto
+		\usepackage{sidecap}		% Colocar pies de foto al lado del texto
+		
+	% Ruta de las imágenes
+		\usepackage[encoding,filenameencoding=latin1]{grffile}
+		\graphicspath{{./Imagenes/}}
+
+  % Formato de los pies de figura y tabla
+  	\usepackage{caption}		% Incompatible con ccaption
+		  \captionsetup{labelfont=bf, labelsep=period, justification=centering}
+		  
+		%\usepackage{ccaption}	% Incompatible con caption
+			%\captionstyle{\centering}
+			%\changecaptionwidth
+			%\captionwidth{\linewidth}
+			%\captionnamefont{\bfseries}
+			 %\captiondelim{. }
+ 	
+  % Numerar correlativamente las figuras, tablas y ecuaciones a lo largo de todo el documento  
+	  \usepackage{remreset}
+	 		\makeatletter
+				\@removefromreset{figure}{chapter}
+				\renewcommand{\thefigure}{\arabic{figure}}
+				\@removefromreset{table}{chapter}
+				\renewcommand{\thetable}{\arabic{table}}
+				\@removefromreset{equation}{chapter}
+				\renewcommand{\theequation}{\arabic{equation}}
+			\makeatother
+			
+	% Formato de la numeración de las ecuaciones
+		%\numberwithin{equation}{chapter}	% Numerar por capítulos
+	
+  % Penalizar imágenes en páginas aisladas	
+		\renewcommand{\topfraction}{0.85}
+		\renewcommand{\textfraction}{0.1}
+		\renewcommand{\floatpagefraction}{0.75}
+		
+	% Tablas	
+		\usepackage{booktabs}		% Mejora el formato de las tablas
+		\usepackage{xtab}				% Permite tablas que se extienden por varias páginas
+		\usepackage{colortbl}		% Para crear tablas con filas y columnas coloreadas
+		
+	%	Separación entre entradas en listas
+		\setlength{\itemsep}{0pt}
+		
+	% Cuadro de texto
+		\newlength\Linewidth
+			\def\findlength{
+				\setlength\Linewidth\linewidth
+				\addtolength\Linewidth{-4\fboxrule}
+				\addtolength\Linewidth{-3\fboxsep}
+			}
+		\newenvironment{cuadrotexto}{
+				\par\begingroup
+				\setlength{\fboxsep}{5pt}\findlength
+				\setbox0=\vbox\bgroup\noindent
+				\hsize=\Linewidth
+				\begin{minipage}{\Linewidth}
+			}{
+				\end{minipage}\egroup
+				\vspace{6pt}
+				\noindent\textcolor{gris20}{\fboxsep2.5pt\fbox
+				{\fboxsep5pt\colorbox{gris05}{\normalcolor\box0}}}
+				\endgroup\par\addvspace{6pt minus 3pt}\noindent
+				\normalcolor\ignorespacesafterend
+			}
+
+% ---------------------------------------------------------------------
+
+% 8. ENTORNO MATEMÁTICO
+
+	% Macros de la American Mathematical Society
+		\usepackage{amsmath, amssymb}
+		\usepackage{amsthm} % Para teoremas
+						
+	% Operadores matemáticos nuevos	
+		\DeclareMathOperator{\sen}{sen}
+
+% ---------------------------------------------------------------------
+
+% 9. ENTORNO DE CÓDIGO
+
+		\usepackage{verbatim}
+		\usepackage{listings}
+			
+		% Visual C++
+			\newcommand{\VisualCpp}{
+				\lstset{
+					language = [Visual]C++,  							% Lenguaje          
+					extendedchars = true, 								% ASCII extendido
+					basicstyle = \ttfamily \scriptsize, 	% Formato por defecto
+					keywordstyle = \color{blue},					% Formato de las palabras clave							
+					commentstyle = \color{verdeC++}, 			% Formato de los comentarios
+					stringstyle = \color{rojoC++}, 				% Formato de las cadenas de caracteres
+					breaklines = true,										% Permitir saltos de linea automáticos
+					breakatwhitespace = true,							% Permitir saltos de linea sólo en los espacios
+					tabsize = 4,													% Nº de espacios equivalentes a un tabulador
+					showspaces = false,               		% Mostrar espacios en el código
+					showtabs = false,											% Mostrar tabuladores en el código
+					showstringspaces = false, 						% Mostrar espacios en las cadenas
+					%backgroundcolor = \color{white},  		% Color de fondo
+					%numbers = left,               		    % Posicionamiento de los números de linea
+					%numberstyle = \footnotesize,					% Formato de los números de linea
+					%numbersep = 10pt,										% Separación entre el número de linea y el código
+					%firstnumber = auto,      						% Número en la primera linea
+					%stepnumber = 10,                 		% Lineas hasta la siguiente numerada
+					captionpos = b, 		                  % Posición del pie de foto (debajo)
+					mathescape = true											% Permite utilizar lenguaje matemático entre $
+				}
+			}
+			
+		% Matlab
+			\newcommand{\Matlab}{
+				\lstset{
+					language = Matlab,  									% Lenguaje          
+					extendedchars = true, 								% ASCII extendido
+					basicstyle = \ttfamily \scriptsize, 	% Formato por defecto
+					keywordstyle = \color{black},					% Formato de las palabras clave							
+					commentstyle = \color{verdeMatlab}, 	% Formato de los comentarios
+					stringstyle = \color{violetaMatlab}, 	% Formato de las cadenas de caracteres
+					breaklines = true,										% Permitir saltos de linea automáticos
+					breakatwhitespace = true,							% Permitir saltos de linea sólo en los espacios
+					tabsize = 4,													% Nº de espacios equivalentes a un tabulador
+					showspaces = false,               		% Mostrar espacios en el código
+					showtabs = false,											% Mostrar tabuladores en el código
+					showstringspaces = false, 						% Mostrar espacios en las cadenas
+					%backgroundcolor = \color{white},  		% Color de fondo
+					%numbers = left,               		    % Posicionamiento de los números de linea
+					%numberstyle = \footnotesize,					% Formato de los números de linea
+					%numbersep = 10pt,										% Separación entre el número de linea y el código
+					%firstnumber = auto,      						% Número en la primera linea
+					%stepnumber = 10,                 		% Lineas hasta la siguiente numerada
+					captionpos = b, 		                  % Posición del pie de foto (debajo)
+					mathescape = true											% Permite utilizar lenguaje matemático entre $
+				}
+			}
+
+% ---------------------------------------------------------------------
+
+% 10. OTROS
+
+		\usepackage{eurosym}									% Para introducir el símbolo del €
+		%\usepackage{siunitx}									% Para introducir las unidades con la separación adecuada
+		\usepackage[tight, nice]{units}				% Para introducir las unidades con la separación adecuada
+		%\usepackage[cdot, squaren]{SIunits}	% Otro paquete para escribir unidades (mejor pero más complejo de usar)
+		\usepackage{lipsum}										% Texto lorem ipsum en latín para comprobar la tipografía y la apariencia.
+																					% NOTA: Para que funcione hay que sustituir en lipsum.sty \roman{lips@count} 				
+																					% por \romannumeral\value{lips@count}
+																					
+		\usepackage{pdfpages}
+
+% ---------------------------------------------------------------------
+
+% 11. ENLACES, REFERENCIAS CRUZADAS Y NUEVOS ÍNDICES DE CONTENIDO
+
+		\usepackage[pdftex]{hyperref} % Siempre es el último paquete que se carga
+			\hypersetup{
+				pdffitwindow = true,
+		    pdftitle = \Titulo,
+		    pdfauthor = \Autor,
+		    pdfsubject = \Asunto,
+		    pdfkeywords = \PalabrasClave,
+		    pdfnewwindow = true,
+		    colorlinks = true,
+		    citecolor = black,
+		    filecolor = black,
+		    linkcolor = black,
+		    urlcolor = blue,
+		    %plainpages = false,					% Impedir referencias de página con el mismo nombre
+		    hypertexnames = false,				% Impedir referencias con el mismo nombre
+		    bookmarksnumbered = true,
+		    bookmarksopen = true,
+		    bookmarksopenlevel = -1
+			}
+			
+			\addto\captionsspanish{
+				\renewcommand{\partautorefname}{Parte}
+				\renewcommand{\chapterautorefname}{Capítulo}
+				\renewcommand{\sectionautorefname}{Apartado}
+				\renewcommand{\figureautorefname}{Figura}
+				\renewcommand{\tableautorefname}{Tabla}
+				\renewcommand{\equationautorefname}{Ecuación}
+			}
+		
+	% Corregir el posicionamiento de las referencias en entornos flotantes
+		\usepackage[all]{hypcap}	% Detrás de hyperref
+				
+	% Redefinir los niveles de las divisiones del documento para poder incorporar doc en el superior.
+	% Para ello hay que añadir al final de Proyecto Fin de Carrera.out la linea \let\WriteBookmarks\relax
+	% después de compilar la versión definitiva (Debe ir detrás de hyperref)
+		\makeatletter
+			\renewcommand*{\toclevel@part}{0}
+			\renewcommand*{\toclevel@chapter}{1}
+			\renewcommand*{\toclevel@section}{2}
+			\renewcommand*{\toclevel@subsection}{3}
+			\renewcommand*{\toclevel@subsubsection}{4}
+			\renewcommand*{\toclevel@paragraph}{5}
+			\renewcommand*{\toclevel@subparagraph}{6}
+		\makeatother
+	
+	% Índice de extractos de código si se usa el paquete caption (detrás de hyperref)
+	 	\usepackage{float}
+ 		\newlistof{codigo}{loc}{Índice de extractos de código}
+			\newlistentry{code}{loc}{0}
+			\newfloat{code}{htbp}{loc}
+			\floatname{code}{Código}
+		
+			%\renewcommand{\cftcodefont}{Código }
+		 	\renewcommand{\cftcodeaftersnum}{.}
+		 	\setlength{\cftcodeindent}{0pt}        % Sangría del número de código
+		 	\renewcommand{\cftcodenumwidth}{1.6em} % Espacio para el número de código
+		 	\renewcommand{\cftafterloctitle}{\thispagestyle{plain}}
+		 	\setlength{\cftbeforeloctitleskip}{63.5pt}
+		 	\renewcommand{\cftloctitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
+			 			 	
+% ---------------------------------------------------------------------
+
+% 12. MACROS (PARA FACILITAR EL USO DE LA PLANTILLA)
+			
+		% Insertar una línea de separación entre párrafos
+			\newcommand{\parrafoON}{\addtolength{\parskip}{\baselineskip}}
+			\newcommand{\parrafoOFF}{\addtolength{\parskip}{-\baselineskip}}
+			\newcommand{\parrafo}{\vspace{\baselineskip}}
+			
+				\newcommand{\IndiceGeneral}{
+										\clearpage
+										\cftpagenumberson{chapter}
+										\pdfbookmark[0]{Índice general}{General}
+										\tableofcontents
+										\leftside{Índice general}}
+										
+				\newcommand{\IndiceDocumento}[2]{
+										\clearpage\rightside{#1}\startcontents[toc]
+										\cftpagenumberson{chapter}
+										\renewcommand{\cftchappresnum}{}
+										\renewcommand{\cftchapnumwidth}{1.6em}
+										\renewcommand{\cftchapfont}{\normalfont\bfseries}
+										\setcounter{tocdepth}{5}
+										\pdfbookmark[0]{#1}{#2}		
+										\printcontents[toc]{}{1}{\chapter*{#1}}
+										\label{#2}
+										\clearpage}
+										
+				\newcommand{\ListaPlanos}[2]{
+										\clearpage\rightside{#1}\startcontents[toc]
+										\cftpagenumbersoff{chapter}
+										\renewcommand{\cftchappresnum}{Plano }
+										\renewcommand{\cftchapnumwidth}{4.2em}
+										\renewcommand{\cftchapfont}{\normalfont}
+										\setcounter{tocdepth}{0}
+										\pdfbookmark[0]{#1}{#2}		
+										\printcontents[toc]{}{1}{\chapter*{#1}}
+										\label{#2}
+										\clearpage}
+										
+				\newcommand{\FinIndiceDocumento}{
+										\stopcontents[toc]}
+				
+				\newcommand{\IndiceFiguras}{	
+										\clearpage
+										\pdfbookmark[0]{Índice de figuras}{Figuras}
+										\listoffigures
+										\rightside{Índice de figuras}}
+										
+				\newcommand{\IndiceTablas}{
+										\clearpage
+										\pdfbookmark[0]{Índice de tablas}{Tablas}
+										\listoftables
+										\rightside{Índice de tablas}}
+										
+				\newcommand{\IndiceCodigo}{
+										\clearpage
+										\pdfbookmark[0]{Índice de extractos de código}{Codigo}
+										\listofcodigo
+										\rightside{Índice de extractos de código}}
+										
+				\newcommand{\ActualizarIndices}{
+										\captionsetup[figure]{list=yes}
+										\captionsetup[table]{list=yes}
+										\captionsetup[code]{list=yes}}						
+										
+				\newcommand{\SuprimirIndices}{
+										\captionsetup[figure]{list=no}
+										\captionsetup[table]{list=no}
+										\captionsetup[code]{list=no}}
+				
+			%	\Figura[Posición]{Formato}{Archivo.ext}{Pie}{fig:Etiqueta}
+				\newcommand{\Figura}[5][]{	
+										\begin{figure}[#1]
+											\centering
+											\includegraphics[#2]{#3}
+											\caption{#4}
+											\label{#5}
+										\end{figure}}
+										
+			%	\Figura[Posición]{Formato}{Archivo.ext}{Pie}{Pie abreviado}{fig:Etiqueta}						
+				\newcommand{\FiguraPieAbreviado}[6][]{	
+										\begin{figure}[#1]
+											\centering
+											\includegraphics[#2]{#3}
+											\caption[#5]{#4}
+											\label{#6}
+										\end{figure}}
+										
+			%	\Tabla[Posición]{Formato de las columnas}{Tabla}{Pie}{tab:Etiqueta}			
+				\newcommand{\Tabla}[5][]{
+										\begin{table}[#1]
+											\centering
+											\begin{tabular}{#2}
+												#3
+											\end{tabular}
+											\caption{#4}
+											\label{#5}
+										\end {table}}
+										
+			%	\Tabla[Posición]{Formato de las columnas}{Tabla}{Pie}{Pie abreviado}{tab:Etiqueta}			
+				\newcommand{\TablaPieAbreviado}[6][]{
+										\begin{table}[#1]
+											\centering
+											\begin{tabular}{#2}
+												#3
+											\end{tabular}
+											\caption[#5]{#4}
+											\label{#6}
+										\end {table}}
+				
+			% \CuadroTexto{Texto}					
+				\newcommand{\CuadroTexto}[1]{
+										\begin{cuadrotexto}
+											#1
+										\end{cuadrotexto}
+										\vspace{-10pt}}
+										
+			% \Ecuacion{Ecuación}{eq:Etiqueta}					
+				\newcommand{\Ecuacion}[2]{
+										\begin{equation}
+											#1
+											\label{#2}
+										\end{equation}}
+			
+			% \InsertarCodigo{Lenguaje}{Ruta del archivo}				
+				\newcommand{\InsertarCodigo}[2]{#1 \lstinputlisting{#2}}
+				
+			% \Datasheet[Parámetros]{Archivo.pdf}{Título}
+				\newcommand{\Datasheet}[3][]{
+										\hc{#3}
+										\includepdf[#1]{#2}}
+				
+			% \Plano{Archivo.pdf}{Título}{pl:Etiqueta}
+				\newcommand{\Plano}[3]{
+										\includepdf[pages=1, offset=0 -13, addtotoc={1, chapter, 1, #2, #3}]{#1}}
+																				
+% ---------------------------------------------------------------------
+% ----------------------------- DOCUMENTO -----------------------------
+% ---------------------------------------------------------------------
+
+\begin{document}
+
+	\frontmatter
+		\EncabezadoCorto
+		\SuprimirIndices
+	
+		\input{Contraportada.tex}
+		\input{Autorizacion.tex}
+		\input{Portada.tex}
+		\input{Resumen.tex}
+		\input{Abstract.tex}
+		\input{Dedicatoria.tex}
+		\input{Agradecimientos.tex}
+	
+	\mainmatter
+		\EncabezadoLargo
+		\ActualizarIndices
+		
+	% Documento I. Memoria
+		\doc{Memoria}
+			\IndiceDocumento{Índice}{IndiceMemoria}
+				\IndiceFiguras
+				\IndiceTablas
+				\IndiceCodigo
+				\input{Acronimos.tex}
+				\input{Simbolos.tex}
+				
+				\part{Memoria}{}{InicioMem}
+					\input{Capitulo01.tex}
+					\input{Capitulo02.tex}
+					\input{Capitulo03.tex}
+					\input{Bibliografia.tex}
+				\input{EstudioEconomico.tex}
+				\input{ManualUsuario.tex}
+				\input{CodigoFuente.tex}
+				\input{HojasCaracteristicas.tex}
+				\label{FinHC}
+			\FinIndiceDocumento
+		
+			\SuprimirIndices
+			
+	% Documento II. Planos	
+		\doc{Planos}
+			\ListaPlanos{Lista de planos}{InicioLP}
+			\label{InicioPlanos}
+				\input{Planos.tex}
+			\label{FinPlanos}
+			\FinIndiceDocumento
+			
+	% Documento III. Pliego de condiciones			
+		\doc{Pliego de condiciones}
+			\IndiceDocumento{Índice}{IndicePliego}
+				\input{PliegoCondiciones.tex}
+			\FinIndiceDocumento
+			
+	% Documento IV. Presupuesto	
+		\doc{Presupuesto}
+			\IndiceDocumento{Índice}{IndicePresupuesto}
+				\input{Presupuesto.tex}
+			\FinIndiceDocumento	
+
+\end{document}
