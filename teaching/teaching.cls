@@ -31,6 +31,7 @@
 \newbool{isQuiz}
 \newbool{isExam}
 \newbool{isSolution}
+\newbool{isReport}
 
 % Class options
 \DeclareOption{notes}{\booltrue{isNotes}}
@@ -39,6 +40,7 @@
 \DeclareOption{quiz}{\booltrue{isQuiz}}
 \DeclareOption{exam}{\booltrue{isExam}}
 \DeclareOption{solution}{\booltrue{isSolution}}
+\DeclareOption{report}{\booltrue{isReport}}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}  % Pass unknown options
                                                                % to the base class
@@ -410,7 +412,7 @@
       stringstyle       = \color{redC++},        % String format
       breaklines        = true,                  % Automatic line breaks
       breakatwhitespace = true,	                 % Line breaks only at white spaces
-      tabsize           = 4,                     % Number of spaces equal to a tab
+      tabsize           = 3,                     % Number of spaces equal to a tab
       showspaces        = false,                 % Show spaces in the code
       showtabs          = false,                 % Show tabs in the code
       showstringspaces  = false,                 % Show spaces among strings
@@ -476,7 +478,7 @@
   \pagestyle{fancy}
     \fancyhf{}  % Clear current header and footer
     
-    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{
+    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{
       \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-bw.pdf}}
     }{
       \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-color.pdf}}
@@ -532,6 +534,7 @@
 \DeclareMathOperator{\sen}{sen}
 \DeclareMathOperator{\ctg}{ctg}
 \DeclareMathOperator{\arcctg}{arcctg}
+\DeclareMathOperator{\atan}{atan}
 
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MISCELLANY ------------------------------------
@@ -634,7 +637,7 @@
   \ifbool{isNotes}{\subheader{\notesname}}{
     \ifbool{isExercises}{\subheader{\exercisesname}}{
       \ifbool{isLab}{\subheader{\labname}}{
-        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{\subheader{\theDegree}}{
+        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{\subheader{\theDegree}}{
         }
       }
     }
@@ -685,3 +688,34 @@
     \cleardoublepage
   }{}
 }
+
+%\BlankLeaflet[Optional additional information]{Title}
+\providecommand{\BlankLeaflet}[3][]{
+  {%
+    \noindent\titlingfont\huge\centering #1\\%
+    \vspace{0.5cm}
+  }%
+  
+  % Subheader
+  \subheader{\theDegree}
+  
+  % Footer and PDF information
+  \renewcommand{\theTitle}{#2}
+  \footer{\theTitle}
+  
+  % Student data
+  \vspace{0.5cm}
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}Xr@{}}
+    \textbf{\studentname:}~\line(1,0){325} & \textbf{\groupname:}~\line(1,0){45}
+  \end{tabularx}{\parfillskip=0pt\par}
+  \vspace{0.25cm plus 0.1cm minus 0.1cm}
+  
+  \newcounter{pages}
+  \setcounter{pages}{#3 - 1}
+
+\Ruledpage[\value{pages}]
+  
+  %\Blankpage[\value{pages}] 
+}
+

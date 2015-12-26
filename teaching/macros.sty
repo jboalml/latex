@@ -119,8 +119,8 @@
 
 % ----------------------------------------------------------------------------------- 
  									
-% \IncludeCode{Language}{Path}
-\providecommand{\IncludeCode}[2]{#1 \lstinputlisting{#2}}
+% \IncludeCode[Options]{Language}{Path}
+\providecommand{\IncludeCode}[3][]{#2 \lstinputlisting[#1]{#3}}
 
 % ----------------------------------------------------------------------------------- 
 
@@ -183,6 +183,40 @@
   \newpage%
 }
 
+% -----------------------------------------------------------------------------------
+
+% \Ruledpage[# of pages]
+\providecommand{\Ruledpage}[1][1]{%
+\newlength{\myspacing}
+\setlength{\myspacing}{0.75cm}
+
+\newlength{\height}
+
+\forloop{iterator}{0}{\value{iterator} < #1}{%
+\setlength{\height}{0mm}
+
+\whiledo{\height < \textheight}{
+	%% Don't add space before the first set of rules.
+	\ifthenelse{\lengthtest{\height=0mm}}
+		{}
+		{}%\vspace{\myspacing}}
+		%{\vskip 1.5\myspacing}
+
+  \noindent
+	\begin{tikzpicture}
+		\draw[gray!60, line width = 0.2pt] (0,0) -- (\textwidth,0);%
+		%\draw[gray,thick,dashed] (0,2\myspacing) -- (\textwidth,2\myspacing);
+		%\draw[gray] (0,\myspacing) -- (\textwidth,\myspacing);
+		%\draw[gray,thick,dotted] (0,0) -- (\textwidth,0);
+	\end{tikzpicture}{\parfillskip=0pt\par}%
+	%
+	  \addtolength{\height}{\myspacing}%
+  }
+  
+  \newpage
+  }
+}
+  
 % -----------------------------------------------------------------------------------
 % ------------------------------------ REVISION -------------------------------------
 % -----------------------------------------------------------------------------------
