@@ -1,0 +1,222 @@
+\chapter{Macros}
+%\lettrine{E}{ste} capítulo pretende explicar brevemente las macros que se han definido para hacer más intuitivo el uso de la plantilla, con el fin de evitar, en la medida de lo posible, usar código muy complejo que, si bien es necesario, no aporta nada relevante a un usuario convencional.
+
+\begin{comment}
+
+\section {Figuras}
+Probablemente lo más importante en un documento de las características de un Proyecto Fin de Carrera son las figuras, dado que permiten presentar mucha información de forma clara y esquemática. Para insertar una imagen se debe emplear la siguiente macro:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\Figura[Posicion]{Formato}{Archivo.ext}{Pie}{fig:Etiqueta}
+
+\Figura[H]{scale = 0.45, angle = 0}{LaTeXLogo.png}
+          {Ejemplo de como insertar una figura}{fig:EjemploFigura}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+\Figura[H]{scale = 0.45, angle = 0}{LaTeXLogo.pdf}{Ejemplo de cómo insertar una figura}{fig:EjemploFigura}
+
+Los campos significan lo siguiente:
+\begin{itemize}
+	\item \textbf{Posición:} Indica dónde se quiere colocar la imagen. Este argumento es opcional y puede omitirse si no se escriben los corchetes ([]). En ese caso, \LaTeX \ colocará la imagen donde estime más conveniente. Si se quiere controlar explícitamente el posicionamiento, las posibilidades son:
+		\begin{itemize}
+		\item \textbf{H:} \LaTeX \ hará todo lo posible para que la imagen esté exactamente en esta posición. Téngase en cuenta que en algunos casos puede ocasionar algún problema de formato.
+		\item \textbf{h:} Especifica que la imagen debe estar colocada en esta posición, pero si \LaTeX \ encuentra dificultades puede desplazarla.
+		\item \textbf{t:} La imagen debe ir en la parte superior de la página.
+		\item \textbf{b:} La imagen debe ir en la parte inferior de la página.
+	\end{itemize}
+	\item \textbf{Formato:} Permite configurar el formato de las imágenes, indicando la escala respecto al tamaño original, la inclinación...
+	\item \textbf{Nombre del archivo:} Debe incluir la \underline{extensión} y preferiblemente su nombre no debe contener espacios ni tildes. El espacio de caracteres recomendado es UNIX. La imagen debe estar ubicada en la carpeta \textsl{Imágenes} incluida junto con los archivos del proyecto. En principio admite cualquier formato típico (.jpg, .png, y .gif entre otros), aunque se recomienda incluir las imágenes en formato .pdf\footnote{Para guardar una imagen como .pdf debe usar alguna de la múltiples impresoras de PDF que existen, bien la propietaria de Adobe o alguna versión gratuita.} o .eps\footnote{Puede convertir imágenes a .eps con programas como Gimp o Adobe Photoshop.} porque el visor de documentos Adobe Reader (con otros como el SumatraPDF no sucede) muestra las letras de las páginas donde se incluyen imágenes en otro formato en negrita, si bien a la hora de imprimir lo hace correctamente.
+	\item \textbf{Pie de figura:} Texto que ha de aparecer al pie de la figura. La etiqueta Figura X. la introduce la macro automáticamente.
+	\item \textbf{Etiqueta:} Permite referenciar la imagen posteriormente dentro del documento. Se recomienda empezarlas con el prefijo \texttt{\small fig:} para distinguir las etiquetas de otros entornos. No pueden contener espacios. Para referenciar un objeto se pueden usar los comandos {\small\verb|\ref{fig:EjemploFigura}|} o {\small\verb|\autoref{fig:EjemploFigura}|}, que insertan bien el número del objeto (\ref{fig:EjemploFigura}), bien el nombre y el número (\autoref{fig:EjemploFigura}) respectivamente.
+\end{itemize}
+
+\section {Tablas}
+Para recoger y comparar datos, las tablas suelen ser muy útiles. La macro para crearlas es:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\Tabla[Posición]{Formato de las columnas}{Tabla}{Pie}{tab:Etiqueta}
+
+\Tabla[H]{|l|c|r|}{
+\hline
+\multicolumn{3}{|c|}{Encabezado}\\ \hline
+Columna 1 & Columna 2 & Columna 3\\ \hline
+Fila 1		& 1.258 		& 1.025.258\\
+Fila 2 		& 15.678 		& 159\\ \hline
+}{Ejemplo de cómo insertar una tabla}{tab:EjemploTabla}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+\Tabla[H]{|l|c|r|}{
+\hline
+\multicolumn{3}{|c|}{Encabezado}\\ \hline
+Columna 1 & Columna 2 & Columna 3\\ \hline
+Fila 1		& 1.258 		& 1.025.258\\
+Fila 2 		& 15.678 		& 159\\ \hline
+}{Ejemplo de cómo insertar una tabla}{tab:EjemploTabla}
+
+Los campos que son diferentes a los explicados en el apartado anterior son:
+\begin{itemize}
+	\item \textbf{Formato de las columnas:} Determina cuantas columnas tendrá la tabla y si el texto irá alineado a la izquierda (\texttt{l}), a la derecha (\texttt{r}) o centrado (\texttt{c}) en la misma. El símbolo | entre dos columnas indica una línea vertical separadora. Si se colocan dos, entonces se mostrará una doble línea vertical.
+	\item \textbf{Tabla:} Define el formato y el contenido de la tabla. Las columnas se separan por \texttt{\&} y al final de una fila se debe insertar una doble barra para indicar el salto de línea, como se puede observar en el ejemplo. Para insertar una línea horizontal se emplea el comando {\small\verb|\hline|}. Si desea obtener más información acerca de cómo personalizar las tablas se recomienda consultar el \href{http://en.wikibooks.org/wiki/LaTeX/}{\textsl{wikilibro} de \LaTeX}.
+\end{itemize}
+
+\section{Ecuaciones}
+Una de las grandes ventajas de \LaTeX \ es su facilidad para escribir ecuaciones. La macro en este caso es:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\Ecuacion{Ecuación}{eq:Etiqueta}
+
+\Ecuacion{\mu^i_{K_t} = \sum_{j=1}^{K_t}\frac{x^i_j}{K_i}}{eq:EjemploEcuacion}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+\Ecuacion{\mu^i_{K_t} = \sum_{j=1}^{K_t}\frac{x^i_j}{K_i}}{eq:EjemploEcuacion}
+
+Para aquellos usuarios no familiarizados con el formato de introducción de ecuaciones, existen infinidad de editores \textit{online} que generan código \LaTeX \ a partir de una interfaz similar al editor de ecuaciones de Windows. Uno bastante intuitivo es el siguiente: \href{http://www.codecogs.com/latex/eqneditor.php}{http://www.codecogs.com/latex/eqneditor.php}.
+
+Si se quiere insertar una ecuación entre el texto se ha de escribir entre símbolos de dólar (\texttt{\$}). Una ecuación entre el texto queda así: $\sen\alpha = \cos\varphi$.
+
+\section{Código}
+Es frecuente que en los proyectos sea necesario mostrar durante el desarrollo de la memoria extractos de código para ilustrar el hilo de la exposición o para explicar su funcionamiento. Desafortunadamente, no resulta sencillo hacer una macro que simplifique la inclusión de código, de modo que cuando se requiera se deberá copiar y editar adecuadamente el siguiente ejemplo:
+\begin{quote}
+\scriptsize\begin{verbatim}
+\begin{code}[Posición]
+\capstart
+\begin{cuadrotexto}
+\VisualCpp	% Lenguaje. Opciones disponibles: \VisualCpp y \Matlab
+\begin{lstlisting}
+Código
+\end{lstlisting}
+\end{cuadrotexto}
+\vspace*{-10pt}
+\caption{Pie}
+\label{cod:Etiqueta}
+\end{code}
+
+\begin{code}[H]
+\capstart
+\begin{cuadrotexto}
+\VisualCpp	% Lenguaje. Opciones disponibles: \VisualCpp y \Matlab
+\begin{lstlisting}
+int main(void)
+{
+	while (1);
+}
+\end{lstlisting}
+\end{cuadrotexto}
+\vspace*{-10pt}
+\caption{Ejemplo de cómo insertar un extracto de código}
+\label{cod:EjemploCodigo}
+\end{code}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+\begin{code}[H]
+\capstart
+\begin{cuadrotexto}
+\VisualCpp	% Lenguaje. Opciones disponibles: \VisualCpp y \Matlab (Se pueden programar otras si es necesario)
+\begin{lstlisting}
+int main(void)
+{
+	while (1);
+}
+\end{lstlisting}
+\end{cuadrotexto}
+\vspace*{-10pt}
+\caption{Ejemplo de cómo insertar un extracto de código}
+\label{cod:EjemploCodigo}
+\end{code}
+
+Para insertar archivos de código completos, en la Parte de Código fuente, por ejemplo, se puede usar la macro:
+\begin{quote}
+\scriptsize\begin{verbatim}
+\InsertarCodigo{Lenguaje}{Ruta del archivo}
+
+\InsertarCodigo{\VisualCpp}{Codigo/main.c}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+\section{Cuadros de texto}
+Si se quiere insertar un cuadro de texto para destacar alguna información, el código es el siguiente:
+\begin{quote}
+\scriptsize\begin{verbatim}
+\CuadroTexto{Texto}
+\end{verbatim}
+\normalsize
+\end{quote}
+
+\CuadroTexto{Texto}
+
+\section{Bibliografía}
+Evidentemente en un Proyecto Fin de Carrera es imprescindible referenciar la información. Para introducir una cita bibliográfica, en primer lugar hay que crear la entrada en la Bibliografía. Un posible formato para artículos, libros y proyectos sería:
+
+\begin{quote}
+\scriptsize\begin {verbatim}
+\bibitem{bib:Etiqueta} 
+\textbf{Autor}, 
+\textit{Título},
+Revista, editorial, fecha...
+
+\bibitem{bib:LaTeX} 
+\textbf{Oetiker, T., Partl, H., Hyna, I., Schlegl, E.}, 
+\textit{The Not So Short Introduction to \LaTeX \ 2$\varepsilon$}.
+Diciembre 2009.
+\end {verbatim}
+\normalsize
+\end{quote}
+
+Mientras que para páginas web se podría incluir de la siguiente manera:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\bibitem{www:Etiqueta} 
+\textbf{Título},
+\textit{Descripción}.
+Última consulta: Fecha\\
+\href{http://www.iit.upcomillas.es/pfc}{http://www.iit.upcomillas.es/pfc}
+
+\bibitem{www:PFC} 
+\textbf{Universidad Pontificia Comillas},
+\textit{Página web de Proyectos Fin de Carrera}.
+Última consulta: 29/04/2010\\
+\href{http://www.iit.upcomillas.es/pfc}{http://www.iit.upcomillas.es/pfc}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+Finalmente, para referenciar un documento en el texto se usaría:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\cite{Etiqueta}
+
+\cite{bib:LaTeX}
+
+\cite{Etiqueta,Etiqueta}
+
+\cite{bib:LaTeX,www:PFC}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+El resultado para una única cita sería \cite{bib:LaTeX} y para citas múltiples \cite{bib:LaTeX,www:PFC}.
+
+\section{Notas al pie}
+En algún momento puede ser útil insertar una nota al pie. Para ello el código es:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\footnote{Nota al pie}
+\end {verbatim}
+\normalsize
+\end{quote}
+
+El resultado sería el siguiente\footnote{Nota al pie}.
+
+\section{Otros comandos}
+Si ha leído la plantilla en código \LaTeX, como se recomendó previamente, habrá encontrado ejemplos de uso de otros comandos que pueden resultar útiles.
+
+\end{comment}

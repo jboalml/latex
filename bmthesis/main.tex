@@ -4,21 +4,21 @@
 %
 % Archivos: ProyectoFinCarrera.tex
 %
-% DescripciÛn: Plantilla para escribir el Proyecto Fin de Carrera.
+% Descripci√≥n: Plantilla para escribir el Proyecto Fin de Carrera.
 %
-% VersiÛn: 1.0.0
+% Versi√≥n: 1.0.0
 %
 % Fecha: 30/04/2010
 %
-% Autor: Jaime Boal MartÌn-Larrauri
+% Autor: Jaime Boal Mart√≠n-Larrauri
 %
 % ---------------------------------------------------------------------
-% ----------------------------- PAR¡METROS ----------------------------
+% ----------------------------- PAR√ÅMETROS ----------------------------
 % ---------------------------------------------------------------------
 
 	\newcommand{\Asunto}{Proyecto Fin de Carrera}
 	\newcommand{\Autor}{Nombre del Autor}
-	\newcommand{\Centro}{Escuela TÈcnica Superior de IngenierÌa (ICAI)}
+	\newcommand{\Centro}{Escuela T√©cnica Superior de Ingenier√≠a (ICAI)}
 	\newcommand{\Coordinador}{Nombre del Coordinador}
 	\newcommand{\Director}{Nombre del Director}
 	\newcommand{\Fecha}{Junio de 2010}
@@ -27,17 +27,21 @@
 	\newcommand{\Universidad}{Universidad Pontificia Comillas}
 	\newcommand{\Title}{Final Project Title}
 	\newcommand{\Titulacion}{Ingeniero Industrial}
-	\newcommand{\Titulo}{TÌtulo oficial del Proyecto Fin de Carrera}
+	\newcommand{\Titulo}{T√≠tulo oficial del Proyecto Fin de Carrera}
 
 % ---------------------------------------------------------------------
-% ----------------------------- PRE¡MBULO -----------------------------
+% ----------------------------- PRE√ÅMBULO -----------------------------
 % ---------------------------------------------------------------------
 
 % 1. PROPIEDADES DEL DOCUMENTO
 
-	% Clase de documento
-		\documentclass[12pt,a4paper,twoside]{book}
+% Clase de documento
+\documentclass[12pt,english,spanish]{bmthesis}
 		
+\Author{Author}
+\Degree{Degree}
+		
+\begin{comment}
 	% Determina si el documento se compila en .pdf	
 		\usepackage{ifpdf}
 		
@@ -45,12 +49,12 @@
 	
 % 2. IDIOMAS
 
-		\usepackage[english, spanish]{babel}	% Idiomas cargados: inglÈs y espaÒol (por defecto)
+		\usepackage[english, spanish]{babel}	% Idiomas cargados: ingl√©s y espa√±ol (por defecto)
 		
 	% Encabezados en castellano
 		\addto\captionsspanish{
-			\def\contentsname{Õndice general}
-			\def\listtablename{Õndice de tablas}
+			\def\contentsname{√çndice general}
+			\def\listtablename{√çndice de tablas}
 			\def\tablename{Tabla}
 		}
 
@@ -58,113 +62,62 @@
 
 % 3. FUENTES
 
-	% CodificaciÛn
+	% Codificaci√≥n
 		\usepackage[latin1]{inputenc} % Poner acentos directamente
-		\usepackage[T1]{fontenc}      % SeparaciÛn por guiones correcta
-		
-		\usepackage{microtype}				% Mejora sutilmente la presentaciÛn (justificaciÛn...) especialmente en entornos de varias columnas
-																	% Si diese alg˙n problema, los par·metros mÌnimos recomendados son [protrusion=true,expansion=true]
+		\usepackage[T1]{fontenc}      % Separaci√≥n por guiones correcta
 																	
-	% SeparaciÛn correcta de palabras (sÛlo si es necesario) 	
+	% Separaci√≥n correcta de palabras (s√≥lo si es necesario) 	
 		%\hyphenation{hy-phen-a-tion}
 	
 	% Fuentes seleccionadas
 		\usepackage{times}	  % Fuente predeterminada
-		\usepackage{pifont}   % Incluye sÌmbolos adicionales (iconos...)
 		\usepackage{amsfonts} % Fuente de la American Mathematical Society
-		\usepackage{courier}  % Fuente monoespaciada para cÛdigo
-		\usepackage{alltt}    % Entorno de cÛdigo sencillo que permite comandos de LaTeX
+		\usepackage{courier}  % Fuente monoespaciada para c√≥digo
+		\usepackage{alltt}    % Entorno de c√≥digo sencillo que permite comandos de LaTeX
 		
 	% Otras fuentes
 		%\usepackage{lmodern}  % Fuente por defecto
-		%\usepackage{pslatex}  % Similar a la times
-		%\usepackage{pxfonts}  % Similar a la times, pero m·s antigua
+		%\usepackage{pxfonts}  % Similar a la times, pero m√°s antigua
 		%\usepackage{chancery} % Fuente cursiva de estilo antiguo
-		%\usepackage{mathptmx} % Fuente del entorno matem·tico
+		%\usepackage{mathptmx} % Fuente del entorno matem√°tico
 		
-	% TÌtulos
+	% T√≠tulos
 		\usepackage{sectsty}
 			\allsectionsfont{\fontfamily{lmss}\selectfont}
 	
 	% Letras capitales
 		\usepackage{lettrine}
-			\setlength{\DefaultFindent}{0.2em}	% SeparaciÛn letra - 1™ lÌnea del bloque de texto
-			\setlength{\DefaultNindent}{0em}		% SeparaciÛn letra - bloque de texto
-			\setcounter{DefaultLines}{2}				% N˙mero de lÌneas que ocupa la letra capital 
-				
-	% Par·metros posibles de \fontfamily: bch, futs, lmr, lmss, jkp, jkpss, pag, pbk, pcr, phv, pnc, ppl, ptm, pzc
+			\setlength{\DefaultFindent}{0.2em}	% Separaci√≥n letra - 1¬™ l√≠nea del bloque de texto
+			\setlength{\DefaultNindent}{0em}		% Separaci√≥n letra - bloque de texto
+			\setcounter{DefaultLines}{2}				% N√∫mero de l√≠neas que ocupa la letra capital 
 
 % ---------------------------------------------------------------------
 
 % 4. FORMATO
 
-	% M·rgenes
+	% M√°rgenes
 		\usepackage[left=3cm, right=2cm, top=2.5cm, bottom=2cm]{geometry}
 		%\usepackage {anysize} 								% Paquete alternativo
 			%\marginsize {2cm}{2cm}{1cm}{1.5cm}	% Izquierdo, derecho, superior, inferior
-		\usepackage{changepage}								% Permite cambiar de forma relativa los m·rgenes de p·ginas concretas
-		
-	% Penalizar la separaciÛn de palabras	(-10000 obligaciÛn, 10000 prohibiciÛn completa)
-		\hyphenpenalty = 5000
-	  \tolerance = 1000
-  
-  % Penalizar lÌneas viudas y huÈrfanas (-10000 obligaciÛn, 10000 prohibiciÛn completa)
-	  \widowpenalty = 10000
-	  \displaywidowpenalty = 10000
-	  \clubpenalty = 10000
-	  
-	% Ignorar parcialmente los errores de formato
-		\hbadness 1414	% No avisar de los errores de 'badness' inferiores a este valor
-		%\hfuzz 0.3 pt	% No avisar de 'overfull boxes' horizontales menores que esta cantidad
-		%\vfuzz 0.3 pt	% No avisar de 'overfull boxes' verticales menores que esta cantidad
-
-	% Interlineado
-		%\linespread{1.3}			% 1.3 - Interlineado de 1.5 / 1.6 - Interlineado doble
-		\usepackage{setspace}	% Mantiene interlineado sencillo en pies de p·gina, pies de foto...
-			\singlespacing			% Otras opciones: \singlespacing y \doublespacing  \onehalfspacing
-			
-	% Subrayado
-		\usepackage{ulem}
-		
-	% Colores
-		\ifpdf
-			\usepackage[pdftex]{color}	% .pdf, .jpg, .png, .gif
-		\else
-			\usepackage{color}					% .pdf, .jpg, .png, .gif
-		\fi
-			\definecolor{azulmarino}{rgb}{0,0,0.6}
-			\definecolor{blanco}{rgb}{1,1,1}
-			\definecolor{crema}{rgb}{0.984,0.914,0.733}
-			\definecolor{gris10}{gray}{0.9}
-			\definecolor{gris05}{gray}{0.95}
-			\definecolor{gris20}{gray}{0.8}
-			\definecolor{gris50}{gray}{0.5}	
-			\definecolor{rojoC++}{rgb}{0.64,0.08,0.08}
-			\definecolor{verdeC++}{rgb}{0,0.5,0}
-			\definecolor{verdeMatlab}{rgb}{0.13,0.54,0.13}
-			\definecolor{violetaMatlab}{rgb}{0.75,0.12,0.95}
-				
-	% Combinar o dividir columnas y filas (tanto en tablas como en texto)
-		\usepackage{multicol}
-		\usepackage{multirow}
+		\usepackage{changepage}								% Permite cambiar de forma relativa los m√°rgenes de p√°ginas concretas
 		
 	% Marcas de agua	
 		\usepackage{watermark}			
 		
-	% Formato de las p·ginas de Parte
+	% Formato de las p√°ginas de Parte
 		\usepackage[newparttoc]{titlesec}
 		\usepackage{titletoc}	
 			\titleformat{\part}[display]
 									{\vspace*{\fill}\fontsize{36}{40}\fontfamily{ppl}\bfseries\selectfont}
 									{\filcenter\fontsize{30}{32}\selectfont\MakeUppercase{\partname}\hspace{8pt}\thepart\\
-									\hspace{7pt}\rule{75pt}{2.5pt}\vspace{15pt}						% Reemplazar esta lÌnea por la siguiente para sustituir
-									%\hspace{7pt}\fontsize{36}{40}\selectfont\ding{167}		% el icono del paquete pifonts por una lÌnea y viceversa
+									\hspace{7pt}\rule{75pt}{2.5pt}\vspace{15pt}						% Reemplazar esta l√≠nea por la siguiente para sustituir
+									%\hspace{7pt}\fontsize{36}{40}\selectfont\ding{167}		% el icono del paquete pifonts por una l√≠nea y viceversa
 									\thiswatermark{\centering\put(268,-802){\includegraphics[scale=1.5]{ComillasWatermark.pdf}}}}
 									{0mm}
 									{\filcenter\MakeUppercase}
 									[\vspace*{\fill}\thispagestyle{empty}\setcounter{chapter}{0}]
 									
-	% Formato de otras divisiones: P·rrafo y Subp·rrafo								
+	% Formato de otras divisiones: P√°rrafo y Subp√°rrafo								
 			\titleformat{\paragraph}
 									{\fontfamily{lmss}\selectfont\normalsize\bfseries}{\theparagraph .}{1em}{}
 			\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
@@ -173,7 +126,7 @@
 									{\fontfamily{lmss}\selectfont\normalsize\bfseries}{\thesubparagraph .}{1em}{}
 			\titlespacing*{\subparagraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 			
-	% Formato de capÌtulo: Extendido y Compacto	
+	% Formato de cap√≠tulo: Extendido y Compacto	
 			\makeatletter
 				\newcommand{\CapituloExtendido}
 									 {\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
@@ -188,7 +141,7 @@
 			\makeatother
 						
 			\makeatletter
-				\newcommand{\CapituloCompacto}	% NOTA: Hay que controlar los saltos de p·gina de este tipo de capÌtulos manualmente
+				\newcommand{\CapituloCompacto}	% NOTA: Hay que controlar los saltos de p√°gina de este tipo de cap√≠tulos manualmente
 									 {\renewcommand\chapter{\par
 									 \thispagestyle{fancy}
 									 \rightside{\thechapter . \leftmark}
@@ -199,7 +152,7 @@
 									 \titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}}
 			\makeatother
 																		 						
-	% Crear el tipo de divisiÛn doc (para Documentos)					
+	% Crear el tipo de divisi√≥n doc (para Documentos)					
 		\makeatletter														
 			\newcounter{documento}
 			\newcommand{\thedocument}{\Roman{documento}}
@@ -212,14 +165,14 @@
 							 \thispagestyle{empty}\begin{center}
 							 {\vspace*{\fill}\fontsize{36}{32}\fontfamily{ppl}\bfseries\selectfont
 							 \MakeUppercase{\documentname}\hspace{10pt}\thedocument \\ 
-							 \rule{75pt}{2.5pt} \\											% Reemplazar esta lÌnea por la siguiente para sustituir 
-							 %\fontsize{50}{54}\selectfont\ding{166} \\	% el icono del paquete pifonts por una lÌnea y viceversa
+							 \rule{75pt}{2.5pt} \\											% Reemplazar esta l√≠nea por la siguiente para sustituir 
+							 %\fontsize{50}{54}\selectfont\ding{166} \\	% el icono del paquete pifonts por una l√≠nea y viceversa
 							 \fontsize{40}{44}\selectfont \linespread{1.4}\vspace{0.4cm} \MakeUppercase{#1}
 							 \thiswatermark{\centering\put(268,-802){\includegraphics[scale=1.5]{ComillasWatermark.pdf}}}\\
 							 \vspace*{\fill}}\end{center}\setcounter{part}{0}\setcounter{chapter}{0}\setcounter{page}{1}
 							 \setcounter{figure}{0}\setcounter{table}{0}\setcounter{code}{0}\setcounter{footnote}{0}\setcounter{equation}{0}}
 
-	% Crear el tipo de divisiÛn hc (para insertar una p·gina de encabezado en las Hojas de caracterÌsticas)								 
+	% Crear el tipo de divisi√≥n hc (para insertar una p√°gina de encabezado en las Hojas de caracter√≠sticas)								 
 		\newcommand{\hc}[1]
 							 {\clearpage\phantomsection\addcontentsline{toc}{chapter}{#1}
 							 \thispagestyle{empty}\begin{center}						 
@@ -240,40 +193,40 @@
 			\newcommand\CapituloNumerado[2][]{\Capitulo[#1]{#2}\rightside{\thechapter. #2}} % Alternativa: \rightside{\thechapter . \leftmark}
 			\newcommand\CapituloNoNumerado[1]{\Capitulo*{#1}\rightside{#1}}
 								 
-	% Formato de los Ìndices general, de figuras y de tablas
+	% Formato de los √≠ndices general, de figuras y de tablas
 		\usepackage{tocloft}
 		
-			% NumeraciÛn de secciones
-				\setcounter{secnumdepth}{5} % ⁄ltimo nivel numerado: subparagraph (m·x. 5)
-				\setcounter{tocdepth}{5}		% ⁄ltimo nivel mostrado en los Ìndices: subparagraph (m·x. 5)
+			% Numeraci√≥n de secciones
+				\setcounter{secnumdepth}{5} % √öltimo nivel numerado: subparagraph (m√°x. 5)
+				\setcounter{tocdepth}{5}		% √öltimo nivel mostrado en los √≠ndices: subparagraph (m√°x. 5)
 	
-			% M·rgenes
-				\setlength{\cftbeforetoctitleskip}{63.5pt}	% Espacio que precede al tÌtulo del Ìndice general
-				\setlength{\cftbeforeloftitleskip}{63.5pt}	% Espacio que precede al tÌtulo del Ìndice de figuras
-				\setlength{\cftbeforelottitleskip}{63.5pt}	% Espacio que precede al tÌtulo del Ìndice de tablas
+			% M√°rgenes
+				\setlength{\cftbeforetoctitleskip}{63.5pt}	% Espacio que precede al t√≠tulo del √≠ndice general
+				\setlength{\cftbeforeloftitleskip}{63.5pt}	% Espacio que precede al t√≠tulo del √≠ndice de figuras
+				\setlength{\cftbeforelottitleskip}{63.5pt}	% Espacio que precede al t√≠tulo del √≠ndice de tablas
 				\setlength{\cftbeforepartskip}{12pt}				% Espacio que precede a las partes
-				\setlength{\cftbeforechapskip}{6pt}					% Espacio que precede a los capÌtulos
-				%\cftsetpnumwidth{1.25em} 									% Espacio para el n˙mero de p·gina
+				\setlength{\cftbeforechapskip}{6pt}					% Espacio que precede a los cap√≠tulos
+				%\cftsetpnumwidth{1.25em} 									% Espacio para el n√∫mero de p√°gina
 				%\cftsetrmarg{1.4em}      									% Distancia del texto al margen derecho (mayor que la anterior)
-				\renewcommand{\cftpartnumwidth}{2.2em} 			% Espacio para el n˙mero de parte
-				\renewcommand{\cftchapnumwidth}{1.6em} 			% Espacio para el n˙mero de parte
-				\renewcommand{\cftfignumwidth}{1.6em} 			% Espacio para el n˙mero de figura
-				\renewcommand{\cfttabnumwidth}{1.6em} 			% Espacio para el n˙mero de tabla
-				%\renewcommand{\cftpartnumwidth}{2.3em}			% Espacio para el n˙mero de parte
-				%\setlength{\cftsecindent}{0pt}	      			% SangrÌa del n˙mero de secciÛn
-				\setlength{\cftsubsecindent}{26.65pt}	      % SangrÌa del n˙mero de subsecciÛn
-				\setlength{\cftsubsubsecindent}{35.70pt}	  % SangrÌa del n˙mero de subsubsecciÛn
-				\setlength{\cftparaindent}{44.75pt}	      	% SangrÌa del n˙mero de p·rrafo
-				\setlength{\cftsubparaindent}{53.80pt}	    % SangrÌa del n˙mero de subp·rrafo
-				\setlength{\cftfigindent}{0pt}        			% SangrÌa del n˙mero de figura
-				\setlength{\cfttabindent}{0pt}	      			% SangrÌa del n˙mero de tabla
+				\renewcommand{\cftpartnumwidth}{2.2em} 			% Espacio para el n√∫mero de parte
+				\renewcommand{\cftchapnumwidth}{1.6em} 			% Espacio para el n√∫mero de parte
+				\renewcommand{\cftfignumwidth}{1.6em} 			% Espacio para el n√∫mero de figura
+				\renewcommand{\cfttabnumwidth}{1.6em} 			% Espacio para el n√∫mero de tabla
+				%\renewcommand{\cftpartnumwidth}{2.3em}			% Espacio para el n√∫mero de parte
+				%\setlength{\cftsecindent}{0pt}	      			% Sangr√≠a del n√∫mero de secci√≥n
+				\setlength{\cftsubsecindent}{26.65pt}	      % Sangr√≠a del n√∫mero de subsecci√≥n
+				\setlength{\cftsubsubsecindent}{35.70pt}	  % Sangr√≠a del n√∫mero de subsubsecci√≥n
+				\setlength{\cftparaindent}{44.75pt}	      	% Sangr√≠a del n√∫mero de p√°rrafo
+				\setlength{\cftsubparaindent}{53.80pt}	    % Sangr√≠a del n√∫mero de subp√°rrafo
+				\setlength{\cftfigindent}{0pt}        			% Sangr√≠a del n√∫mero de figura
+				\setlength{\cfttabindent}{0pt}	      			% Sangr√≠a del n√∫mero de tabla
 				
-			% Texto que precede al n˙mero de cada secciÛn
+			% Texto que precede al n√∫mero de cada secci√≥n
 				%\renewcommand{\cftpartpresnum}{Parte }			% Interacciona con algo y sale duplicado
 				%\renewcommand{\cftfigfont}{Figura }
 				%\renewcommand{\cfttabfont}{Tabla }
 			
-			% Texto posterior al n˙mero de cada secciÛn	
+			% Texto posterior al n√∫mero de cada secci√≥n	
 				\renewcommand{\cftpartaftersnum}{.}
 				\renewcommand{\cftchapaftersnum}{.}
 				\renewcommand{\cftsecaftersnum}{.}
@@ -284,14 +237,14 @@
 				\renewcommand{\cftfigaftersnum}{.}
 				\renewcommand{\cfttabaftersnum}{.}
 								
-			% SeparaciÛn de los puntos suspensivos
+			% Separaci√≥n de los puntos suspensivos
 				%\renewcommand{\cftpartdotsep}{3.5}
 				%\renewcommand{\cftchapdotsep}{3.5}
 				%\renewcommand{\cftsecdotsep}{0.5}
 				%\renewcommand{\cftfigdotsep}{0.5}
 				%\renewcommand{\cfttabdotsep}{0.5}
 				
-			% Fuente de los tÌtulos, las secciones y los n˙meros de p·gina
+			% Fuente de los t√≠tulos, las secciones y los n√∫meros de p√°gina
 				\renewcommand{\cfttoctitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
 				\renewcommand{\cftloftitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
 				\renewcommand{\cftlottitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
@@ -302,7 +255,7 @@
 								
 % ---------------------------------------------------------------------
 
-% 5. ENCABEZADO Y PIE DE P¡GINA
+% 5. ENCABEZADO Y PIE DE P√ÅGINA
 
 	% Estilo
 		\usepackage{fancyhdr}
@@ -313,7 +266,7 @@
 		\setlength{\headheight}{13pt}
 		\footskip = 36pt
 
-	% Formato de las lÌneas separadoras
+	% Formato de las l√≠neas separadoras
 		\renewcommand{\headrulewidth}{0pt} 
 		\renewcommand{\footrulewidth}{0.4pt}
 		%\renewcommand{\footrule}{{\color{blue}
@@ -332,7 +285,7 @@
 		\fancyfoot[R]{\thepage}
 		\fancyfoot[L]{\footnotesize{\textit{\Titulo}\\ \textbf{\Autor}}}
 		
-	% Personalizar las p·ginas de capÌtulo, Ìndice...	
+	% Personalizar las p√°ginas de cap√≠tulo, √≠ndice...	
 		\fancypagestyle{plain}{
 			\fancyhf{}
 			\fancyfoot[R]{\thepage}
@@ -346,13 +299,6 @@
 % ---------------------------------------------------------------------
 
 % 6. NOTAS AL PIE
-
-	% Formato
-		\usepackage[bottom]{footmisc}
-		\renewcommand{\footnoterule}{\noindent\rule{2in}{0.4pt}\vspace{5pt}}
-	
-	% Penalizar las notas al pie repartidas en varias p·ginas (-10000 obligaciÛn, 10000 prohibiciÛn completa)
-		\interfootnotelinepenalty = 10000
 		
 	% Numerar correlativamente las notas al pie a lo largo de todo el documento  	
 		\usepackage{remreset} 
@@ -364,34 +310,8 @@
 
 % 7. FIGURAS, TABLAS, ECUACIONES, LISTAS Y CUADROS DE TEXTO 
 	
-	% Insertar figuras
-		\ifpdf
-			\usepackage[pdftex]{graphicx}	% .pdf, .jpg, .png, .gif
-		\else
-			\usepackage{graphicx}					% .pdf, .jpg, .png, .gif
-		\fi
-		\usepackage[pdftex]{graphicx} 	
-		\usepackage{epstopdf}		% Convierte en tiempo de compilaciÛn las im·genes de .eps a .pdf
-		%\usepackage{epsfig}   	% .eps (requiere compilar en .dvi o .ps)
-		\usepackage{subfig}			% Permite colocar subfiguras
-		\usepackage{wrapfig}		% Colocar figuras entre el texto
 		\usepackage{sidecap}		% Colocar pies de foto al lado del texto
-		
-	% Ruta de las im·genes
-		\usepackage[encoding,filenameencoding=latin1]{grffile}
-		\graphicspath{{./Imagenes/}}
 
-  % Formato de los pies de figura y tabla
-  	\usepackage{caption}		% Incompatible con ccaption
-		  \captionsetup{labelfont=bf, labelsep=period, justification=centering}
-		  
-		%\usepackage{ccaption}	% Incompatible con caption
-			%\captionstyle{\centering}
-			%\changecaptionwidth
-			%\captionwidth{\linewidth}
-			%\captionnamefont{\bfseries}
-			 %\captiondelim{. }
- 	
   % Numerar correlativamente las figuras, tablas y ecuaciones a lo largo de todo el documento  
 	  \usepackage{remreset}
 	 		\makeatletter
@@ -403,21 +323,11 @@
 				\renewcommand{\theequation}{\arabic{equation}}
 			\makeatother
 			
-	% Formato de la numeraciÛn de las ecuaciones
-		%\numberwithin{equation}{chapter}	% Numerar por capÌtulos
-	
-  % Penalizar im·genes en p·ginas aisladas	
-		\renewcommand{\topfraction}{0.85}
-		\renewcommand{\textfraction}{0.1}
-		\renewcommand{\floatpagefraction}{0.75}
+	% Formato de la numeraci√≥n de las ecuaciones
+		%\numberwithin{equation}{chapter}	% Numerar por cap√≠tulos
 		
 	% Tablas	
-		\usepackage{booktabs}		% Mejora el formato de las tablas
-		\usepackage{xtab}				% Permite tablas que se extienden por varias p·ginas
 		\usepackage{colortbl}		% Para crear tablas con filas y columnas coloreadas
-		
-	%	SeparaciÛn entre entradas en listas
-		\setlength{\itemsep}{0pt}
 		
 	% Cuadro de texto
 		\newlength\Linewidth
@@ -443,93 +353,19 @@
 
 % ---------------------------------------------------------------------
 
-% 8. ENTORNO MATEM¡TICO
-
-	% Macros de la American Mathematical Society
-		\usepackage{amsmath, amssymb}
-		\usepackage{amsthm} % Para teoremas
-						
-	% Operadores matem·ticos nuevos	
-		\DeclareMathOperator{\sen}{sen}
-
-% ---------------------------------------------------------------------
-
-% 9. ENTORNO DE C”DIGO
-
-		\usepackage{verbatim}
-		\usepackage{listings}
-			
-		% Visual C++
-			\newcommand{\VisualCpp}{
-				\lstset{
-					language = [Visual]C++,  							% Lenguaje          
-					extendedchars = true, 								% ASCII extendido
-					basicstyle = \ttfamily \scriptsize, 	% Formato por defecto
-					keywordstyle = \color{blue},					% Formato de las palabras clave							
-					commentstyle = \color{verdeC++}, 			% Formato de los comentarios
-					stringstyle = \color{rojoC++}, 				% Formato de las cadenas de caracteres
-					breaklines = true,										% Permitir saltos de linea autom·ticos
-					breakatwhitespace = true,							% Permitir saltos de linea sÛlo en los espacios
-					tabsize = 4,													% N∫ de espacios equivalentes a un tabulador
-					showspaces = false,               		% Mostrar espacios en el cÛdigo
-					showtabs = false,											% Mostrar tabuladores en el cÛdigo
-					showstringspaces = false, 						% Mostrar espacios en las cadenas
-					%backgroundcolor = \color{white},  		% Color de fondo
-					%numbers = left,               		    % Posicionamiento de los n˙meros de linea
-					%numberstyle = \footnotesize,					% Formato de los n˙meros de linea
-					%numbersep = 10pt,										% SeparaciÛn entre el n˙mero de linea y el cÛdigo
-					%firstnumber = auto,      						% N˙mero en la primera linea
-					%stepnumber = 10,                 		% Lineas hasta la siguiente numerada
-					captionpos = b, 		                  % PosiciÛn del pie de foto (debajo)
-					mathescape = true											% Permite utilizar lenguaje matem·tico entre $
-				}
-			}
-			
-		% Matlab
-			\newcommand{\Matlab}{
-				\lstset{
-					language = Matlab,  									% Lenguaje          
-					extendedchars = true, 								% ASCII extendido
-					basicstyle = \ttfamily \scriptsize, 	% Formato por defecto
-					keywordstyle = \color{black},					% Formato de las palabras clave							
-					commentstyle = \color{verdeMatlab}, 	% Formato de los comentarios
-					stringstyle = \color{violetaMatlab}, 	% Formato de las cadenas de caracteres
-					breaklines = true,										% Permitir saltos de linea autom·ticos
-					breakatwhitespace = true,							% Permitir saltos de linea sÛlo en los espacios
-					tabsize = 4,													% N∫ de espacios equivalentes a un tabulador
-					showspaces = false,               		% Mostrar espacios en el cÛdigo
-					showtabs = false,											% Mostrar tabuladores en el cÛdigo
-					showstringspaces = false, 						% Mostrar espacios en las cadenas
-					%backgroundcolor = \color{white},  		% Color de fondo
-					%numbers = left,               		    % Posicionamiento de los n˙meros de linea
-					%numberstyle = \footnotesize,					% Formato de los n˙meros de linea
-					%numbersep = 10pt,										% SeparaciÛn entre el n˙mero de linea y el cÛdigo
-					%firstnumber = auto,      						% N˙mero en la primera linea
-					%stepnumber = 10,                 		% Lineas hasta la siguiente numerada
-					captionpos = b, 		                  % PosiciÛn del pie de foto (debajo)
-					mathescape = true											% Permite utilizar lenguaje matem·tico entre $
-				}
-			}
-
-% ---------------------------------------------------------------------
-
 % 10. OTROS
 
-		\usepackage{eurosym}									% Para introducir el sÌmbolo del Ä
-		%\usepackage{siunitx}									% Para introducir las unidades con la separaciÛn adecuada
-		\usepackage[tight, nice]{units}				% Para introducir las unidades con la separaciÛn adecuada
-		%\usepackage[cdot, squaren]{SIunits}	% Otro paquete para escribir unidades (mejor pero m·s complejo de usar)
-		\usepackage{lipsum}										% Texto lorem ipsum en latÌn para comprobar la tipografÌa y la apariencia.
+		%\usepackage{siunitx}									% Para introducir las unidades con la separaci√≥n adecuada
+		%\usepackage[cdot, squaren]{SIunits}	% Otro paquete para escribir unidades (mejor pero m√°s complejo de usar)
+		\usepackage{lipsum}										% Texto lorem ipsum en lat√≠n para comprobar la tipograf√≠a y la apariencia.
 																					% NOTA: Para que funcione hay que sustituir en lipsum.sty \roman{lips@count} 				
 																					% por \romannumeral\value{lips@count}
-																					
-		\usepackage{pdfpages}
 
 % ---------------------------------------------------------------------
 
-% 11. ENLACES, REFERENCIAS CRUZADAS Y NUEVOS ÕNDICES DE CONTENIDO
+% 11. ENLACES, REFERENCIAS CRUZADAS Y NUEVOS √çNDICES DE CONTENIDO
 
-		\usepackage[pdftex]{hyperref} % Siempre es el ˙ltimo paquete que se carga
+		\usepackage[pdftex]{hyperref} % Siempre es el √∫ltimo paquete que se carga
 			\hypersetup{
 				pdffitwindow = true,
 		    pdftitle = \Titulo,
@@ -542,7 +378,7 @@
 		    filecolor = black,
 		    linkcolor = black,
 		    urlcolor = blue,
-		    %plainpages = false,					% Impedir referencias de p·gina con el mismo nombre
+		    %plainpages = false,					% Impedir referencias de p√°gina con el mismo nombre
 		    hypertexnames = false,				% Impedir referencias con el mismo nombre
 		    bookmarksnumbered = true,
 		    bookmarksopen = true,
@@ -551,19 +387,16 @@
 			
 			\addto\captionsspanish{
 				\renewcommand{\partautorefname}{Parte}
-				\renewcommand{\chapterautorefname}{CapÌtulo}
+				\renewcommand{\chapterautorefname}{Cap√≠tulo}
 				\renewcommand{\sectionautorefname}{Apartado}
 				\renewcommand{\figureautorefname}{Figura}
 				\renewcommand{\tableautorefname}{Tabla}
-				\renewcommand{\equationautorefname}{EcuaciÛn}
+				\renewcommand{\equationautorefname}{Ecuaci√≥n}
 			}
-		
-	% Corregir el posicionamiento de las referencias en entornos flotantes
-		\usepackage[all]{hypcap}	% Detr·s de hyperref
 				
 	% Redefinir los niveles de las divisiones del documento para poder incorporar doc en el superior.
-	% Para ello hay que aÒadir al final de Proyecto Fin de Carrera.out la linea \let\WriteBookmarks\relax
-	% despuÈs de compilar la versiÛn definitiva (Debe ir detr·s de hyperref)
+	% Para ello hay que a√±adir al final de Proyecto Fin de Carrera.out la linea \let\WriteBookmarks\relax
+	% despu√©s de compilar la versi√≥n definitiva (Debe ir detr√°s de hyperref)
 		\makeatletter
 			\renewcommand*{\toclevel@part}{0}
 			\renewcommand*{\toclevel@chapter}{1}
@@ -574,36 +407,34 @@
 			\renewcommand*{\toclevel@subparagraph}{6}
 		\makeatother
 	
-	% Õndice de extractos de cÛdigo si se usa el paquete caption (detr·s de hyperref)
+	% √çndice de extractos de c√≥digo si se usa el paquete caption (detr√°s de hyperref)
 	 	\usepackage{float}
- 		\newlistof{codigo}{loc}{Õndice de extractos de cÛdigo}
+ 		\newlistof{codigo}{loc}{√çndice de extractos de c√≥digo}
 			\newlistentry{code}{loc}{0}
 			\newfloat{code}{htbp}{loc}
-			\floatname{code}{CÛdigo}
+			\floatname{code}{C√≥digo}
 		
-			%\renewcommand{\cftcodefont}{CÛdigo }
+			%\renewcommand{\cftcodefont}{C√≥digo }
 		 	\renewcommand{\cftcodeaftersnum}{.}
-		 	\setlength{\cftcodeindent}{0pt}        % SangrÌa del n˙mero de cÛdigo
-		 	\renewcommand{\cftcodenumwidth}{1.6em} % Espacio para el n˙mero de cÛdigo
+		 	\setlength{\cftcodeindent}{0pt}        % Sangr√≠a del n√∫mero de c√≥digo
+		 	\renewcommand{\cftcodenumwidth}{1.6em} % Espacio para el n√∫mero de c√≥digo
 		 	\renewcommand{\cftafterloctitle}{\thispagestyle{plain}}
 		 	\setlength{\cftbeforeloctitleskip}{63.5pt}
 		 	\renewcommand{\cftloctitlefont}{\fontfamily{lmss}\huge\bfseries\selectfont}
+		 	
+\end{comment}
 			 			 	
 % ---------------------------------------------------------------------
 
 % 12. MACROS (PARA FACILITAR EL USO DE LA PLANTILLA)
 			
-		% Insertar una lÌnea de separaciÛn entre p·rrafos
-			\newcommand{\parrafoON}{\addtolength{\parskip}{\baselineskip}}
-			\newcommand{\parrafoOFF}{\addtolength{\parskip}{-\baselineskip}}
-			\newcommand{\parrafo}{\vspace{\baselineskip}}
-			
+		% Insertar una l√≠nea de separaci√≥n entre p√°rrafos		
 				\newcommand{\IndiceGeneral}{
 										\clearpage
 										\cftpagenumberson{chapter}
-										\pdfbookmark[0]{Õndice general}{General}
+										\pdfbookmark[0]{√çndice general}{General}
 										\tableofcontents
-										\leftside{Õndice general}}
+										\leftside{√çndice general}}
 										
 				\newcommand{\IndiceDocumento}[2]{
 										\clearpage\rightside{#1}\startcontents[toc]
@@ -634,21 +465,21 @@
 				
 				\newcommand{\IndiceFiguras}{	
 										\clearpage
-										\pdfbookmark[0]{Õndice de figuras}{Figuras}
+										\pdfbookmark[0]{√çndice de figuras}{Figuras}
 										\listoffigures
-										\rightside{Õndice de figuras}}
+										\rightside{√çndice de figuras}}
 										
 				\newcommand{\IndiceTablas}{
 										\clearpage
-										\pdfbookmark[0]{Õndice de tablas}{Tablas}
+										\pdfbookmark[0]{√çndice de tablas}{Tablas}
 										\listoftables
-										\rightside{Õndice de tablas}}
+										\rightside{√çndice de tablas}}
 										
 				\newcommand{\IndiceCodigo}{
 										\clearpage
-										\pdfbookmark[0]{Õndice de extractos de cÛdigo}{Codigo}
+										\pdfbookmark[0]{√çndice de extractos de c√≥digo}{Codigo}
 										\listofcodigo
-										\rightside{Õndice de extractos de cÛdigo}}
+										\rightside{√çndice de extractos de c√≥digo}}
 										
 				\newcommand{\ActualizarIndices}{
 										\captionsetup[figure]{list=yes}
@@ -660,7 +491,7 @@
 										\captionsetup[table]{list=no}
 										\captionsetup[code]{list=no}}
 				
-			%	\Figura[PosiciÛn]{Formato}{Archivo.ext}{Pie}{fig:Etiqueta}
+			%	\Figura[Posici√≥n]{Formato}{Archivo.ext}{Pie}{fig:Etiqueta}
 				\newcommand{\Figura}[5][]{	
 										\begin{figure}[#1]
 											\centering
@@ -669,7 +500,7 @@
 											\label{#5}
 										\end{figure}}
 										
-			%	\Figura[PosiciÛn]{Formato}{Archivo.ext}{Pie}{Pie abreviado}{fig:Etiqueta}						
+			%	\Figura[Posici√≥n]{Formato}{Archivo.ext}{Pie}{Pie abreviado}{fig:Etiqueta}						
 				\newcommand{\FiguraPieAbreviado}[6][]{	
 										\begin{figure}[#1]
 											\centering
@@ -678,7 +509,7 @@
 											\label{#6}
 										\end{figure}}
 										
-			%	\Tabla[PosiciÛn]{Formato de las columnas}{Tabla}{Pie}{tab:Etiqueta}			
+			%	\Tabla[Posici√≥n]{Formato de las columnas}{Tabla}{Pie}{tab:Etiqueta}			
 				\newcommand{\Tabla}[5][]{
 										\begin{table}[#1]
 											\centering
@@ -689,7 +520,7 @@
 											\label{#5}
 										\end {table}}
 										
-			%	\Tabla[PosiciÛn]{Formato de las columnas}{Tabla}{Pie}{Pie abreviado}{tab:Etiqueta}			
+			%	\Tabla[Posici√≥n]{Formato de las columnas}{Tabla}{Pie}{Pie abreviado}{tab:Etiqueta}			
 				\newcommand{\TablaPieAbreviado}[6][]{
 										\begin{table}[#1]
 											\centering
@@ -707,7 +538,7 @@
 										\end{cuadrotexto}
 										\vspace{-10pt}}
 										
-			% \Ecuacion{EcuaciÛn}{eq:Etiqueta}					
+			% \Ecuacion{Ecuaci√≥n}{eq:Etiqueta}					
 				\newcommand{\Ecuacion}[2]{
 										\begin{equation}
 											#1
@@ -717,12 +548,12 @@
 			% \InsertarCodigo{Lenguaje}{Ruta del archivo}				
 				\newcommand{\InsertarCodigo}[2]{#1 \lstinputlisting{#2}}
 				
-			% \Datasheet[Par·metros]{Archivo.pdf}{TÌtulo}
+			% \Datasheet[Par√°metros]{Archivo.pdf}{T√≠tulo}
 				\newcommand{\Datasheet}[3][]{
 										\hc{#3}
 										\includepdf[#1]{#2}}
 				
-			% \Plano{Archivo.pdf}{TÌtulo}{pl:Etiqueta}
+			% \Plano{Archivo.pdf}{T√≠tulo}{pl:Etiqueta}
 				\newcommand{\Plano}[3]{
 										\includepdf[pages=1, offset=0 -13, addtotoc={1, chapter, 1, #2, #3}]{#1}}
 																				
@@ -733,62 +564,60 @@
 \begin{document}
 
 	\frontmatter
-		\EncabezadoCorto
-		\SuprimirIndices
+%		\EncabezadoCorto
+%		\SuprimirIndices
 	
-		\input{Contraportada.tex}
-		\input{Autorizacion.tex}
-		\input{Portada.tex}
-		\input{Resumen.tex}
-		\input{Abstract.tex}
-		\input{Dedicatoria.tex}
-		\input{Agradecimientos.tex}
+%		\input{Contraportada.tex}
+%		\input{Autorizacion.tex}
+%		\input{Portada.tex}
+		\input{abstract-spanish.tex}
+		\input{abstract-english.tex}
+%		\input{Dedicatoria.tex}
+%		\input{Agradecimientos.tex}
 	
 	\mainmatter
-		\EncabezadoLargo
-		\ActualizarIndices
+%		\EncabezadoLargo
+%		\ActualizarIndices
 		
 	% Documento I. Memoria
-		\doc{Memoria}
-			\IndiceDocumento{Õndice}{IndiceMemoria}
-				\IndiceFiguras
-				\IndiceTablas
-				\IndiceCodigo
-				\input{Acronimos.tex}
-				\input{Simbolos.tex}
+%		\doc{Memoria}
+%			\IndiceDocumento{√çndice}{IndiceMemoria}
+% 			\IndiceFiguras
+%				\IndiceTablas
+%				\IndiceCodigo
+				\input{acronyms.tex}
+				\input{symbols.tex}
 				
-				\part{Memoria}{}{InicioMem}
-					\input{Capitulo01.tex}
-					\input{Capitulo02.tex}
-					\input{Capitulo03.tex}
-					\input{Bibliografia.tex}
-				\input{EstudioEconomico.tex}
-				\input{ManualUsuario.tex}
-				\input{CodigoFuente.tex}
-				\input{HojasCaracteristicas.tex}
-				\label{FinHC}
-			\FinIndiceDocumento
+%				\part{Memoria}{}{InicioMem}
+					\input{chapter01.tex}
+					\input{chapter02.tex}
+					\input{chapter03.tex}
+%					\input{Bibliografia.tex}
+%				\input{EstudioEconomico.tex}
+%				\input{ManualUsuario.tex}
+%				\label{FinHC}
+%			\FinIndiceDocumento
 		
-			\SuprimirIndices
+%			\SuprimirIndices
 			
 	% Documento II. Planos	
-		\doc{Planos}
-			\ListaPlanos{Lista de planos}{InicioLP}
-			\label{InicioPlanos}
-				\input{Planos.tex}
-			\label{FinPlanos}
-			\FinIndiceDocumento
+%		\doc{Planos}
+%			\ListaPlanos{Lista de planos}{InicioLP}
+%			\label{InicioPlanos}
+%				\input{Planos.tex}
+%			\label{FinPlanos}
+%			\FinIndiceDocumento
 			
 	% Documento III. Pliego de condiciones			
-		\doc{Pliego de condiciones}
-			\IndiceDocumento{Õndice}{IndicePliego}
-				\input{PliegoCondiciones.tex}
-			\FinIndiceDocumento
+%		\doc{Pliego de condiciones}
+%			\IndiceDocumento{√çndice}{IndicePliego}
+%				\input{PliegoCondiciones.tex}
+%			\FinIndiceDocumento
 			
 	% Documento IV. Presupuesto	
-		\doc{Presupuesto}
-			\IndiceDocumento{Õndice}{IndicePresupuesto}
-				\input{Presupuesto.tex}
-			\FinIndiceDocumento	
+%		\doc{Presupuesto}
+%			\IndiceDocumento{√çndice}{IndicePresupuesto}
+%				\input{Presupuesto.tex}
+%			\FinIndiceDocumento	
 
 \end{document}

@@ -1,0 +1,54 @@
+\chapter {Primeros pasos}
+%\lettrine{E}{ste} documento es una plantilla de \LaTeX \ para escribir el Proyecto Fin de Carrera. Trae creados por defecto la mayoría de los apartados que suelen ser habituales en un documento de este tipo --si bien es posible que muchos usuarios no los necesiten todos-- e incorpora unas macros para facilitar su uso. Dichas macros están explicadas en más detalle en el capítulo siguiente. Es importante destacar, sin embargo, que en ningún caso pretende ser un manual de \LaTeX, por lo que se precisan unos conocimientos mínimos para poder usarla correctamente.
+
+\section{Software necesario}
+En primer lugar, es requisito imprescindible disponer de una distribución de \LaTeX, un compilador y un visor de documentos PDF, que variarán en función del sistema operativo (Windows, MacOS o Linux). Dado que la mayoría de los usuarios trabajarán bajo Windows, nos centraremos en este sistema. No obstante, es sencillo encontrar en Internet las distribuciones y compiladores apropiados para MacOS y Linux.
+
+En cuanto a la \textbf{distribución} se recomienda instalar \href{http://miktex.org/2.8/setup}{MiKTeX}. Si se dispone de Windows 7, la versión recomendada es la 2.8. Sin embargo, a veces presenta problemas en sistemas operativos anteriores como Vista o XP, por lo que en esos casos lo más seguro es emplear MiKTeX 2.7. Existen multitud de \textbf{compiladores} para Windows, algunos son \textit{software} libre y otros propietario. Esta plantilla se ha escrito con \href{http://www.texniccenter.org}{TeXnicCenter}, un compilador gratuito bastante fácil de manejar. Finalmente, en lo que se refiere al \textbf{visor de PDF}, hay muchos donde elegir (Adobe Reader, SumatraPDF...).
+
+Una vez instalado todo esto, se puede abrir la plantilla a través del archivo con extensión \texttt{\small .tcp}, que es un proyecto de TeXnicCenter. Si ha instalado otro compilador, tenga en cuenta que el documento principal es \texttt{\small main.tex}.
+
+\begin{comment}
+
+\section{Familiarizándose con \LaTeX \ y la plantilla}
+Se sugiere, antes de empezar a escribir, leer la plantilla en código \LaTeX, además de en PDF, para conocer los comandos disponibles y porque durante la redacción de la misma se han empleado los de uso más frecuente. Preste especial atención a los comentarios. Si desea profundizar en las funcionalidades de algún paquete concreto puede consultarlo fácilmente en Internet. Para los usuarios noveles también se recomienda leer, o al menos hojear, \href{http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf}{\textit{The Not So Short Introduction to \LaTeX \ 2$\varepsilon$}}.
+
+Mientras seguía esta recomendación habrá observado que existe un apartado en el documento \texttt{\small main.tex} que se denomina \textbf{Parámetros}. No olvide cambiar los valores para que se adapten a sus necesidades. \LaTeX \ actualizará automáticamente todos los campos que los contengan la próxima vez que compile.
+
+\section{Observaciones importantes}
+Como ya se habrá dado cuenta, la plantilla automatiza gran parte de las tareas. Sin embargo, el usuario debe cuidar algunos aspectos por su cuenta.
+\begin{itemize}
+	\item En el \textbf{Índice de documentos}, que está en el archivo \texttt{\small Contraportada.tex} hay que sustituir las ?? por los números de página correspondientes cuando haya terminado de escribir el Proyecto. Es posible que necesite modificar algunas de las entradas si no cuenta con todas las divisiones.
+	\item La \textbf{Hoja de autorización} también puede requerir modificaciones si tiene más de un director.
+	\item En la \textbf{Portada} puede ser necesario ajustar el espacio vertical si el título no ocupa dos líneas.
+	\item Si modifica los \textbf{márgenes} actuales, deberá ajustar en consecuencia los parámetros del comando {\small\verb|\adjustwidth|} en \texttt{\small Contraportada.tex}, \texttt{\small Autorización.tex}, y \texttt{\small Portada.tex}.
+	\item En \texttt{\small Dedicatoria.tex} puede querer modificar el formato de la dedicatoria y las citas.
+	\item No se olvide de modificar las listas de \textbf{Acrónimos} y \textbf{Símbolos}.
+	\item Cuando compile, hágalo tantas veces como sea necesario hasta que el número de \textsl{Warnings} sea constante. Eso significa que todas las referencias cruzadas están actualizadas.
+	\item Habrá observado que los niveles de los marcadores PDF no son del todo correctos. Cuando tenga la versión definitiva, si tiene instalado Adobe Acrobat Professional puede cambiarlo fácilmente arrastrándolos hasta el lugar deseado. En caso contrario, deberá editar el archivo \texttt{\small ProyectoFinCarrera.out}.\\
+	Las modificaciones consisten en cambiar el nivel de los \textbf{Documentos} de \texttt{\small[0]} a \texttt{\small[-1]} y escribir, en el último campo de las demás referencias de nivel 0, el primer campo entre \{\} del documento inmediatamente superior, para indicar la subordinación. Para mantener los cambios hay que evitar que se actualicen los marcadores añadiendo la siguiente línea al final del archivo:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\let\WriteBookmarks\relax
+\end {verbatim}
+\normalsize
+\end{quote}
+Por ejemplo, habría que reemplazar:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\BOOKMARK [0][-]{section*.4}{Documento I. Memoria}{}
+\BOOKMARK [0][-]{IndiceMemoria.0}{\315ndice}{}
+\end {verbatim}
+\normalsize
+\end{quote}
+por esto otro:
+\begin{quote}
+\scriptsize\begin {verbatim}
+\BOOKMARK [-1][-]{section*.4}{Documento I. Memoria}{}
+\BOOKMARK [0][-]{IndiceMemoria.0}{\315ndice}{section*.4}
+\end {verbatim}
+\normalsize
+\end{quote}
+\end{itemize}
+
+\end{comment}
