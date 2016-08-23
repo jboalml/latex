@@ -79,12 +79,12 @@ where `classname` is the template name.
 | Font size               | **10pt**, 11pt, 12pt     |
 | Paper size              | **a4paper**, letterpaper |
 | Single- or double-sided | oneside, twoside         |
-| Language                | english, spanish...      |
+| Language                | english, spanish         |
 
 - Default values are highlighted in bold. The single- or double-sided option's default value depends on the template. Therefore, I would suggest that you always explicitly define it.
 - As the main font chosen in most templates is rather large, a **font size** of `11pt` is generally recommended over `12pt`.
 - **The language option is mandatory**; otherwise the document will not compile. If you need to use more than one language write them one after the other. Bear in mind that the last language you type will be the one selected at the beginning of the document.
-- **Some templates have additional options**. Check the [wiki](https://github.com/jboalml/latex/wiki) to learn how to further customize the different templates. For instance, in the case of `teaching.cls` you can define the purpose of the document (i.e., `notes`, `exercises`, `lab`, `quiz`, `exam`, or `solution`). Layout and appearance will be automatically set accordingly.
+- **Some templates have additional options**. Check the [wiki](https://github.com/jboalml/latex/wiki) to learn how to further customize the different templates. For instance, in the case of `teaching.cls` you can define the purpose of the document (i.e., `notes`, `exercises`, `lab`, `quiz`, `exam`, `solution`, or `report`). Layout and appearance will be automatically set accordingly.
 
 #### Example
 In order to use `teaching.cls` to write some class notes in Spanish you would type:

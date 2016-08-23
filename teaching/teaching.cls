@@ -3,7 +3,7 @@
 % -----------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{teaching}[2015/08/21 v1.0.0 Class to produce teaching material]
+\ProvidesClass{teaching}[2016/08/24 v1.2.0 Class to produce teaching material]
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- LaTeX EXTENSIONS ---------------------------------
@@ -14,12 +14,19 @@
 \RequirePackage{etoolbox}    % Tools for class and package authors
 \RequirePackage{expl3}       % LaTeX3 functions
 \RequirePackage{iftex}       % Allows to check the TeX engine used
-\RequirePackage{fixltx2e}    % Fix some known LaTeX issues.
-                             % Allows subindexes in text mode (\textsubscript{})
+\RequirePackage{iflang}      % Allows to check the language selected                                                          
 \RequirePackage{forloop}     % Allows to use for loops
 \RequirePackage{xifthen}     % Allows conditionals in LaTeX format
                              % Extends ifthen package (requires etex)
 \RequirePackage{xstring}     % Perform operations on strings
+
+% Fix some known LaTeX issues for pre-2015 kernel versions
+% http://tex.stackexchange.com/questions/287146/how-to-use-fixltx2e-only-when-necessary
+% Allows subindexes in text mode (\textsubscript{})
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname IncludeInRelease\endcsname\relax
+  \RequirePackage{fixltx2e}
+\fi 
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- CLASS PROPERTIES ---------------------------------
@@ -543,8 +550,23 @@
 \RequirePackage{comment}             % Comment text out
 \RequirePackage{pdfpages}            % Attach .pdf files
 \RequirePackage{tikz}                % Vector graphics
+  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
 \RequirePackage[normalem]{ulem}      % Underlining
-\RequirePackage[tight,nice]{units}   % Units
+\RequirePackage[tight,nice]{units}   % Simple units
+\RequirePackage{siunitx}             % Advanced units
+  \sisetup{
+    detect-all,                      % Use the current font and weight
+    retain-explicit-plus,            % Display leading plus sign if present
+    range-phrase     = --,           % Use an en-dash for ranges
+    output-product   = \cdot,        % Use a centered dot for products
+    exponent-product = \cdot         % Use a centered dot for scientific notation
+  }
+  
+  % Spanish language specific options
+  \IfStrEq*{\languagename}{spanish}{
+    \sisetup{output-decimal-marker = {,}}  % Use decimal comma
+  }{}
+
 \RequirePackage[os=win]{menukeys}    % Keyboard like keys
   \renewmenumacro{\directory}[/]{pathswithfolder}
 
@@ -688,34 +710,3 @@
     \cleardoublepage
   }{}
 }
-
-%\BlankLeaflet[Optional additional information]{Title}
-\providecommand{\BlankLeaflet}[3][]{
-  {%
-    \noindent\titlingfont\huge\centering #1\\%
-    \vspace{0.5cm}
-  }%
-  
-  % Subheader
-  \subheader{\theDegree}
-  
-  % Footer and PDF information
-  \renewcommand{\theTitle}{#2}
-  \footer{\theTitle}
-  
-  % Student data
-  \vspace{0.5cm}
-  \noindent
-  \begin{tabularx}{\linewidth}{@{}Xr@{}}
-    \textbf{\studentname:}~\line(1,0){325} & \textbf{\groupname:}~\line(1,0){45}
-  \end{tabularx}{\parfillskip=0pt\par}
-  \vspace{0.25cm plus 0.1cm minus 0.1cm}
-  
-  \newcounter{pages}
-  \setcounter{pages}{#3 - 1}
-
-\Ruledpage[\value{pages}]
-  
-  %\Blankpage[\value{pages}] 
-}
-
