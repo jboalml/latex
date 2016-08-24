@@ -132,9 +132,10 @@
 % pzc                    Zapf Chancery
 
 % Symbols
-\RequirePackage{bbding}   % Cannot be loaded with marvosym
+\RequirePackage{bbding}
+  \let\Cross\relax         % Prevent clash with marvosym due to redefinition of \Cross
 \RequirePackage{dictsym}
-%\RequirePackage{marvosym}  % Cannot be loaded with bbding   
+\RequirePackage{marvosym} 
 \RequirePackage{eurosym}   % Must be loaded after marvosym
 \RequirePackage{pifont}
 
