@@ -3,7 +3,7 @@
 % -----------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{teaching}[2015/08/21 v1.0.0 Class to produce teaching material]
+\ProvidesClass{teaching}[2016/08/24 v1.2.0 Class to produce teaching material]
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- LaTeX EXTENSIONS ---------------------------------
@@ -14,12 +14,19 @@
 \RequirePackage{etoolbox}    % Tools for class and package authors
 \RequirePackage{expl3}       % LaTeX3 functions
 \RequirePackage{iftex}       % Allows to check the TeX engine used
-\RequirePackage{fixltx2e}    % Fix some known LaTeX issues.
-                             % Allows subindexes in text mode (\textsubscript{})
+\RequirePackage{iflang}      % Allows to check the language selected                                                          
 \RequirePackage{forloop}     % Allows to use for loops
 \RequirePackage{xifthen}     % Allows conditionals in LaTeX format
                              % Extends ifthen package (requires etex)
 \RequirePackage{xstring}     % Perform operations on strings
+
+% Fix some known LaTeX issues for pre-2015 kernel versions
+% http://tex.stackexchange.com/questions/287146/how-to-use-fixltx2e-only-when-necessary
+% Allows subindexes in text mode (\textsubscript{})
+\begingroup\expandafter\expandafter\expandafter\endgroup
+\expandafter\ifx\csname IncludeInRelease\endcsname\relax
+  \RequirePackage{fixltx2e}
+\fi 
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- CLASS PROPERTIES ---------------------------------
@@ -31,6 +38,7 @@
 \newbool{isQuiz}
 \newbool{isExam}
 \newbool{isSolution}
+\newbool{isReport}
 
 % Class options
 \DeclareOption{notes}{\booltrue{isNotes}}
@@ -39,6 +47,7 @@
 \DeclareOption{quiz}{\booltrue{isQuiz}}
 \DeclareOption{exam}{\booltrue{isExam}}
 \DeclareOption{solution}{\booltrue{isSolution}}
+\DeclareOption{report}{\booltrue{isReport}}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}  % Pass unknown options
                                                                % to the base class
@@ -123,9 +132,10 @@
 % pzc                    Zapf Chancery
 
 % Symbols
-\RequirePackage{bbding}   % Cannot be loaded with marvosym
+\RequirePackage{bbding}
+  \let\Cross\relax         % Prevent clash with marvosym due to redefinition of \Cross
 \RequirePackage{dictsym}
-%\RequirePackage{marvosym}  % Cannot be loaded with bbding   
+\RequirePackage{marvosym} 
 \RequirePackage{eurosym}   % Must be loaded after marvosym
 \RequirePackage{pifont}
 
@@ -410,7 +420,7 @@
       stringstyle       = \color{redC++},        % String format
       breaklines        = true,                  % Automatic line breaks
       breakatwhitespace = true,	                 % Line breaks only at white spaces
-      tabsize           = 4,                     % Number of spaces equal to a tab
+      tabsize           = 3,                     % Number of spaces equal to a tab
       showspaces        = false,                 % Show spaces in the code
       showtabs          = false,                 % Show tabs in the code
       showstringspaces  = false,                 % Show spaces among strings
@@ -476,7 +486,7 @@
   \pagestyle{fancy}
     \fancyhf{}  % Clear current header and footer
     
-    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{
+    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{
       \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-bw.pdf}}
     }{
       \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-color.pdf}}
@@ -532,6 +542,7 @@
 \DeclareMathOperator{\sen}{sen}
 \DeclareMathOperator{\ctg}{ctg}
 \DeclareMathOperator{\arcctg}{arcctg}
+\DeclareMathOperator{\atan}{atan}
 
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MISCELLANY ------------------------------------
@@ -540,8 +551,23 @@
 \RequirePackage{comment}             % Comment text out
 \RequirePackage{pdfpages}            % Attach .pdf files
 \RequirePackage{tikz}                % Vector graphics
+  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
 \RequirePackage[normalem]{ulem}      % Underlining
-\RequirePackage[tight,nice]{units}   % Units
+\RequirePackage[tight,nice]{units}   % Simple units
+\RequirePackage{siunitx}             % Advanced units
+  \sisetup{
+    detect-all,                      % Use the current font and weight
+    retain-explicit-plus,            % Display leading plus sign if present
+    range-phrase     = --,           % Use an en-dash for ranges
+    output-product   = \cdot,        % Use a centered dot for products
+    exponent-product = \cdot         % Use a centered dot for scientific notation
+  }
+  
+  % Spanish language specific options
+  \IfStrEq*{\languagename}{spanish}{
+    \sisetup{output-decimal-marker = {,}}  % Use decimal comma
+  }{}
+
 \RequirePackage[os=win]{menukeys}    % Keyboard like keys
   \renewmenumacro{\directory}[/]{pathswithfolder}
 
@@ -634,7 +660,7 @@
   \ifbool{isNotes}{\subheader{\notesname}}{
     \ifbool{isExercises}{\subheader{\exercisesname}}{
       \ifbool{isLab}{\subheader{\labname}}{
-        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{\subheader{\theDegree}}{
+        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{\subheader{\theDegree}}{
         }
       }
     }
