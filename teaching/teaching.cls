@@ -557,14 +557,12 @@
 \providecommand{\Partial}[2]{\frac{\partial\, #1}{\partial\, #2}}
 
 % -----------------------------------------------------------------------------------
-% ----------------------------------- MISCELLANY ------------------------------------
-% ----------------------------------------------------------------------------------- 
+% -------------------------------------- UNITS --------------------------------------
+% -----------------------------------------------------------------------------------
 
-\RequirePackage{comment}             % Comment text out
-\RequirePackage{pdfpages}            % Attach .pdf files
-\RequirePackage{tikz}                % Vector graphics
-  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
-\RequirePackage[normalem]{ulem}      % Underlining
+% Text units
+\renewcommand{\textohm}{\ensuremath{\Omega}}
+
 \RequirePackage[tight,nice]{units}   % Simple units
 \RequirePackage{siunitx}             % Advanced units
   \sisetup{
@@ -580,7 +578,23 @@
   \IfStrEq*{\languagename}{spanish}{
     \sisetup{output-decimal-marker = {,}}  % Use decimal comma
   }{}
+  
+  % Additional units   
+  \DeclareSIUnit{\fahrenheit}{\SIUnitSymbolDegree F}
+  \DeclareSIUnit{\degreeFahrenheit}{\fahrenheit}
+  \DeclareSIUnit{\ntu}{NTU}          % Nephelometric Turbidity Unit
+  \DeclareSIUnit{\ohm}{\ensuremath{\Omega}}
+  \renewcommand{\SIUnitSymbolMicro}{\ensuremath{\upmu}}
 
+% -----------------------------------------------------------------------------------
+% ----------------------------------- MISCELLANY ------------------------------------
+% ----------------------------------------------------------------------------------- 
+
+\RequirePackage{comment}             % Comment text out
+\RequirePackage{pdfpages}            % Attach .pdf files
+\RequirePackage{tikz}                % Vector graphics
+  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+\RequirePackage[normalem]{ulem}      % Underlining
 \RequirePackage[os=win]{menukeys}    % Keyboard like keys
   \renewmenumacro{\directory}[/]{pathswithfolder}
 
