@@ -680,10 +680,11 @@
     \vspace{0.25cm plus 0.25cm minus 0.25cm}
   }{}
     
-  % Separate information sheet  
-  \ifbool{isExam}{
+  % Instructions 
+  \ifboolexpr{bool {isQuiz} or bool {isExam}}{
     \ifdefempty{\theInstructions}{}{
-      \vspace{1cm}
+      \ifbool{isExam}{\vspace{1cm}}{}
+      \ifbool{isQuiz}{\vspace{0.75cm}}{}
     
       {\noindent\centering\titlingfont\LARGE \MakeUppercase{\instructionsname}\\}
     
@@ -693,10 +694,14 @@
         \theInstructions
       \end{itemize} 
     }
+  }{}
+  
+  % Spacing
+  \ifbool{isExam}{\vfill}{}
+  \ifbool{isQuiz}{\vspace{0.5cm}}{}
       
-    \vfill
-      
-    % Mark
+  % Grade
+  \ifbool{isExam}{     
     \begin{flushright}
       \Large\textbf{\gradename:} \hspace{0.25cm} 
       \fbox{
