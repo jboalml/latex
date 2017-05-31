@@ -345,6 +345,12 @@
 			
 % Tables	
 \RequirePackage{array}	            % Column size and alignment options
+
+  % Define left, center and right aligned columns with fixed width
+  \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  
 \RequirePackage{booktabs}           % Table format
 %\RequirePackage{hhline}            % Additional line formats
 %  \doublerulesepcolor[rgb]{1,1,1}  % Correct color in tables with double lines
