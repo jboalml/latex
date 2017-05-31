@@ -547,6 +547,9 @@
 \DeclareMathOperator{\arcctg}{arcctg}
 \DeclareMathOperator{\atan}{atan}
 
+% Additional mathematical macros
+\providecommand{\Partial}[2]{\frac{\partial\, #1}{\partial\, #2}}
+
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MISCELLANY ------------------------------------
 % ----------------------------------------------------------------------------------- 
