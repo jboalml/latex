@@ -558,6 +558,7 @@
   \sisetup{
     detect-all,                      % Use the current font and weight
     retain-explicit-plus,            % Display leading plus sign if present
+    per-mode         = symbol,       % Use a slash to indicate units in the denominator
     range-phrase     = --,           % Use an en-dash for ranges
     output-product   = \cdot,        % Use a centered dot for products
     exponent-product = \cdot         % Use a centered dot for scientific notation
