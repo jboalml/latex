@@ -230,7 +230,10 @@
 
 % Columns and rows (both in tables and text)
 \RequirePackage{multicol}
+  \setlength{\columnsep}{1cm}      % Column separation
+  \setlength{\columnseprule}{1pt}  % Draw a vertical line to separate columns
 \RequirePackage{multirow}
+\RequirePackage{vwcol}             % Variable width columns
 		
 % Avoid hyphenation when possible (-10000 encourage, 10000 forbid)
 \hyphenpenalty       =  7500
