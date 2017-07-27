@@ -60,7 +60,7 @@ If none of the above options work for you (probably because you are using a diff
 - [Create a local texmf tree in MiKTeX.](http://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex)
 
 #### Ubuntu font family
-Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on macOS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts). You will have to repeat the process whenever you update your TeX Live distribution.
+Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on macOS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts). Note you will have to reinstall them whenever you update your TeX Live distribution.
 
 Unfortunately, the author does not support installing these fonts in Windows and doing it manually can be quite tricky. For this reason, if Ubuntu fonts cannot be found in your system, the templates that use them will automatically switch to Open Sans, which is a similar alternative.
 
