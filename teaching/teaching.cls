@@ -414,7 +414,7 @@
       {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
       {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {å}{{\r a}}1 {Å}{{\r A}}1
       {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
-      {°}{{\textdegree}}1       {º}{{\textdegree}}1
+      {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
       % ¿ and ¡ are not correctly displayed if inconsolata font is used
       % together with the lstlisting environment. Consider typing code in
       % external files and using \lstinputlisting to display them instead.      
