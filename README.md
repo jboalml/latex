@@ -103,7 +103,7 @@ Check the [issues](https://github.com/jboalml/latex/issues) section for common p
 This repository is developed and maintained by [Jaime Boal](https://github.com/jboalml).
 
 ### Acknowledgments
-I would like to thank Romano Giannetti for detecting quite a few bugs and providing feedback on how to improve the `teaching.cls` template.
+I would like to thank [Romano Giannetti](https://github.com/Rmano) for detecting quite a few bugs and providing feedback on how to improve the `teaching.cls` template.
 
 ## License
 This repository is licensed under the [GNU General Public License v2.0](LICENSE.txt).
