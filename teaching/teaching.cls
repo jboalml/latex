@@ -596,8 +596,6 @@
 \RequirePackage{tikz}                % Vector graphics
   \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
 \RequirePackage[normalem]{ulem}      % Underlining
-\RequirePackage[os=win]{menukeys}    % Keyboard like keys
-  \renewmenumacro{\directory}[/]{pathswithfolder}
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- CROSS-REFERENCES ---------------------------------
@@ -615,7 +613,7 @@
     pdfsubject         = \theSubject,
     pdfkeywords        = \theKeywords,
     pdfnewwindow       = true,
-    colorlinks         = true,
+    %colorlinks        = true,  % Cannot be set if menukeys is used
     citecolor          = black,
     filecolor          = black,
     linkcolor          = black,
@@ -625,10 +623,16 @@
     bookmarksnumbered  = true,
     bookmarksopen      = true,
     bookmarksopenlevel = 1
-  }
+  }  
   
 \RequirePackage[all]{hypcap}  % Correct hyperlink anchors position in floats.
                               % Must be loaded after hyperref
+
+% Keyboard like keys. Must be loaded after hyperref because otherwise there
+% is a clash with the hyperref's colorlinks. In order to preserve hyperref's
+% functionality, the option hyperrefcolorlinks must be set.
+\RequirePackage[hyperrefcolorlinks,os=win]{menukeys}   
+  \renewmenumacro{\directory}[/]{pathswithfolder}
 
 % Modify automatic reference names
 \addto\extrasenglish{%
