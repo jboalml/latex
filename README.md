@@ -27,14 +27,14 @@ You can just drop the template you need in your project's folder and start using
 
 4. Finally, switch to the `General` tab and press `Refresh FNDB` to update the file name database.
 
-#### TeX Live (Windows, Mac OS, Linux)
+#### TeX Live (Windows, macOS, Linux)
 1. Type the following command on the command prompt or terminal to determine the root path for local files.
 
   ```
   kpsewhich -var-value=TEXMFHOME
   ```
 
-  In my case, the value of `TEXMFHOME` in Mac OS X is:
+  In my case, the value of `TEXMFHOME` in macOS is:
 
   ```
   /Users/jboal/Library/texmf
@@ -60,7 +60,7 @@ If none of the above options work for you (probably because you are using a diff
 - [Create a local texmf tree in MiKTeX.](http://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex)
 
 #### Ubuntu font family
-Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on Mac OS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts). You will have to repeat the process whenever you update your TeX Live distribution.
+Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on macOS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts). You will have to repeat the process whenever you update your TeX Live distribution.
 
 Unfortunately, the author does not support installing these fonts in Windows and doing it manually can be quite tricky. For this reason, if Ubuntu fonts cannot be found in your system, the templates that use them will automatically switch to Open Sans, which is a similar alternative.
 
