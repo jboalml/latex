@@ -58,6 +58,7 @@ If none of the above options work for you (probably because you are using a diff
 - [How to make LaTeX see local texmf tree.](http://tex.stackexchange.com/questions/30494/how-to-make-latex-see-local-texmf-tree)
 - [How to register my own packages or classes in a separate drive to TeX Live installation?](http://tex.stackexchange.com/questions/20160/how-to-register-my-own-packages-or-classes-in-a-separate-drive-to-tex-live-insta)
 - [Create a local texmf tree in MiKTeX.](http://tex.stackexchange.com/questions/69483/create-a-local-texmf-tree-in-miktex)
+- [Error: Sorry, but "MiKTeX Configuration Utility" did not succeed.](https://tex.stackexchange.com/questions/265674/miktex-two-things-did-not-succeed)
 
 #### Ubuntu font family
 Some templates use the [Ubuntu font family](http://font.ubuntu.com/) for titling. You will find the fonts and installation instructions for TeX Live on macOS and Linux [here](https://github.com/tzwenn/ubuntu-latex-fonts). Note that you will have to reinstall them whenever you update your TeX Live distribution.
