@@ -3,7 +3,7 @@
 % -----------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{teaching}[2016/08/24 v1.2.0 Class to produce teaching material]
+\ProvidesClass{teaching}[2017/09/01 v1.3.0 Class to produce teaching material]
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- LaTeX EXTENSIONS ---------------------------------
