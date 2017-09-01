@@ -3,7 +3,7 @@
 % -----------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{teaching}[2016/08/24 v1.2.0 Class to produce teaching material]
+\ProvidesClass{teaching}[2017/09/01 v1.3.0 Class to produce teaching material]
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- LaTeX EXTENSIONS ---------------------------------
@@ -133,10 +133,11 @@
 
 % Symbols
 \RequirePackage{bbding}
-  \let\Cross\relax         % Prevent clash with marvosym due to redefinition of \Cross
+  \let\Cross\relax            % Prevent clash with marvosym due to redefinition of \Cross
 \RequirePackage{dictsym}
+\RequirePackage{fontawesome}
 \RequirePackage{marvosym} 
-\RequirePackage{eurosym}   % Must be loaded after marvosym
+\RequirePackage{eurosym}      % Must be loaded after marvosym
 \RequirePackage{pifont}
 
 % -----------------------------------------------------------------------------------
@@ -230,7 +231,10 @@
 
 % Columns and rows (both in tables and text)
 \RequirePackage{multicol}
+  \setlength{\columnsep}{1cm}      % Column separation
+  \setlength{\columnseprule}{1pt}  % Draw a vertical line to separate columns
 \RequirePackage{multirow}
+\RequirePackage{vwcol}             % Variable width columns
 		
 % Avoid hyphenation when possible (-10000 encourage, 10000 forbid)
 \hyphenpenalty       =  7500
@@ -342,6 +346,12 @@
 			
 % Tables	
 \RequirePackage{array}	            % Column size and alignment options
+
+  % Define left, center and right aligned columns with fixed width
+  \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+  
 \RequirePackage{booktabs}           % Table format
 %\RequirePackage{hhline}            % Additional line formats
 %  \doublerulesepcolor[rgb]{1,1,1}  % Correct color in tables with double lines
@@ -405,6 +415,7 @@
       {œ}{{\oe}}1  {Œ}{{\OE}}1  {æ}{{\ae}}1 {Æ}{{\AE}}1  {ß}{{\ss}}1
       {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1  {å}{{\r a}}1 {Å}{{\r A}}1
       {ñ}{{\~n}}1  {Ñ}{{\~N}}1  {¿}{{?`}}1  {¡}{{!`}}1
+      {°}{{\textdegree}}1 {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1
       % ¿ and ¡ are not correctly displayed if inconsolata font is used
       % together with the lstlisting environment. Consider typing code in
       % external files and using \lstinputlisting to display them instead.      
@@ -544,20 +555,22 @@
 \DeclareMathOperator{\arcctg}{arcctg}
 \DeclareMathOperator{\atan}{atan}
 
-% -----------------------------------------------------------------------------------
-% ----------------------------------- MISCELLANY ------------------------------------
-% ----------------------------------------------------------------------------------- 
+% Additional mathematical macros
+\providecommand{\Partial}[2]{\frac{\partial\, #1}{\partial\, #2}}
 
-\RequirePackage{comment}             % Comment text out
-\RequirePackage{pdfpages}            % Attach .pdf files
-\RequirePackage{tikz}                % Vector graphics
-  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
-\RequirePackage[normalem]{ulem}      % Underlining
+% -----------------------------------------------------------------------------------
+% -------------------------------------- UNITS --------------------------------------
+% -----------------------------------------------------------------------------------
+
+% Text units
+\renewcommand{\textohm}{\ensuremath{\Omega}}
+
 \RequirePackage[tight,nice]{units}   % Simple units
 \RequirePackage{siunitx}             % Advanced units
   \sisetup{
     detect-all,                      % Use the current font and weight
     retain-explicit-plus,            % Display leading plus sign if present
+    per-mode         = symbol,       % Use a slash to indicate units in the denominator
     range-phrase     = --,           % Use an en-dash for ranges
     output-product   = \cdot,        % Use a centered dot for products
     exponent-product = \cdot         % Use a centered dot for scientific notation
@@ -567,9 +580,23 @@
   \IfStrEq*{\languagename}{spanish}{
     \sisetup{output-decimal-marker = {,}}  % Use decimal comma
   }{}
+  
+  % Additional units   
+  \DeclareSIUnit{\fahrenheit}{\SIUnitSymbolDegree F}
+  \DeclareSIUnit{\degreeFahrenheit}{\fahrenheit}
+  \DeclareSIUnit{\ntu}{NTU}          % Nephelometric Turbidity Unit
+  \DeclareSIUnit{\ohm}{\ensuremath{\Omega}}
+  \renewcommand{\SIUnitSymbolMicro}{\ensuremath{\upmu}}
 
-\RequirePackage[os=win]{menukeys}    % Keyboard like keys
-  \renewmenumacro{\directory}[/]{pathswithfolder}
+% -----------------------------------------------------------------------------------
+% ----------------------------------- MISCELLANY ------------------------------------
+% ----------------------------------------------------------------------------------- 
+
+\RequirePackage{comment}             % Comment text out
+\RequirePackage{pdfpages}            % Attach .pdf files
+\RequirePackage{tikz}                % Vector graphics
+  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+\RequirePackage[normalem]{ulem}      % Underlining
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- CROSS-REFERENCES ---------------------------------
@@ -587,7 +614,7 @@
     pdfsubject         = \theSubject,
     pdfkeywords        = \theKeywords,
     pdfnewwindow       = true,
-    colorlinks         = true,
+    %colorlinks        = true,  % Cannot be set if menukeys is used
     citecolor          = black,
     filecolor          = black,
     linkcolor          = black,
@@ -597,10 +624,16 @@
     bookmarksnumbered  = true,
     bookmarksopen      = true,
     bookmarksopenlevel = 1
-  }
+  }  
   
 \RequirePackage[all]{hypcap}  % Correct hyperlink anchors position in floats.
                               % Must be loaded after hyperref
+
+% Keyboard like keys. Must be loaded after hyperref because otherwise there
+% is a clash with the hyperref's colorlinks. In order to preserve hyperref's
+% functionality, the option hyperrefcolorlinks must be set.
+\RequirePackage[hyperrefcolorlinks,os=win]{menukeys}   
+  \renewmenumacro{\directory}[/]{pathswithfolder}
 
 % Modify automatic reference names
 \addto\extrasenglish{%
@@ -680,10 +713,11 @@
     \vspace{0.25cm plus 0.25cm minus 0.25cm}
   }{}
     
-  % Separate information sheet  
-  \ifbool{isExam}{
+  % Instructions 
+  \ifboolexpr{bool {isQuiz} or bool {isExam}}{
     \ifdefempty{\theInstructions}{}{
-      \vspace{1cm}
+      \ifbool{isExam}{\vspace{1cm}}{}
+      \ifbool{isQuiz}{\vspace{0.75cm}}{}
     
       {\noindent\centering\titlingfont\LARGE \MakeUppercase{\instructionsname}\\}
     
@@ -693,10 +727,14 @@
         \theInstructions
       \end{itemize} 
     }
+  }{}
+  
+  % Spacing
+  \ifbool{isExam}{\vfill}{}
+  \ifbool{isQuiz}{\vspace{0.5cm}}{}
       
-    \vfill
-      
-    % Mark
+  % Grade
+  \ifbool{isExam}{     
     \begin{flushright}
       \Large\textbf{\gradename:} \hspace{0.25cm} 
       \fbox{
