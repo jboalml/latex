@@ -556,7 +556,7 @@
 \DeclareMathOperator{\atan}{atan}
 
 % Additional mathematical macros
-\providecommand{\Partial}[2]{\frac{\partial\, #1}{\partial\, #2}}
+\providecommand{\Partial}[2]{\frac{\partial #1}{\partial #2}}
 
 % -----------------------------------------------------------------------------------
 % -------------------------------------- UNITS --------------------------------------
