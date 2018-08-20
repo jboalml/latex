@@ -259,7 +259,11 @@
 
   % User defined colors
   % \definecolor can be used instead but it overwrites previous color names
-  \providecolor{comillas}{RGB}{234,171,0}
+  \providecolor{yellowComillas}{RGB}{225,184,28}
+  \providecolor{grayComillas}{RGB}{83,86,90}
+  \providecolor{blueComillasIcai}{RGB}{0,53,148}
+  \providecolor{redComillasIcade}{RGB}{164,18,63}
+  \providecolor{blueComillasCihs}{RGB}{123,164,219}
   \providecolor{darkblue}{RGB}{0,67,134}  
   \providecolor{darkgreen}{RGB}{0,145,92}
   \providecolor{darkred}{rgb}{.647,.129,.149}
@@ -498,9 +502,9 @@
     \fancyhf{}  % Clear current header and footer
     
     \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{
-      \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-bw.pdf}}
+      \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-bw-horizontal.pdf}}
     }{
-      \fancyhead[RE,LO]{\includegraphics[width = 3cm]{images/logo-color.pdf}}
+      \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-color-horizontal.pdf}}
     }
 	  
     \newcommand{\thesubheader}{}
