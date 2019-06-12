@@ -270,6 +270,10 @@
   \providecolor{subtlegray}{gray}{0.9}
   \providecolor{greenC++}{rgb}{0,0.5,0}
   \providecolor{redC++}{rgb}{0.64,0.08,0.08}
+  \providecolor{grayPython}{gray}{0.4}
+  \providecolor{greenPython}{rgb}{0,0.5,0}
+  \providecolor{orangePython}{HTML}{CC7832}
+  \providecolor{violetPython}{rgb}{0.75,0.12,0.95}
   \providecolor{greenMatlab}{rgb}{0.13,0.54,0.13}
   \providecolor{violetMatlab}{rgb}{0.75,0.12,0.95}
   \providecolor{white}{rgb}{1,1,1}
@@ -468,6 +472,29 @@
       %numbersep        = 10pt,                  % Line number and code separation
       %firstnumber      = auto,                  % Display number in the first row
       %stepnumber       = 10,                    % Gap between two numbered lines
+    }
+  }
+  
+  % Python
+  \providecommand{\Python}{
+    \lstset{
+      language          = Python,                 % Language
+      basicstyle        = \ttfamily\footnotesize, % Default format 
+      keywordstyle      = \color{orangePython},   % Keyword format						
+      commentstyle      = \color{greenPython},    % Comment format
+      stringstyle       = \color{violetPython},   % String format
+      breaklines        = true,                   % Automatic line breaks
+      breakatwhitespace = true,                   % Line breaks only at white spaces
+      tabsize           = 4,                      % Number of spaces equal to a tab
+      showspaces        = false,                  % Show spaces in the code
+      showtabs          = false,                  % Show tabs in the code
+      showstringspaces  = false,                  % Show spaces among strings
+      %backgroundcolor  = \color{white},          % Background color
+      %numbers          = left,                   % Line number positioning
+      %numberstyle      = \footnotesize,          % Line number format
+      %numbersep        = 10pt,                   % Line number and code separation
+      %firstnumber      = auto,                   % Display number in the first row
+      %stepnumber       = 10,                     % Gap between two numbered lines
     }
   }
 
