@@ -729,7 +729,11 @@
     \noindent\titlingfont\huge\centering #2\\%
     \ifblank{#1}{}{%
       \vspace{2pt}%
-      \Large (#1)\\%
+      \ifbool{isReport}{%
+      	\Large #1\\%
+      }{%
+        \Large (#1)\\%
+      }%
     }%
     \vspace{0.5cm}
   }%
