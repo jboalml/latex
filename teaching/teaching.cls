@@ -40,6 +40,9 @@
 \newbool{isSolution}
 \newbool{isReport}
 
+\newbool{isBW}
+\newbool{isColor}
+
 % Class options
 \DeclareOption{notes}{\booltrue{isNotes}}
 \DeclareOption{exercises}{\booltrue{isExercises}}
@@ -48,6 +51,8 @@
 \DeclareOption{exam}{\booltrue{isExam}}
 \DeclareOption{solution}{\booltrue{isSolution}}
 \DeclareOption{report}{\booltrue{isReport}}
+\DeclareOption{bw}{\booltrue{isBW}}
+\DeclareOption{color}{\booltrue{isColor}}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}  % Pass unknown options
                                                                % to the base class
@@ -528,12 +533,20 @@
   \pagestyle{fancy}
     \fancyhf{}  % Clear current header and footer
     
-    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{
-      \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-bw-horizontal.pdf}}
+    \ifbool{isColor}{    
+    	\fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-color-horizontal.pdf}}
     }{
-      \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-color-horizontal.pdf}}
+      \ifbool{isBW}{ 
+        \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-bw-horizontal.pdf}}
+      }{
+        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{
+          \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-bw-horizontal.pdf}}
+        }{
+          \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-color-horizontal.pdf}}
+        }
+      }
     }
-	  
+    
     \newcommand{\thesubheader}{}
     \newcommand{\subheader}[1]{\renewcommand{\thesubheader}{#1}}	  
 	  
