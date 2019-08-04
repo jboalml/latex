@@ -32,32 +32,38 @@
 % -------------------------------- CLASS PROPERTIES ---------------------------------
 % -----------------------------------------------------------------------------------                                    
 
-\newbool{isNotes}
-\newbool{isExercises}
-\newbool{isLab}
-\newbool{isQuiz}
-\newbool{isExam}
-\newbool{isSolution}
-\newbool{isReport}
-
-\newbool{isBW}
-\newbool{isColor}
+\RequirePackage{kvoptions}   % Key-value class and package options
+  %\SetupKeyvalOptions{      % Modify family name and prefix
+  %  family = teaching,      % Defaults to class or package name if not provided
+  %  prefix = teaching@
+  %}
 
 % Class options
-\DeclareOption{notes}{\booltrue{isNotes}}
-\DeclareOption{exercises}{\booltrue{isExercises}}
-\DeclareOption{lab}{\booltrue{isLab}}
-\DeclareOption{quiz}{\booltrue{isQuiz}}
-\DeclareOption{exam}{\booltrue{isExam}}
-\DeclareOption{solution}{\booltrue{isSolution}}
-\DeclareOption{report}{\booltrue{isReport}}
-\DeclareOption{bw}{\booltrue{isBW}}
-\DeclareOption{color}{\booltrue{isColor}}
+\DeclareBoolOption{exam}
+\DeclareBoolOption{exercises}
+\DeclareBoolOption{lab}
+\DeclareBoolOption{notes}
+\DeclareBoolOption{quiz}
+\DeclareBoolOption{report}
+\DeclareBoolOption{solution}
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}  % Pass unknown options
-                                                               % to the base class
-\ProcessOptions\relax  % Process given options
-\LoadClass{article}    % Load base class          
+\DeclareStringOption[]{logo}[]  % Set to \empty if option not provided (first [])
+                                % or given without value (second [])
+
+% Pass unknown options to the base class
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{article}}
+
+\ProcessKeyvalOptions*  % Process given options
+\LoadClass{article}     % Load base class    
+
+% Select default value for logo
+\ifx\teaching@logo\empty
+  \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution} or bool {teaching@report}}{
+    \setkeys{teaching}{logo=comillas-bw-h}
+  }{
+    \setkeys{teaching}{logo=comillas-color-h}
+  }      
+\fi
 
 % -----------------------------------------------------------------------------------
 % -------------------------------------- FONTS --------------------------------------
@@ -167,9 +173,9 @@
     \def\notesname{Notes}%
     \def\ofname{of}%
     \def\studentname{Name}%
-    \ifbool{isExercises}{%
+    \ifbool{teaching@exercises}{%
       \def\sectionname{Exercise}}{%
-      \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{%
+      \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution}}{%
         \def\sectionname{Problem}}{%
         \def\sectionname{}%
       }
@@ -187,9 +193,9 @@
     \def\notesname{Apuntes}%
     \def\ofname{de}
     \def\studentname{Nombre}%
-    \ifbool{isExercises}{%
+    \ifbool{teaching@exercises}{%
       \def\sectionname{Ejercicio}}{%
-      \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{%
+      \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution}}{%
         \def\sectionname{Problema}}{%
         \def\sectionname{}%
       }
@@ -533,19 +539,7 @@
   \pagestyle{fancy}
     \fancyhf{}  % Clear current header and footer
     
-    \ifbool{isColor}{    
-    	\fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-color-horizontal.pdf}}
-    }{
-      \ifbool{isBW}{ 
-        \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-bw-horizontal.pdf}}
-      }{
-        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{
-          \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-bw-horizontal.pdf}}
-        }{
-          \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/logo-color-horizontal.pdf}}
-        }
-      }
-    }
+    \fancyhead[RE,LO]{\includegraphics[height = 1.15cm]{images/\teaching@logo.pdf}}
     
     \newcommand{\thesubheader}{}
     \newcommand{\subheader}[1]{\renewcommand{\thesubheader}{#1}}	  
@@ -566,7 +560,7 @@
     \providecommand{\footer}[1]{\renewcommand{\thefooter}{#1}}  
 	  
     \fancyfoot[LO,RE]{\small \textbf{\thefooter}\linebreak \theDate}
-    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{
+    \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution}}{
       \RequirePackage{lastpage}
       \fancyfoot[RO,LE]{\thepage~\ofname~\pageref*{LastPage}} % With \pageref* LastPage
                                                               % will not be a link
@@ -684,9 +678,9 @@
 \addto\extrasenglish{%
   \def\partautorefname{Part}%
   \def\chapterautorefname{Chapter}%
-  \ifbool{isExercises}{%
+  \ifbool{teaching@exercises}{%
     \def\sectionautorefname{Exercise}}{%
-    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{%
+    \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution}}{%
       \def\sectionautorefname{Problem}}{%
       \def\sectionautorefname{Section}%
     }
@@ -702,9 +696,9 @@
 \addto\extrasspanish{%
   \def\partautorefname{Parte}%
   \def\chapterautorefname{Capítulo}%
-  \ifbool{isExercises}{%
+  \ifbool{teaching@exercises}{%
     \def\sectionautorefname{Ejercicio}}{%
-    \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution}}{%
+    \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution}}{%
       \def\sectionautorefname{Problema}}{%
       \def\sectionautorefname{Sección}%
     }
@@ -729,7 +723,7 @@
     \noindent\titlingfont\huge\centering #2\\%
     \ifblank{#1}{}{%
       \vspace{2pt}%
-      \ifbool{isReport}{%
+      \ifbool{teaching@report}{%
       	\Large #1\\%
       }{%
         \Large (#1)\\%
@@ -739,10 +733,10 @@
   }%
   
   % Subheader
-  \ifbool{isNotes}{\subheader{\notesname}}{
-    \ifbool{isExercises}{\subheader{\exercisesname}}{
-      \ifbool{isLab}{\subheader{\labname}}{
-        \ifboolexpr{bool {isQuiz} or bool {isExam} or bool {isSolution} or bool {isReport}}{\subheader{\theDegree}}{
+  \ifbool{teaching@notes}{\subheader{\notesname}}{
+    \ifbool{teaching@exercises}{\subheader{\exercisesname}}{
+      \ifbool{teaching@lab}{\subheader{\labname}}{
+        \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution} or bool {teaching@report}}{\subheader{\theDegree}}{
         }
       }
     }
@@ -753,7 +747,7 @@
   \footer{\theTitle}
   
   % Student data
-  \ifboolexpr{bool {isQuiz} or bool {isExam}}{
+  \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam}}{
     \vspace{0.5cm}
     \noindent
     \begin{tabularx}{\linewidth}{@{}Xr@{}}
@@ -763,10 +757,10 @@
   }{}
     
   % Instructions 
-  \ifboolexpr{bool {isQuiz} or bool {isExam}}{
+  \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam}}{
     \ifdefempty{\theInstructions}{}{
-      \ifbool{isExam}{\vspace{1cm}}{}
-      \ifbool{isQuiz}{\vspace{0.75cm}}{}
+      \ifbool{teaching@exam}{\vspace{1cm}}{}
+      \ifbool{teaching@quiz}{\vspace{0.75cm}}{}
     
       {\noindent\centering\titlingfont\LARGE \MakeUppercase{\instructionsname}\\}
     
@@ -779,11 +773,11 @@
   }{}
   
   % Spacing
-  \ifbool{isExam}{\vfill}{}
-  \ifbool{isQuiz}{\vspace{0.5cm}}{}
+  \ifbool{teaching@exam}{\vfill}{}
+  \ifbool{teaching@quiz}{\vspace{0.5cm}}{}
       
   % Grade
-  \ifbool{isExam}{     
+  \ifbool{teaching@exam}{     
     \begin{flushright}
       \Large\textbf{\gradename:} \hspace{0.25cm} 
       \fbox{
