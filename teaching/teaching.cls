@@ -34,7 +34,7 @@
 
 \RequirePackage{kvoptions}   % Key-value class and package options
   %\SetupKeyvalOptions{      % Modify family name and prefix
-  %  family = teaching,      % Defaults to class or package name if not provided
+  %  family = teaching,      % Defaults to class or package name if not set
   %  prefix = teaching@
   %}
 
