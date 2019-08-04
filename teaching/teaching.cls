@@ -484,7 +484,7 @@
   \providecommand{\Python}{
     \lstset{
       language          = Python,                 % Language
-      basicstyle        = \ttfamily\footnotesize, % Default format 
+      basicstyle        = \ttfamily\small,        % Default format 
       keywordstyle      = \color{orangePython},   % Keyword format						
       commentstyle      = \color{greenPython},    % Comment format
       stringstyle       = \color{violetPython},   % String format
