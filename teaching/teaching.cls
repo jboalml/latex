@@ -74,7 +74,7 @@
 							                       
 % Fonts
 \RequirePackage{charter}                  % Serif: Bitstream Charter w/o math support
-\RequirePackage[defaultsans]{opensans}    % Sans:  Open Sans
+\RequirePackage[defaultsans]{opensans}    % Sans: Open Sans
 \RequirePackage[varqu,varl]{inconsolata}  % Monospaced: Inconsolata
 \RequirePackage{amsfonts}                 % American Mathematical Society fonts
 \RequirePackage{upgreek}                  % Upright greek letters
@@ -386,7 +386,7 @@
 \interdisplaylinepenalty = 2500  % Allow page breaks for multiline equations 
                                  % (-10000 encourage, 10000 forbid)                                                 
 
-% Rotate flots            
+% Rotate floats            
 \RequirePackage{rotating}  % Must be loaded after graphicx
 
 % -----------------------------------------------------------------------------------
