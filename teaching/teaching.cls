@@ -594,7 +594,8 @@
 \DeclareMathOperator{\atan}{atan}
 
 % Additional mathematical macros
-\providecommand{\Partial}[2]{\frac{\partial #1}{\partial #2}}
+\providecommand{\cspace}{\hspace{1pt}}                         % Space betweeen variables
+\providecommand{\Partial}[2]{\frac{\partial #1}{\partial #2}}  % Partial derivative
 
 % -----------------------------------------------------------------------------------
 % -------------------------------------- UNITS --------------------------------------
