@@ -410,6 +410,23 @@
 \interfootnotelinepenalty = 10000
 
 % -----------------------------------------------------------------------------------
+% -------------------------------------- PLOTS --------------------------------------
+% -----------------------------------------------------------------------------------
+
+% Vector graphics
+\RequirePackage{tikz}  
+  \usetikzlibrary{arrows.meta}       % Arrow tips              
+  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
+  \usetikzlibrary{calc}              % Make complex coordinate calculations
+  \usetikzlibrary{positioning}       % Relative node positioning
+  \usetikzlibrary{shapes.arrows}     % Arrow shape nodes
+  \usetikzlibrary{shapes.geometric}  % Geometric shape nodes
+  
+% Plots
+\RequirePackage{pgfplots}
+  \pgfplotsset{compat=1.16}
+  
+% -----------------------------------------------------------------------------------
 % -------------------------------------- CODE ---------------------------------------
 % -----------------------------------------------------------------------------------  
 
@@ -634,8 +651,6 @@
 \RequirePackage{comment}             % Comment text out
 \RequirePackage{pdfpages}            % Attach .pdf files
 \RequirePackage{qrcode}              % Generate QR codes
-\RequirePackage{tikz}                % Vector graphics
-  \usetikzlibrary{babel}             % Solves a clash between babel and PGF/TikZ 3.0.0 (http://tex.stackexchange.com/questions/166772/problem-with-babel-and-tikz-using-draw)
 \RequirePackage[normalem]{ulem}      % Underlining
 
 % -----------------------------------------------------------------------------------
