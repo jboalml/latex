@@ -1,7 +1,7 @@
 # LaTeX templates
 This repository holds a collection of LaTeX templates intended to make it easier for everyone, whether you have previous experience with LaTeX or not, to type visually appealing documents.
 
-Currently, the available templates are mostly of an academic nature (bachelor's, master's, and PhD theses, teaching material...) and specifically designed for the [ICAI School of Engineering](http://icai.comillas.edu/), which belongs to [Comillas Pontifical University](http://comillas.edu/). Nevertheless, users with basic knowledge of LaTeX should be able to modify them for other purposes without much effort.
+Currently, the available templates are mostly of an academic nature (bachelor's, master's, and PhD theses, teaching material...) and specifically designed for the [ICAI School of Engineering](https://www.icai.comillas.edu/), which belongs to [Comillas Pontifical University](https://www.comillas.edu/). Nevertheless, users with basic knowledge of LaTeX should be able to modify them for other purposes without much effort.
 
 ## Contents
 - [Template description](#template-description)
@@ -37,10 +37,10 @@ You can just drop the template you need in your project's folder and start using
   In my case, the value of `TEXMFHOME` in macOS is:
 
   ```
-  /Users/jboal/Library/texmf
+  /Users/jboalml/Library/texmf
   ```
 
-2. You should place the templates you want to use in a subdirectory of `TEXMFHOME/tex/latex/` (e.g., `/Users/jboal/Library/texmf/tex/latex/teaching/`). You may need to create the folder path. This approach has the advantage that it is not necessary to update the package database as TeX searches your personal `texmf` tree directly.
+2. You should place the templates you want to use in a subdirectory of `TEXMFHOME/tex/latex/` (e.g., `/Users/jboalml/Library/texmf/tex/latex/teaching/`). You may need to create the folder path. This approach has the advantage that it is not necessary to update the package database as TeX searches your personal `texmf` tree directly.
 
 3. Optionally, you can verify that your distribution is able to find the template using the following command:
 
@@ -85,13 +85,38 @@ where `classname` is the template name.
 - Default values are highlighted in bold. The single- or double-sided option's default value depends on the template. Therefore, I would suggest that you always explicitly define it.
 - As the main font chosen in most templates is rather large, a **font size** of `11pt` is generally recommended over `12pt`.
 - **The language option is mandatory**; otherwise the document will not compile. If you need to use more than one language write them one after the other. Bear in mind that the last language you type will be the one selected at the beginning of the document.
-- **Some templates have additional options**. Check the [wiki](https://github.com/jboalml/latex/wiki) to learn how to further customize the different templates. For instance, in the case of `teaching.cls` you can define the purpose of the document (i.e., `notes`, `exercises`, `lab`, `quiz`, `exam`, `solution`, or `report`). Layout and appearance will be automatically set accordingly.
+- Some templates have additional options:
+  ##### `teaching.cls`
+  - You can define the purpose of the document (i.e., `notes`, `exercises`, `lab`, `quiz`, `exam`, `solution`, or `report`). Layout and appearance will be automatically set accordingly.
+  - You can override the default logo used (either `comillas-color-h` or `comillas-bw-h`, depending on the document purpose) with `logo=` followed by one of these options (e.g., `logo=icai-color-h`):
+  | Logo                                         | Color | Layout     | Parameter value    |
+  |----------------------------------------------|-------| -----------| -------------------|
+  | Universidad Pontificia Comillas              | Color | Vertical   | comillas-color     |
+  | Universidad Pontificia Comillas              | Color | Horizontal | comillas-color-h   |
+  | Universidad Pontificia Comillas              | B/W   | Vertical   | comillas-bw        |
+  | Universidad Pontificia Comillas              | B/W   | Horizontal | comillas-bw-h      |
+  | Universidad Pontificia Comillas (old logo)   | Color | Horizontal | comillas-color-old |
+  | Universidad Pontificia Comillas (old logo)   | B/W   | Horizontal | comillas-bw-old    |
+  | Comillas ICAI                                | Color | Vertical   | icai-color         |
+  | Comillas ICAI                                | Color | Horizontal | icai-color-h       |
+  | Comillas ICAI                                | B/W   | Vertical   | icai-bw            |
+  | Comillas ICAI                                | B/W   | Horizontal | icai-bw-h          |
+  | Instituto de Investigación Tecnológica (IIT) | Color | Horizontal | iit-color          |
+  | Instituto de Investigación Tecnológica (IIT) | B/W   | Horizontal | iit-bw             |
+  | Cátedra de Industria Conectada               | Color | Horizontal | cic-color          |
+  | Cátedra de Industria Conectada               | B/W   | Horizontal | cic-bw             |
 
 #### Example
 In order to use `teaching.cls` to write some class notes in Spanish you would type:
 
 ```
 \documentclass[11pt,a4paper,twoside,spanish,notes]{teaching}
+```
+
+and to change the default logo:
+
+```
+\documentclass[11pt,a4paper,twoside,spanish,notes,logo=icai-color-h]{teaching}
 ```
 
 #### Sample documents
@@ -109,4 +134,4 @@ I would like to thank [Romano Giannetti](https://github.com/Rmano) for detecting
 ## License
 This repository is licensed under the [GNU General Public License v2.0](LICENSE.txt).
 
-The Comillas logo is property of [Comillas Pontifical University](http://comillas.edu/). All rights reserved.
+Logos are property of [Comillas Pontifical University](https://www.comillas.edu/). All rights reserved.
