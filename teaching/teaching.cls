@@ -47,6 +47,8 @@
 \DeclareBoolOption{report}
 \DeclareBoolOption{solution}
 
+\DeclareBoolOption[false]{nograde}  % Remove grade box in exams
+
 \DeclareStringOption[]{logo}[]  % Set to \empty if option not provided (first [])
                                 % or given without value (second [])
 
@@ -793,17 +795,19 @@
   \ifbool{teaching@quiz}{\vspace{0.5cm}}{}
       
   % Grade
-  \ifbool{teaching@exam}{     
-    \begin{flushright}
-      \Large\textbf{\gradename:} \hspace{0.25cm} 
-      \fbox{
-        \begin{minipage}{2.5cm}
-          \hfill \vspace{1.25cm}
-        \end{minipage}
-      }
-    \end{flushright}
+  \ifbool{teaching@exam}{   
+    \ifbool{teaching@nograde}{}{  
+      \begin{flushright}
+        \Large\textbf{\gradename:} \hspace{0.25cm} 
+        \fbox{
+          \begin{minipage}{2.5cm}
+            \hfill \vspace{1.25cm}
+          \end{minipage}
+        }
+      \end{flushright}
     
-    \vspace{0.75cm}
+      \vspace{0.75cm}
+    }
     
     \cleardoublepage
   }{}
