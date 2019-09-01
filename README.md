@@ -88,6 +88,7 @@ where `classname` is the template name.
 - Some templates have additional options:
   ##### `teaching.cls`
   - You can define the purpose of the document (i.e., `notes`, `exercises`, `lab`, `quiz`, `exam`, `solution`, or `report`). Layout and appearance will be automatically set accordingly.
+  - If the document is an `exam`, you may use the `nograde` option to remove the grade box from the frontcover.
   - You can override the default logo used (either `comillas-color-h` or `comillas-bw-h`, depending on the document purpose) with `logo=` followed by one of these options (e.g., `logo=icai-color-h`):
   | Logo                                         | Color | Layout     | Parameter value    |
   |----------------------------------------------|-------| -----------| -------------------|
