@@ -49,6 +49,8 @@
 
 \DeclareBoolOption[false]{nograde}  % Remove grade box in exams
 
+\DeclareBoolOption{circuitikz}  % Enable circuitikz customizations
+
 \DeclareStringOption[]{logo}[]  % Set to \empty if option not provided (first [])
                                 % or given without value (second [])
 
@@ -428,6 +430,110 @@
 \RequirePackage{pgfplots}
   \pgfplotsset{compat=1.16}
   
+% -----------------------------------------------------------------------------------
+% ------------------------------------ CIRCUITS -------------------------------------
+% -----------------------------------------------------------------------------------
+
+\ifbool{teaching@circuitikz}{
+  \RequirePackage[RPvoltages,american,cuteinductors,siunitx]{circuitikz}
+
+    % Line thickness
+    \ctikzset{monopoles/ground/thickness=1}
+    \ctikzset{bipoles/thickness=1}
+    \ctikzset{tripoles/thickness=1}
+    \ctikzset{quadpoles/thickness=1}
+    \ctikzset{multipoles/thickness=1}
+    \tikzstyle{every path}=[line width=0.75pt, line join=rect, line cap=butt]
+  
+    % Font dimension
+    \tikzstyle{every node}=[font=\small]
+    
+    % Base component size
+    \ctikzset{bipoles/length=1.25cm}
+    
+    % Pasive components
+    \ctikzset{capacitors/scale=0.7}
+    \ctikzset{resistors/scale=0.8}
+    
+    % Diodes
+    \ctikzset{bipoles/diode/height=0.225}
+	  \ctikzset{bipoles/diode/width=0.225}
+	  \ctikzset{bipoles/bidirectionaldiode/height=0.8}
+	  \ctikzset{bipoles/bidirectionaldiode/width=0.8}
+	  \ctikzset{bipoles/bidirectionaldiode/diode width left=0.225}
+		\ctikzset{bipoles/bidirectionaldiode/diode width right=0.225}
+    
+    % Power supply arrows  
+    \ctikzset{monopoles/vcc/width=0.25}
+    \ctikzset{monopoles/vcc/arrow={Latex}}
+    \ctikzset{monopoles/vee/arrow={Latex}}
+  
+    % Operational amplifiers
+    \ctikzset{tripoles/op amp/font=\fontsize{6}{0}\selectfont\boldmath}  % + and - font size
+    \ctikzset{tripoles/op amp/height=1.25}             % Total height
+    \ctikzset{tripoles/op amp/width=2.0}               % Total width (including ports)
+    \ctikzset{tripoles/op amp/input height=0.6}        % Input port separation
+    \ctikzset{tripoles/op amp/port width=0.6}          % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/op amp/up pos=0.5}              % Top and bottom anchor position
+    
+    % Fully differential operational amplifiers
+    \ctikzset{tripoles/fd op amp/font=\fontsize{6}{0}\selectfont\boldmath}  % + and - font size
+    \ctikzset{tripoles/fd op amp/height=1.25}          % Total height
+    \ctikzset{tripoles/fd op amp/width=2.0}            % Total width (including ports)
+    \ctikzset{tripoles/fd op amp/input height=0.6}     % Input port separation
+    \ctikzset{tripoles/fd op amp/output height=0.4}    % Output port separation
+    \ctikzset{tripoles/fd op amp/port width=0.6}       % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/fd op amp/up pos=0.5}           % Top and bottom anchor position
+    
+    % Transconductance amplifiers
+    \ctikzset{tripoles/gm amp/font=\fontsize{6}{0}\selectfont\boldmath}  % + and - font size
+    \ctikzset{tripoles/gm amp/height=1.25}             % Left height
+    \ctikzset{tripoles/gm amp/height 2=0.5}            % Right height
+    \ctikzset{tripoles/gm amp/width=1.625}             % Total width (including ports)
+    \ctikzset{tripoles/gm amp/input height=0.6}        % Input port separation
+    \ctikzset{tripoles/gm amp/port width=0.55}         % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/gm amp/up pos=0.5}              % Top and bottom anchor position
+    
+    % Instrumentation amplifiers
+    \ctikzset{tripoles/inst amp/font=\fontsize{6}{0}\selectfont\boldmath}  % + and - font size
+    \ctikzset{tripoles/inst amp/height=1.25}           % Left height
+    \ctikzset{tripoles/inst amp/height 2=0.6}          % Right height
+    \ctikzset{tripoles/inst amp/width=1.625}           % Total width (including ports)
+    \ctikzset{tripoles/inst amp/input height=0.6}      % Input port separation
+    \ctikzset{tripoles/inst amp/port width=0.6}        % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/inst amp/up pos=0.5}            % Top and bottom anchor position
+    \ctikzset{tripoles/inst amp/refv pos=0.8}          % Top and bottom reference position
+    
+    % Fully differential instrumentation amplifiers
+    \ctikzset{tripoles/fd inst amp/font=\fontsize{6}{0}\selectfont\boldmath}  % + and - font size
+    \ctikzset{tripoles/fd inst amp/height=1.25}        % Left height
+    \ctikzset{tripoles/fd inst amp/height 2=0.6}       % Right height
+    \ctikzset{tripoles/fd inst amp/width=1.625}        % Total width (including ports)
+    \ctikzset{tripoles/fd inst amp/input height=0.6}   % Input port separation
+    \ctikzset{tripoles/fd inst amp/output height=0.4}  % Output port separation
+    \ctikzset{tripoles/fd inst amp/port width=0.6}     % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/fd inst amp/up pos=0.5}         % Top and bottom anchor position
+    \ctikzset{tripoles/fd inst amp/refv pos=0.8}       % Top and bottom reference position
+    
+    % Instrumentation amplifiers with gain resistor terminals
+    \ctikzset{tripoles/inst amp ra/font=\fontsize{6}{0}\selectfont\boldmath}  % + and - font size
+    \ctikzset{tripoles/inst amp ra/height=2}           % Left height
+    \ctikzset{tripoles/inst amp ra/height 2=0.6}       % Right height
+    \ctikzset{tripoles/inst amp ra/width=2.2}          % Total width (including ports)
+    \ctikzset{tripoles/inst amp ra/input height=0.75}  % Input port separation
+    \ctikzset{tripoles/inst amp ra/port width=0.6}     % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/inst amp ra/up pos=0.5}         % Top and bottom anchor position
+    \ctikzset{tripoles/inst amp ra/refv pos=0.8}       % Top and bottom reference position
+    \ctikzset{tripoles/inst amp ra/ra pos=0.5}         % Gain resistor terminals
+    
+    % Plain amplifiers
+    \ctikzset{tripoles/plain amp/height=1.25}          % Total height
+    \ctikzset{tripoles/plain amp/width=2}              % Total width (including ports)
+    \ctikzset{tripoles/plain amp/input height=0.6}     % Input port separation
+    \ctikzset{tripoles/plain amp/port width=0.6}       % Port length (1 = None, 0 = All) 
+    \ctikzset{tripoles/plain amp/up pos=0.5}           % Top and bottom anchor position
+}{}
+
 % -----------------------------------------------------------------------------------
 % -------------------------------------- CODE ---------------------------------------
 % -----------------------------------------------------------------------------------  
