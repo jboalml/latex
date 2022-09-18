@@ -170,6 +170,8 @@
   
   % English names
   \addto\captionsenglish{%
+    \def\authorname{Author}%
+    \def\authorsname{Authors}%
     \def\bibname{References}%
     \def\exercisesname{Exercises}%
     \def\gradename{Grade}%
@@ -191,6 +193,8 @@
   % Spanish names
   \addto\captionsspanish{%
     \def\tablename{Tabla}%
+    \def\authorname{Autor}%
+    \def\authorsname{Autores}%
     \def\bibname{Referencias}%
     \def\exercisesname{Ejercicios}%
     \def\gradename{Calificación}%
@@ -701,6 +705,11 @@
   }
 									 
 \RequirePackage{emptypage}	% Blank pages should not have neither header nor footer
+
+% Place text anywhere on the page
+\RequirePackage[absolute]{textpos}
+  \setlength{\TPHorizModule}{\paperwidth}
+	\setlength{\TPVertModule}{\paperheight - \voffset}
   
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MATHEMATICS -----------------------------------
@@ -953,4 +962,92 @@
     
     \cleardoublepage
   }{}
+}
+
+% Frontcover[Logo]{Title}{Subtitle}{Pretitle}
+\providecommand{\Frontcover}[4][comillas-color]{
+  {%
+    \thispagestyle{empty}{
+      \newgeometry{left=2.5cm, right=2.5cm, top=2cm, bottom=2cm}
+	
+      \centering
+      \includegraphics[width = 6.25cm]{#1.pdf}\\
+      \vspace{0.5cm}
+
+      \titlingfont
+      \LARGE\MakeUppercase{\ifblank{#4}{\theDegree}{#4}}\\
+      \vspace{\fill}
+ 	
+      \huge\MakeUppercase{\theSubject}\\
+      \vspace{0.75cm}
+      
+      % Title
+      \fontsize{27}{27}\titlingfont\selectfont \MakeUppercase{#2}\\
+        
+      % Subtitle
+      \ifblank{#2}{}{
+        \vspace{0.675cm} 
+        \LARGE\titlingfont\selectfont #3\\
+      }
+      
+      % Authors
+      \vspace{\fill}
+      \fontsize{14}{14}\sffamily\fontseries{sb}\selectfont
+        
+      \StrCount{\theAuthor}{,}[\numCommas]
+      \ifthenelse{\equal{\numCommas}{0}}{         
+        \authorname:\\ 
+        \vspace{0.25cm} 
+        \theAuthor\\ 
+      }{
+        \authorsname:\\ 
+        \vspace{0.25cm} 
+        \foreach \author in \theAuthor {
+          \vspace{0.15cm} \author\\
+        }
+      }
+    
+      % Place and date
+      \vspace{\fill}
+      \vspace{-2cm}
+		  \fontsize{14}{14}\selectfont Madrid\\
+		  \vspace{0.25cm} 
+      \fontsize{12}{12}\selectfont \theDate
+	
+      % Footer
+      \vspace{1cm}
+	    \begin{textblock}{1}[0,1](0,1)
+	      \tikzstyle{pie} = [
+	        rectangle, draw = none, 
+	        fill = yellowComillas, 
+	        minimum width = \paperwidth, 
+	        minimum height=2cm, 
+	        text centered
+	      ]					
+	      \begin{tikzpicture}
+		      \node[pie]{\parbox{0.95\textwidth}
+          {\centering \fontsize{10}{12}\fontfamily{phv}\bfseries\selectfont\color{white}
+			    Alberto Aguilera, 25 -- 28015 Madrid (Spain) -- Tel. (+34) 91.542.28.00\\ www.icai.comillas.edu}};
+	      \end{tikzpicture}
+	    \end{textblock}
+      
+      \restoregeometry
+    }
+    
+    \cleardoublepage
+  }
+  
+  % Subheader
+  \ifbool{teaching@notes}{\subheader{\notesname}}{
+    \ifbool{teaching@exercises}{\subheader{\exercisesname}}{
+      \ifbool{teaching@lab}{\subheader{\labname}}{
+        \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam} or bool {teaching@solution} or bool {teaching@report}}{\subheader{\theDegree}}{
+        }
+      }
+    }
+  }
+  
+  % Footer and PDF information
+  \renewcommand{\theTitle}{#2}
+  \footer{\theTitle}
 }
