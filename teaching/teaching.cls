@@ -398,6 +398,8 @@
   }  
                                                       
   %\renewcommand{\labelitemi}{\tiny$\blacksquare$}  % Change default bullet points
+  
+\RequirePackage{etaremune}       % Reverse-counting enumerate
                                                        
 % Equations
 \interdisplaylinepenalty = 2500  % Allow page breaks for multiline equations 
