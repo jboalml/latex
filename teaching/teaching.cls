@@ -730,14 +730,12 @@
 % Text units
 \renewcommand{\textohm}{\ensuremath{\Omega}}
 
-\RequirePackage[tight,nice]{units}   % Simple units
 \RequirePackage{siunitx}             % Advanced units
   \sisetup{
     detect-all,                      % Use the current font and weight
     retain-explicit-plus,            % Display leading plus sign if present
     per-mode         = symbol,       % Use a slash to indicate units in the denominator
     range-phrase     = --,           % Use an en-dash for ranges
-    output-product   = \cdot,        % Use a centered dot for products
     exponent-product = \cdot         % Use a centered dot for scientific notation
   }
   
@@ -751,7 +749,6 @@
   \DeclareSIUnit{\degreeFahrenheit}{\fahrenheit}
   \DeclareSIUnit{\ntu}{NTU}          % Nephelometric Turbidity Unit
   \DeclareSIUnit{\ohm}{\ensuremath{\Omega}}
-  \renewcommand{\SIUnitSymbolMicro}{\ensuremath{\upmu}}
 
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MISCELLANY ------------------------------------
