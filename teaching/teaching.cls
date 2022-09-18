@@ -201,6 +201,7 @@
     \def\groupname{Grupo}%
     \def\instructionsname{Instrucciones}%
     \def\labname{Laboratorio}%
+    \def\listtablename{Índice de tablas}%
     \def\notesname{Apuntes}%
     \def\ofname{de}
     \def\studentname{Nombre}%
@@ -329,6 +330,38 @@
 																
   \titleformat{\subparagraph}{\normalsize\titlingfont}{\thesubparagraph .}{0.35em}{}
   \titlespacing*{\subparagraph}{0pt}{.5ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
+  
+% ----------------------------------------------------------------------------------- 
+% ------------------------------------- INDICES -------------------------------------
+% -----------------------------------------------------------------------------------
+
+% Last level displayed in ToC (max. 5). Current selection: \subsection
+\setcounter{tocdepth}{3}
+
+% Format ToC, LoF and LoT
+%\RequirePackage[dotinlabels]{titletoc}  % Alternative package
+
+\RequirePackage[titles]{tocloft}
+  % Text that follows the level number
+  \renewcommand{\cftsecaftersnum}{.}
+  \renewcommand{\cftsubsecaftersnum}{.}
+  \renewcommand{\cftsubsubsecaftersnum}{.}
+  \renewcommand{\cftparaaftersnum}{.}
+  \renewcommand{\cftsubparaaftersnum}{.}
+  \renewcommand{\cftfigaftersnum}{.\hspace{8pt}}
+  \renewcommand{\cfttabaftersnum}{.\hspace{8pt}}
+  
+  % Figure and table label space
+  \settowidth{\cftfignumwidth}{88\cftfigaftersnum}
+  \settowidth{\cfttabnumwidth}{88\cfttabaftersnum}
+  
+  % Figure and table indentation
+  \renewcommand{\cftfigindent}{0pt}
+  \renewcommand{\cfttabindent}{0pt}
+  
+  % Figure and table vertical spacing
+  \setlength{\cftbeforefigskip}{8pt}
+  \setlength{\cftbeforetabskip}{8pt}
 
 % -----------------------------------------------------------------------------------
 % ------------------------------ FLOATING ENVIRONMENTS ------------------------------
@@ -366,7 +399,8 @@
     labelfont     = bf, 
     labelsep      = period, 
     justification = justified, 
-    textfont      = small
+    textfont      = small,
+    textformat    = period
   }
  	
 % Penalize isolated floats	
