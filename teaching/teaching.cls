@@ -703,6 +703,27 @@
   \fancypagestyle{plain}{
     \fancyhead{}            % Clear the header
   }
+  
+% Add frontmatter, mainmatter and backmatter commands (adapted from the book class)
+\makeatletter
+  \providecommand\frontmatter{%
+    \cleardoublepage
+    \pagenumbering{roman}
+  }
+
+  \providecommand\mainmatter{
+    \cleardoublepage
+    \pagenumbering{arabic}
+  }
+
+  \providecommand\backmatter{%
+    \if@openright
+      \cleardoublepage
+    \else
+      \clearpage
+    \fi
+  }
+\makeatother
 									 
 \RequirePackage{emptypage}	% Blank pages should not have neither header nor footer
 
