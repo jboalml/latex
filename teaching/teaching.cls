@@ -83,7 +83,7 @@
                             % an error try [protrusion=true, expansion=true]
 							                       
 % Fonts
-\RequirePackage{charter}                  % Serif: Bitstream Charter w/o math support
+\RequirePackage{XCharter}                 % Serif: Bitstream Charter w/o math support (includes oldstyle and superior figures, and small caps)
 \RequirePackage[defaultsans]{opensans}    % Sans: Open Sans
 \RequirePackage[varqu,varl]{inconsolata}  % Monospaced: Inconsolata
 \RequirePackage{amsfonts}                 % American Mathematical Society fonts
@@ -98,6 +98,7 @@
 }
 
 % Other serif fonts
+%\RequirePackage{charter}              % Bitstream Charter w/o math support
 %\RequirePackage{fourier}              % Utopia text with Fourier math
 %\RequirePackage{kerkis}               % Extended Bookman
 %\RequirePackage{libertine}            % Linux Libertine
