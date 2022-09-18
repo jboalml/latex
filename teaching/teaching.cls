@@ -754,10 +754,15 @@
 % ----------------------------------- MISCELLANY ------------------------------------
 % ----------------------------------------------------------------------------------- 
 
+% Keyboard like keys
+\RequirePackage[os=win]{menukeys}    
+  \renewmenumacro{\directory}[/]{pathswithfolder}
+
 \RequirePackage{comment}             % Comment text out
 \RequirePackage{pdfpages}            % Attach .pdf files
 \RequirePackage{qrcode}              % Generate QR codes
 \RequirePackage[normalem]{ulem}      % Underlining
+
 
 % -----------------------------------------------------------------------------------
 % -------------------------------- CROSS-REFERENCES ---------------------------------
@@ -775,7 +780,7 @@
     pdfsubject         = \theSubject,
     pdfkeywords        = \theKeywords,
     pdfnewwindow       = true,
-    %colorlinks        = true,  % Cannot be set if menukeys is used
+    colorlinks         = true,
     citecolor          = black,
     filecolor          = black,
     linkcolor          = black,
@@ -789,12 +794,6 @@
   
 \RequirePackage[all]{hypcap}  % Correct hyperlink anchors position in floats.
                               % Must be loaded after hyperref
-
-% Keyboard like keys. Must be loaded after hyperref because otherwise there
-% is a clash with the hyperref's colorlinks. In order to preserve hyperref's
-% functionality, the option hyperrefcolorlinks must be set.
-\RequirePackage[hyperrefcolorlinks,os=win]{menukeys}   
-  \renewmenumacro{\directory}[/]{pathswithfolder}
 
 % Modify automatic reference names
 \addto\extrasenglish{%
