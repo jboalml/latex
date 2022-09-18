@@ -917,6 +917,7 @@
   \def\tableautorefname{Table}%
   \def\equationautorefname{Equation}%
   \def\codeautorefname{Code}%
+  \def\appendixautorefname{Appendix}%
 } 
 
 \addto\extrasspanish{%
@@ -935,6 +936,7 @@
   \def\tableautorefname{Tabla}%
   \def\equationautorefname{Ecuación}%
   \def\codeautorefname{Código}%
+  \def\appendixautorefname{Anexo}%
 }
 
 % -----------------------------------------------------------------------------------
