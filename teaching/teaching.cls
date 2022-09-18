@@ -170,6 +170,7 @@
   
   % English names
   \addto\captionsenglish{%
+    \def\bibname{References}%
     \def\exercisesname{Exercises}%
     \def\gradename{Grade}%
     \def\groupname{Group}%
@@ -190,6 +191,7 @@
   % Spanish names
   \addto\captionsspanish{%
     \def\tablename{Tabla}%
+    \def\bibname{Referencias}%
     \def\exercisesname{Ejercicios}%
     \def\gradename{Calificación}%
     \def\groupname{Grupo}%
@@ -749,6 +751,43 @@
   \DeclareSIUnit{\degreeFahrenheit}{\fahrenheit}
   \DeclareSIUnit{\ntu}{NTU}          % Nephelometric Turbidity Unit
   \DeclareSIUnit{\ohm}{\ensuremath{\Omega}}
+
+% -----------------------------------------------------------------------------------
+% ---------------------------------- BIBLIOGRAPHY -----------------------------------
+% ----------------------------------------------------------------------------------- 
+
+\RequirePackage[backend=biber,
+            %bibstyle=ieee, %ieee-alphabetic
+            bibencoding=utf8,
+            bibstyle=ieee, % ieee-alphabetic
+            %citestyle=alphabetic,
+            %citestyle=numeric-comp,
+            natbib=true,
+            hyperref=true,
+            url=true,
+            doi=false,
+            isbn=false,
+            backref=false,
+            block=none, %space
+            maxcitenames=2,
+            mincitenames=1
+            %maxnames=2,
+            %maxbibnames=10,
+            %minbibnames=10
+            ]{biblatex} 
+            
+\RequirePackage{xpatch}
+  \xpatchbibdriver{online}{
+    \printtext[parens]{\usebibmacro{date}}
+  }{
+    \iffieldundef{year}{}{
+      \printtext[parens]{\usebibmacro{date}}
+    }
+  }{}{
+    \typeout{There was an error patching biblatex-ieee (specifically, ieee.bbx's @online driver)}
+  }
+
+\renewcommand{\bibfont}{\normalfont\small}
 
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MISCELLANY ------------------------------------
