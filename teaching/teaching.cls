@@ -234,6 +234,68 @@
 \providecommand{\Keywords}[1]{\renewcommand{\theKeywords}{#1}}
 \providecommand{\Subject}[1]{\renewcommand{\theSubject}{#1}}
 
+% ----------------------------------------------------------------------------------- 
+% ------------------------------------ HEADINGS -------------------------------------
+% ----------------------------------------------------------------------------------- 
+
+% Section numbering
+\setcounter{secnumdepth}{5}  % Last level numbered (max. 5): subparagraph
+				
+% Format
+\RequirePackage{titlesec}
+  %\titleformat{\chapter}[block]{\centering\LARGE\titlingfont\thispagestyle{fancy}}
+  %                             {\chaptertitlename~\thechapter . }{0pt}{}
+                             
+  %\titlespacing*{\chapter}{0pt}{-20pt plus 5pt minus 5pt}{10pt plus 5pt minus 5pt}	
+																			
+  \titleformat{\section}{\LARGE\titlingfont}
+                        {\ifdefempty{\sectionname}{}{\sectionname~}\thesection .}{0.35em}{}
+  \titlespacing*{\section}{0pt}{1.75ex plus .5ex minus 1.75ex}{-0.25ex plus .5ex minus 0.5ex}
+				
+  \titleformat{\subsection}{\Large\titlingfont}{\thesubsection .}{0.35em}{}
+  \titlespacing*{\subsection}{0pt}{1.25ex plus .5ex minus 1.25ex}{-0.25ex plus .5ex minus 1ex}
+
+  \titleformat{\subsubsection}{\large\titlingfont}{\thesubsubsection .}{0.35em}{}
+  \titlespacing*{\subsubsection}{0pt}{1ex plus .5ex minus .5ex}{0ex plus .25ex minus .25ex}
+				
+  \titleformat{\paragraph}{\normalsize\titlingfont}{\theparagraph .}{0.35em}{}
+  \titlespacing*{\paragraph}{0pt}{.75ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
+																
+  \titleformat{\subparagraph}{\normalsize\titlingfont}{\thesubparagraph .}{0.35em}{}
+  \titlespacing*{\subparagraph}{0pt}{.5ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
+  
+% ----------------------------------------------------------------------------------- 
+% ------------------------------------- INDICES -------------------------------------
+% -----------------------------------------------------------------------------------
+
+% Last level displayed in ToC (max. 5). Current selection: \subsection
+\setcounter{tocdepth}{3}
+
+% Format ToC, LoF and LoT
+%\RequirePackage[dotinlabels]{titletoc}  % Alternative package
+
+\RequirePackage[titles]{tocloft}
+  % Text that follows the level number
+  \renewcommand{\cftsecaftersnum}{.}
+  \renewcommand{\cftsubsecaftersnum}{.}
+  \renewcommand{\cftsubsubsecaftersnum}{.}
+  \renewcommand{\cftparaaftersnum}{.}
+  \renewcommand{\cftsubparaaftersnum}{.}
+  \renewcommand{\cftfigaftersnum}{.\hspace{8pt}}
+  \renewcommand{\cfttabaftersnum}{.\hspace{8pt}}
+  
+  % Figure and table label space
+  \settowidth{\cftfignumwidth}{88\cftfigaftersnum}
+  \settowidth{\cfttabnumwidth}{88\cfttabaftersnum}
+  
+  % Figure and table indentation
+  \renewcommand{\cftfigindent}{0pt}
+  \renewcommand{\cfttabindent}{0pt}
+  
+  % Figure and table vertical spacing
+  \setlength{\cftbeforefigskip}{8pt}
+  \setlength{\cftbeforetabskip}{8pt}
+
 % -----------------------------------------------------------------------------------
 % ----------------------------------- PAGE LAYOUT -----------------------------------
 % -----------------------------------------------------------------------------------
@@ -250,7 +312,8 @@
                              
 % Paragraphs    
 \RequirePackage[parfill]{parskip}  % Space between paragraphs. Requires to manually
-                                   % correct all extra space introduced in headings
+                                   % correct all extra space introduced in headings.
+                                   % Should be loaded after tocloft
 \setlength{\parindent}{15pt}       % Indentation. Must go after parskip
 
 % Columns and rows (both in tables and text)
@@ -301,68 +364,6 @@
   \providecolor{greenMatlab}{rgb}{0.13,0.54,0.13}
   \providecolor{violetMatlab}{rgb}{0.75,0.12,0.95}
   \providecolor{white}{rgb}{1,1,1}
-
-% ----------------------------------------------------------------------------------- 
-% ------------------------------------ HEADINGS -------------------------------------
-% ----------------------------------------------------------------------------------- 
-
-% Section numbering
-\setcounter{secnumdepth}{5}  % Last level numbered (max. 5): subparagraph
-				
-% Format
-\RequirePackage{titlesec}
-  %\titleformat{\chapter}[block]{\centering\LARGE\titlingfont\thispagestyle{fancy}}
-  %                             {\chaptertitlename~\thechapter . }{0pt}{}
-                             
-  %\titlespacing*{\chapter}{0pt}{-20pt plus 5pt minus 5pt}{10pt plus 5pt minus 5pt}	
-																			
-  \titleformat{\section}{\LARGE\titlingfont}
-                        {\ifdefempty{\sectionname}{}{\sectionname~}\thesection .}{0.35em}{}
-  \titlespacing*{\section}{0pt}{1.75ex plus .5ex minus .5ex}{-0.25ex plus .5ex minus 1ex}
-				
-  \titleformat{\subsection}{\Large\titlingfont}{\thesubsection .}{0.35em}{}
-  \titlespacing*{\subsection}{0pt}{1.25ex plus .5ex minus .5ex}{-0.25ex plus .5ex minus 1ex}
-
-  \titleformat{\subsubsection}{\large\titlingfont}{\thesubsubsection .}{0.35em}{}
-  \titlespacing*{\subsubsection}{0pt}{1ex plus .5ex minus .5ex}{0ex plus .25ex minus .25ex}
-				
-  \titleformat{\paragraph}{\normalsize\titlingfont}{\theparagraph .}{0.35em}{}
-  \titlespacing*{\paragraph}{0pt}{.75ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
-																
-  \titleformat{\subparagraph}{\normalsize\titlingfont}{\thesubparagraph .}{0.35em}{}
-  \titlespacing*{\subparagraph}{0pt}{.5ex plus .25ex minus .25ex}{0ex plus .25ex minus .25ex}
-  
-% ----------------------------------------------------------------------------------- 
-% ------------------------------------- INDICES -------------------------------------
-% -----------------------------------------------------------------------------------
-
-% Last level displayed in ToC (max. 5). Current selection: \subsection
-\setcounter{tocdepth}{3}
-
-% Format ToC, LoF and LoT
-%\RequirePackage[dotinlabels]{titletoc}  % Alternative package
-
-\RequirePackage[titles]{tocloft}
-  % Text that follows the level number
-  \renewcommand{\cftsecaftersnum}{.}
-  \renewcommand{\cftsubsecaftersnum}{.}
-  \renewcommand{\cftsubsubsecaftersnum}{.}
-  \renewcommand{\cftparaaftersnum}{.}
-  \renewcommand{\cftsubparaaftersnum}{.}
-  \renewcommand{\cftfigaftersnum}{.\hspace{8pt}}
-  \renewcommand{\cfttabaftersnum}{.\hspace{8pt}}
-  
-  % Figure and table label space
-  \settowidth{\cftfignumwidth}{88\cftfigaftersnum}
-  \settowidth{\cfttabnumwidth}{88\cfttabaftersnum}
-  
-  % Figure and table indentation
-  \renewcommand{\cftfigindent}{0pt}
-  \renewcommand{\cfttabindent}{0pt}
-  
-  % Figure and table vertical spacing
-  \setlength{\cftbeforefigskip}{8pt}
-  \setlength{\cftbeforetabskip}{8pt}
 
 % -----------------------------------------------------------------------------------
 % ------------------------------ FLOATING ENVIRONMENTS ------------------------------
