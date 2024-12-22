@@ -48,6 +48,7 @@
 \DeclareBoolOption{solution}
 
 \DeclareBoolOption[false]{nograde}  % Remove grade box in exams
+\DeclareBoolOption[false]{noname}   % Remove name field in exams
 
 \DeclareBoolOption{circuitikz}  % Enable circuitikz customizations
 
@@ -976,18 +977,20 @@
   
   % Student data
   \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam}}{
-    \vspace{0.5cm}
-    \noindent
-    \begin{tabularx}{\linewidth}{@{}Xr@{}}
-      \textbf{\studentname:}~\line(1,0){325} & \textbf{\groupname:}~\line(1,0){45}
-    \end{tabularx}{\parfillskip=0pt\par}
-    \vspace{0.25cm plus 0.25cm minus 0.25cm}
+    \ifbool{teaching@noname}{}{  
+      \vspace{0.5cm}
+      \noindent
+      \begin{tabularx}{\linewidth}{@{}Xr@{}}
+        \textbf{\studentname:}~\line(1,0){325} & \textbf{\groupname:}~\line(1,0){45}
+      \end{tabularx}{\parfillskip=0pt\par}
+      \vspace{0.25cm plus 0.25cm minus 0.25cm}
+    }
   }{}
     
   % Instructions 
   \ifboolexpr{bool {teaching@quiz} or bool {teaching@exam}}{
     \ifdefempty{\theInstructions}{}{
-      \ifbool{teaching@exam}{\vspace{1cm}}{}
+      \ifbool{teaching@exam}{\vspace{0.5cm}}{}
       \ifbool{teaching@quiz}{\vspace{0.75cm}}{}
     
       {\noindent\centering\titlingfont\LARGE \MakeUppercase{\instructionsname}\\}
