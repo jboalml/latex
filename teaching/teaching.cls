@@ -10,7 +10,6 @@
 % -----------------------------------------------------------------------------------                                    
 
 \RequirePackage{calc}        % Mathematical operations within LaTeX commands
-\RequirePackage{etex}        % Extended TeX engine
 \RequirePackage{etoolbox}    % Tools for class and package authors
 \RequirePackage{expl3}       % LaTeX3 functions
 \RequirePackage{iftex}       % Allows to check the TeX engine used
@@ -342,7 +341,7 @@
 % ----------------------------------------------------------------------------------- 
 
 % Use cmyk option for printing could be advisable
-\RequirePackage[dvipsnames,hyperref,table]{xcolor}
+\RequirePackage[dvipsnames,table]{xcolor}
 
   % User defined colors
   % \definecolor can be used instead but it overwrites previous color names
