@@ -10,7 +10,7 @@
 % -----------------------------------------------------------------------------------                                    
 
 \RequirePackage{calc}        % Mathematical operations within LaTeX commands
-\RequirePackage{etex}        % Extended TeX engine
+% \RequirePackage{etex}        % Extended TeX engine
 \RequirePackage{etoolbox}    % Tools for class and package authors
 \RequirePackage{expl3}       % LaTeX3 functions
 \RequirePackage{iftex}       % Allows to check the TeX engine used
@@ -238,9 +238,9 @@
                              % and \doublespacing
                              
 % Paragraphs    
-\RequirePackage[parfill]{parskip}  % Space between paragraphs. Requires to manually
+\RequirePackage{parskip}  % Space between paragraphs. Requires to manually
                                    % correct all extra space introduced in headings
-\setlength{\parindent}{15pt}       % Indentation. Must go after parskip
+% \setlength{\parindent}{15pt}       % Indentation. Must go after parskip
 
 % Columns and rows (both in tables and text)
 \RequirePackage{multicol}
@@ -268,7 +268,7 @@
 % ----------------------------------------------------------------------------------- 
 
 % Use cmyk option for printing could be advisable
-\RequirePackage[dvipsnames,hyperref,table]{xcolor}
+\RequirePackage[dvipsnames,table]{xcolor}
 
   % User defined colors
   % \definecolor can be used instead but it overwrites previous color names
@@ -623,14 +623,14 @@
 % Text units
 \renewcommand{\textohm}{\ensuremath{\Omega}}
 
-\RequirePackage[tight,nice]{units}   % Simple units
+% \RequirePackage[tight,nice]{units}   % Simple units
 \RequirePackage{siunitx}             % Advanced units
   \sisetup{
     detect-all,                      % Use the current font and weight
     retain-explicit-plus,            % Display leading plus sign if present
     per-mode         = symbol,       % Use a slash to indicate units in the denominator
     range-phrase     = --,           % Use an en-dash for ranges
-    output-product   = \cdot,        % Use a centered dot for products
+    % output-product   = \cdot,        % Use a centered dot for products
     exponent-product = \cdot         % Use a centered dot for scientific notation
   }
   
@@ -643,8 +643,11 @@
   \DeclareSIUnit{\fahrenheit}{\SIUnitSymbolDegree F}
   \DeclareSIUnit{\degreeFahrenheit}{\fahrenheit}
   \DeclareSIUnit{\ntu}{NTU}          % Nephelometric Turbidity Unit
+  % charter redefines \textmu to be slanted, not good
+  % for siunitx
+  \renewcommand{\textmu}{\ensuremath{\upmu}}
   \DeclareSIUnit{\ohm}{\ensuremath{\Omega}}
-  \renewcommand{\SIUnitSymbolMicro}{\ensuremath{\upmu}}
+  % \renewcommand{\SIUnitSymbolMicro}{\ensuremath{\upmu}}
 
 % -----------------------------------------------------------------------------------
 % ----------------------------------- MISCELLANY ------------------------------------
@@ -671,7 +674,7 @@
     pdfsubject         = \theSubject,
     pdfkeywords        = \theKeywords,
     pdfnewwindow       = true,
-    %colorlinks        = true,  % Cannot be set if menukeys is used
+    colorlinks        = true,  % Cannot be set if menukeys is used
     citecolor          = black,
     filecolor          = black,
     linkcolor          = black,
@@ -689,7 +692,7 @@
 % Keyboard like keys. Must be loaded after hyperref because otherwise there
 % is a clash with the hyperref's colorlinks. In order to preserve hyperref's
 % functionality, the option hyperrefcolorlinks must be set.
-\RequirePackage[hyperrefcolorlinks,os=win]{menukeys}   
+\RequirePackage[os=win]{menukeys}   
   \renewmenumacro{\directory}[/]{pathswithfolder}
 
 % Modify automatic reference names
